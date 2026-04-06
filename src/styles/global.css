@@ -1,0 +1,61 @@
+@import "tailwindcss";
+
+.bg-video {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: -10;
+  transition: opacity 0.5s ease;
+}
+
+.bg-video.active {
+  opacity: 1;
+}
+
+.bg-video.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.top-bar,
+.bottom-bar {
+  position: fixed;
+  left: 0;
+  width: 100%;
+  padding: 1rem;
+  z-index: 50;
+  pointer-events: none;
+}
+
+.top-bar {
+  top: 0;
+}
+
+.bottom-bar {
+  bottom: 0;
+}
+
+.bar-box {
+  width: min(900px, calc(100% - 2rem));
+  margin: 0 auto;
+  border-radius: 1rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
+  padding: 1rem 1.25rem;
+  position: relative;
+  z-index: 51;
+  pointer-events: auto;
+}
+
+.bottom-inner {
+  display: flex;
+  justify-content: center;
+}
+
+.page-content {
+  position: relative;
+  z-index: 10;
+  padding-top: 7rem;
+  padding-bottom: 7rem;
+}
