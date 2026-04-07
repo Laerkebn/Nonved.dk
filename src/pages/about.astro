@@ -4,18 +4,59 @@ import '../styles/global.css';
 ---
 
 <Layout title="Contact | My Portfolio">
-  <div class="w-full flex justify-center px-5 pt-5">
-    <nav
-      class="bg-[#272425] text-[#29cb17] w-full max-w-3xl flex flex-col items-center text-center gap-7 py-4 px-10 rounded-xl shadow-lg uppercase tracking-widest font-semibold"
-    >
-      <h1>Hvem er jeg?</h1>
-      <h2>
-        Lorem Ipsum is dummy text used as placeholder in graphic design,
-        web development, and publishing to preview layouts without distracting,
-        meaningful content. It is derived from Cicero’s 45 BC text
-        "de Finibus Bonorum et Malorum," altered to be nonsensical Latin.
-        It has been the industry standard since the 1500s.
-      </h2>
-    </nav>
-  </div>
+
+      <div class="max-w-7xl  mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-20">
+    <div class="text-center mb-16 lg:mb-24">
+      <h1
+        class="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-black mb-6"
+        style="text-shadow: 3px 3px 0 #29cb17, -2px -2px 0 #0a4b09, 3px -2px 0 #406f40, -2px 3px 0 #75db77;"
+      >
+        About Me
+      </h1>
+      <p class="text-xl lg:text-2xl text-[#29cb17] max-w-4xl mx-auto leading-relaxed">
+        Get to know me a little better and find out what I am passionate about
+      </p>
+    </div>
+
+      <!-- PROJECT 1 -->
+    <div class="mb-16 lg:mb-24">
+      <div class="bg-gradient-to-br from-black via-[#1a1010] to-black rounded-2xl overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.9)] border border-gray-800 hover:border-lime-500/30 transition-all duration-500">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-0">
+          <!-- Image -->
+          <div class="order-1 relative overflow-hidden h-[400px] lg:h-auto group">
+            <img
+              src="/Billeder/pb.JPG"
+              alt="Picture of me"
+              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+            />
+            <div class="absolute inset-0 bg-gradient-to-r from-black/60 to-transparent lg:opacity-80"></div>
+          </div>
+
+          <!-- Content -->
+          <div class="order-2 p-8 lg:p-12 xl:p-16 flex flex-col justify-center">
+            <h2 class="text-4xl lg:text-5xl font-bold text-[#29cb17] mb-6">
+              Who am I?
+            </h2>
+
+<div class="space-y-4 text-lg text-gray-200 leading-relaxed mb-8">
+  <p>
+Hello my name is Lærke.I am a designer and artist with a passion for creating unique and 
+       engaging experiences. I have a background in graphic design, web development, and branding, 
+       and I am always looking for new ways to push the boundaries of what is possible. 
+  </p>
+
+  <p>
+    I am currently working on a variety of projects, including a new website for my portfolio, a series of digital art pieces exploring the intersection of technology and nature, and a collaborative project with other artists to create an immersive installation for an upcoming exhibition.
+  </p>
+
+  <p>
+    The project was developed as an exploration of identity in a hyper-connected world, where constant input often leads to emotional detachment. By stripping away clarity and introducing visual tension, the viewer is invited to pause and interpret the work in their own way.
+  </p>
+</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+ 
 </Layout>

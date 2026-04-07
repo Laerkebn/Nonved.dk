@@ -31,10 +31,21 @@
 
 .top-bar {
   top: 0;
+  
+}
+
+.footer-box {
+  width: min(900px, calc(100% - 2rem));
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  color: #29cb17;
+  pointer-events: auto;
 }
 
 .bottom-bar {
   bottom: 0;
+  flex: auto;
 }
 
 .bar-box {
@@ -47,10 +58,9 @@
   z-index: 51;
   pointer-events: auto;
 }
-
 .bottom-inner {
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly; 
 }
 
 .page-content {

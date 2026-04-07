@@ -44,10 +44,10 @@ import '../styles/global.css';
 
     <!-- Top navigation -->
     <header class="top-bar">
-      <nav
-        class="bar-box text-[#29cb17] flex flex-wrap justify-center gap-6 sm:gap-10 uppercase tracking-widest font-semibold"
-        style="text-shadow: 2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 0 0 #000, -2px 0 0 #000, 0 2px 0 #000, 0 -2px 0 #000;"
-      >
+  <nav
+    class="text-xs sm:text-sm md:text-base lg:text-xl bar-box bg-[#272425] text-[#29cb17] flex justify-evenly w-full uppercase tracking-widest font-semibold"
+  style="text-shadow: 2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 0 0 #000, -2px 0 0 #000, 0 2px 0 #000, 0 -2px 0 #000;"
+    >
         <a href="/" class="hover:text-purple-600 transition duration-300 hover:scale-110">
           Frontpage
         </a>
@@ -63,39 +63,50 @@ import '../styles/global.css';
       </nav>
     </header>
 
-    <!-- Main page area -->
-  <main class="page-content">
+ <!-- Main page area -->
+<main class="page-content">
   <slot />
 </main>
 
-    <!-- Bottom bar -->
-    <div class="bottom-bar">
-      <div class="bar-box bottom-inner">
-		 <!-- Footer -->
-    <footer class="site-footer">
-      <div class="containe justify-center">
-        <p>© 2026 Lærke Buch Nonved portfolio</p>
-      </div>
-    </footer>
+<!-- Footer (over bottom bar) -->
+<footer class="site-footer">
+  <div class="footer-box">
+    <p>© Lærke Buch Nonved portfolio</p>
+  </div>
+</footer>
 
-        <button
-          id="toggle-btn"
-          onclick="toggleBackgroundVideo()"
-          class="text-[#29cb17] p-2 uppercase tracking-widest font-semibold hover:text-purple-600 transition duration-300 hover:scale-110"
-          style="text-shadow: 2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 0 0 #000, -2px 0 0 #000, 0 2px 0 #000, 0 -2px 0 #000;"
-        >
-          Turn lights off
-        </button>
-		 <button
-          id="toggle-soundbtn"
-          onclick="toggleSound()"
-          class="text-[#29cb17] p-2 uppercase tracking-widest font-semibold hover:text-purple-600 transition duration-300 hover:scale-110"
-          style="text-shadow: 2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 0 0 #000, -2px 0 0 #000, 0 2px 0 #000, 0 -2px 0 #000;"
-        >
-          Turn sound off
-        </button>
-	    </div>
-    </div>
+<!-- Bottom bar -->
+<div class="bottom-bar">
+  <div class="bar-box bottom-inner bg-[#272425] text-xs sm:text-sm md:text-base lg:text-xl bar-box">
+
+    <button
+      id="toggle-btn"
+      onclick="toggleBackgroundVideo()"
+      class="text-[#29cb17] p-2 uppercase tracking-widest font-semibold hover:text-purple-600 transition duration-300 hover:scale-110"
+      style="text-shadow: 2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 0 0 #000, -2px 0 0 #000, 0 2px 0 #000, 0 -2px 0 #000;"
+    >
+      Lights off
+    </button>
+
+    <button
+      id="toggle-soundbtn"
+      onclick="toggleSound()"
+      class="text-[#29cb17] p-2 uppercase tracking-widest font-semibold hover:text-purple-600 transition duration-300 hover:scale-110"
+      style="text-shadow: 2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 0 0 #000, -2px 0 0 #000, 0 2px 0 #000, 0 -2px 0 #000;"
+    >
+      Sound off
+    </button>
+
+    <button
+      id="toggle-languagebtn"
+      class="text-[#29cb17] p-2 uppercase tracking-widest font-semibold hover:text-purple-600 transition duration-300 hover:scale-110"
+      style="text-shadow: 2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 0 0 #000, -2px 0 0 #000, 0 2px 0 #000, 0 -2px 0 #000;"
+    >
+      English
+    </button>
+
+  </div>
+</div>
 
     <script is:inline>
       const video1 = document.getElementById('bg-video-1');
@@ -126,12 +137,15 @@ import '../styles/global.css';
 
         if (button) {
           button.textContent = showingFirst
-            ? 'Turn the lights on'
-            : 'Turn the lights off';
+            ? 'Lights on'
+            : 'Lights off';
         }
 
         showingFirst = !showingFirst;
       };
     </script>
+
+    		 <!-- Footer -->
+    </footer>
   </body>
 </html>
