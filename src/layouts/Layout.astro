@@ -42,6 +42,10 @@ import '../styles/global.css';
       <source src="/Videoer/BagrundNegativLOW80.mp4" type="video/mp4" />
     </video>
 
+    <audio id="bg-audio" loop>
+  <source src="/music/fugle.mp3" type="audio/mp3" />
+</audio>
+
     <!-- Top navigation -->
     <header class="top-bar">
   <nav
@@ -94,7 +98,7 @@ import '../styles/global.css';
       class="text-[#29cb17] p-2 uppercase tracking-widest font-semibold hover:text-purple-600 transition duration-300 hover:scale-110"
       style="text-shadow: 2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 0 0 #000, -2px 0 0 #000, 0 2px 0 #000, 0 -2px 0 #000;"
     >
-      Sound off
+      Sound on
     </button>
 
     <button
@@ -143,6 +147,35 @@ import '../styles/global.css';
 
         showingFirst = !showingFirst;
       };
+//Lydkontrol
+const audio = document.getElementById('bg-audio');
+let audioPlaying = false;
+
+// Start musik ved første interaktion med siden
+document.addEventListener('click', () => {
+  if (!audioPlaying) {
+    audio.play();
+    audioPlaying = true;
+    document.getElementById('toggle-soundbtn').textContent = 'Sound on';
+  }
+}, { once: true });
+
+window.toggleSound = () => {
+  const button = document.getElementById('toggle-soundbtn');
+  if (!audio) return;
+
+  if (audioPlaying) {
+    audio.pause();
+    button.textContent = 'Sound on';
+  } else {
+    audio.play();
+    button.textContent = 'Sound off';
+  }
+
+  audioPlaying = !audioPlaying;
+};
+
+
     </script>
 
     		 <!-- Footer -->

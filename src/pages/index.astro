@@ -4,15 +4,198 @@ import '../styles/global.css';
 ---
 
 <Layout title="Home | My Portfolio">
+<!-- HERO -->
+<div class="min-h-screen flex flex-col justify-between text-center lg:text-left px-5 sm:px-10 lg:px-20 pt-5">
+  <h1
+    class="text-4xl sm:text-5xl lg:text-8xl xl:text-8xl font-black"
+    style="text-shadow: 3px 3px 0 #29cb17, -2px -2px 0 #0a4b09, 3px -2px 0 #406f40, -2px 3px 0 #75db77;"
+  >
+    Exploring ideas through design, motion and digital experiments.
+  </h1>
 
-  <div class="text-left pl-5 sm:pl-10 lg:pl-20 xl:pl-20 mb-16 lg:mb-24">
-        <h1
-          class="text-4xl sm:text-5xl lg:text-8xl xl:text-8xl font-black pt-5 mb-6"
-          style="text-shadow: 3px 3px 0 #29cb17, -2px -2px 0 #0a4b09, 3px -2px 0 #406f40, -2px 3px 0 #75db77;"
-        >
-          Exploring ideas through design, motion and digital experiments.
-        </h1>
-	
- 
+  <!-- PIL -->
+  <div class="flex justify-center mb-60">
+    <img
+      src="/Billeder/PILNED.svg"
+      alt="Scroll ned"
+      class="w-10 h-full transition-transform duration-700 hover:scale-110 cursor-pointer"
+      onclick="document.getElementById('about').scrollIntoView({ behavior: 'smooth' })"
+    />
+  </div>
+</div>
+
+<!-- ABOUT ME -->
+<div id="about" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-20">
+    <div class="text-center mb-16 lg:mb-24">
+      <h1
+        class="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-black mb-6"
+        style="text-shadow: 3px 3px 0 #29cb17, -2px -2px 0 #0a4b09, 3px -2px 0 #406f40, -2px 3px 0 #75db77;"
+      >
+        About Me
+      </h1>
+      <p class="text-xl lg:text-2xl text-[#29cb17] max-w-4xl mx-auto leading-relaxed">
+        Get to know me a little better and find out what I am passionate about
+      </p>
+    </div>
+
+    <div class="mb-16 lg:mb-24">
+      <div class="bg-gradient-to-br from-black via-[#1a1010] to-black rounded-2xl overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.9)] border border-gray-800 hover:border-lime-500/30 transition-all duration-500">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-0">
+          <!-- Billede -->
+          <div class="order-1 relative overflow-hidden h-[400px] lg:h-auto group">
+            <img
+              src="/Billeder/pb.JPG"
+              alt="Picture of me"
+              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+            />
+            <div class="absolute inset-0 bg-gradient-to-r from-black/60 to-transparent lg:opacity-80"></div>
+          </div>
+
+          <!-- Tekst -->
+          <div class="order-2 p-8 lg:p-12 xl:p-16 flex flex-col justify-center">
+            <h2 class="text-4xl lg:text-5xl font-bold text-[#29cb17] mb-6">
+              About me
+            </h2>
+            <div class="space-y-4 text-lg text-gray-200 leading-relaxed mb-8">
+              <p>
+                Hello my name is Lærke. I am a designer and artist with a passion for creating unique and
+                engaging experiences. I have a background in graphic design, web development, and branding,
+                and I am always looking for new ways to push the boundaries of what is possible.
+              </p>
+              <p>
+                I am currently working on a variety of projects, including a new website for my portfolio,
+                a series of digital art pieces exploring the intersection of technology and nature, and a
+                collaborative project with other artists to create an immersive installation for an upcoming exhibition.
+              </p>
+              <p>
+                The project was developed as an exploration of identity in a hyper-connected world, where
+                constant input often leads to emotional detachment. By stripping away clarity and introducing
+                visual tension, the viewer is invited to pause and interpret the work in their own way.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROJECTS -->
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-20">
+    <div class="text-center mb-16 lg:mb-24">
+      <h1
+        class="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-black mb-6"
+        style="text-shadow: 3px 3px 0 #29cb17, -2px -2px 0 #0a4b09, 3px -2px 0 #406f40, -2px 3px 0 #75db77;"
+      >
+        My projects
+      </h1>
+      <p class="text-xl lg:text-2xl text-[#29cb17] max-w-4xl mx-auto leading-relaxed">
+        Stay updated on my latest projects — from art to branding.
+      </p>
+    </div>
+
+    <!-- PROJECT 1 -->
+    <div class="mb-16 lg:mb-24">
+      <div class="bg-gradient-to-br from-black via-[#1a1010] to-black rounded-2xl overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.9)] border border-gray-800 hover:border-lime-500/30 transition-all duration-500">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-0">
+          <!-- Billede -->
+          <div class="order-1 relative overflow-hidden h-[400px] lg:h-auto group">
+            <img
+              src="/Billeder/PH.png"
+              alt="Haunted House Tour"
+              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+            />
+            <div class="absolute inset-0 bg-gradient-to-r from-black/60 to-transparent lg:opacity-80"></div>
+          </div>
+
+          <!-- Tekst -->
+          <div class="order-2 p-8 lg:p-12 xl:p-16 flex flex-col justify-center">
+            <h2 class="text-4xl lg:text-5xl font-bold text-[#29cb17] mb-6">
+              Project nr. 1
+            </h2>
+            <div class="space-y-4 text-lg text-gray-200 leading-relaxed mb-8">
+              <p>
+                <strong class="text-[#29cb17]">Fragments of Silence</strong> is a conceptual art project
+                exploring the tension between chaos and stillness in modern digital life. Through layered
+                textures, distorted forms, and muted color palettes, the piece reflects how silence can
+                exist even in overwhelming noise.
+              </p>
+              <p>
+                The work combines digital collage, 3D elements, and motion-based experimentation to create
+                a fragmented visual narrative. Each composition is intentionally imperfect — broken lines,
+                abrupt transitions, and visual glitches are used as a language rather than flaws.
+              </p>
+              <p>
+                The project was developed as an exploration of identity in a hyper-connected world, where
+                constant input often leads to emotional detachment. By stripping away clarity and introducing
+                visual tension, the viewer is invited to pause and interpret the work in their own way.
+              </p>
+            </div>
+            <div class="flex flex-wrap gap-4">
+              
+                href="/news"
+                class="inline-block bg-[#29cb17] hover:bg-lime-700 text-white font-bold py-4 px-8 rounded-xl transition-all duration-300 transform hover:scale-105 hover:shadow-[0_10px_30px_rgba(163,163,163,0.5)] w-fit"
+              >
+                Read More
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script is:inline>
+    const gallery = document.getElementById("wweGallery");
+    const button = document.getElementById("showGalleryButton");
+    const slider = document.getElementById("wweSlider");
+    const next = document.getElementById("nextSlide");
+    const prev = document.getElementById("prevSlide");
+    const indicators = document.getElementById("slideIndicators");
+
+    if (gallery && button && slider && next && prev && indicators) {
+      let index = 0;
+      const slides = slider.children.length;
+
+      for (let i = 0; i < slides; i++) {
+        const dot = document.createElement("button");
+        dot.className = "w-3 h-3 rounded-full bg-gray-500 hover:bg-lime-500 transition-all duration-300";
+        dot.onclick = () => goToSlide(i);
+        indicators.appendChild(dot);
+      }
+
+      function updateIndicators() {
+        Array.from(indicators.children).forEach((dot, i) => {
+          dot.className = i === index
+            ? "w-3 h-3 rounded-full bg-lime-500 scale-125 transition-all duration-300"
+            : "w-3 h-3 rounded-full bg-gray-500 hover:bg-lime-500 transition-all duration-300";
+        });
+      }
+
+      function goToSlide(n) {
+        index = n;
+        slider.style.transform = `translateX(-${index * 100}%)`;
+        updateIndicators();
+      }
+
+      button.addEventListener("click", () => {
+        gallery.classList.toggle("hidden");
+        button.innerHTML = gallery.classList.contains("hidden")
+          ? "📸 See Latest Photos"
+          : "✖️ Hide Photos";
+      });
+
+      next.addEventListener("click", () => {
+        index = (index + 1) % slides;
+        goToSlide(index);
+      });
+
+      prev.addEventListener("click", () => {
+        index = (index - 1 + slides) % slides;
+        goToSlide(index);
+      });
+
+      updateIndicators();
+    }
+  </script>
 
 </Layout>
