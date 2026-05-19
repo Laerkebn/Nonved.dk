@@ -1,7 +1,9 @@
 ---
 import { ClientRouter } from 'astro:transitions';
-const { title = 'My Portfolio' } = Astro.props;
+const { title = 'My Portfolio', page = '' } = Astro.props;
 import '../styles/global.css';
+
+const isStaticPage = page === 'about' || page === 'projects';
 ---
 
 <!doctype html>
@@ -42,16 +44,21 @@ import '../styles/global.css';
       <source src="/Videoer/BagrundNegativLOW80.mp4" type="video/mp4" />
     </video>
 
+    <!-- Mørk overlay på about/projects (z-index 5 = mellem video (-10) og indhold (10)) -->
+    {isStaticPage && (
+      <div style="position: fixed; inset: 0; background: rgba(0,0,0,0.70); z-index: 5;"></div>
+    )}
+
     <audio id="bg-audio" loop>
-  <source src="/music/fugle.mp3" type="audio/mp3" />
-</audio>
+      <source src="/music/fugle.mp3" type="audio/mp3" />
+    </audio>
 
     <!-- Top navigation -->
     <header class="top-bar">
-  <nav
-    class="text-xs sm:text-sm md:text-base lg:text-xl bar-box bg-[#272425] text-[#29cb17] flex justify-evenly w-full uppercase tracking-widest font-semibold"
-  style="text-shadow: 2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 0 0 #000, -2px 0 0 #000, 0 2px 0 #000, 0 -2px 0 #000;"
-    >
+      <nav
+        class="text-xs sm:text-sm md:text-base lg:text-xl bar-box bg-[#272425]/80 text-[#29cb17] flex justify-evenly w-full uppercase tracking-widest font-semibold"
+        style="text-shadow: 2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 0 0 #000, -2px 0 0 #000, 0 2px 0 #000, 0 -2px 0 #000;"
+      >
         <a href="/" class="hover:text-purple-600 transition duration-300 hover:scale-110">
           Frontpage
         </a>
@@ -67,50 +74,43 @@ import '../styles/global.css';
       </nav>
     </header>
 
- <!-- Main page area -->
-<main class="page-content">
-  <slot />
-</main>
+    <!-- Main page area -->
+    <main class="page-content">
+      <slot />
+    </main>
+    
+    <!-- Bottom bar -->
+    <div class="bottom-bar">
+      <div class="bar-box bottom-inner bg-[#272425]/80 text-xs sm:text-sm md:text-base lg:text-xl">
 
-<!-- Footer (over bottom bar) -->
-<footer class="site-footer">
-  <div class="footer-box">
-    <p>© Lærke Buch Nonved portfolio</p>
-  </div>
-</footer>
+        <button
+          id="toggle-btn"
+          onclick="toggleBackgroundVideo()"
+          class="text-[#29cb17] p-2 uppercase tracking-widest font-semibold hover:text-purple-600 transition duration-300 hover:scale-110"
+          style="text-shadow: 2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 0 0 #000, -2px 0 0 #000, 0 2px 0 #000, 0 -2px 0 #000;"
+        >
+          Lights off
+        </button>
 
-<!-- Bottom bar -->
-<div class="bottom-bar">
-  <div class="bar-box bottom-inner bg-[#272425] text-xs sm:text-sm md:text-base lg:text-xl bar-box">
+        <button
+          id="toggle-soundbtn"
+          onclick="toggleSound()"
+          class="text-[#29cb17] p-2 uppercase tracking-widest font-semibold hover:text-purple-600 transition duration-300 hover:scale-110"
+          style="text-shadow: 2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 0 0 #000, -2px 0 0 #000, 0 2px 0 #000, 0 -2px 0 #000;"
+        >
+          Sound off
+        </button>
 
-    <button
-      id="toggle-btn"
-      onclick="toggleBackgroundVideo()"
-      class="text-[#29cb17] p-2 uppercase tracking-widest font-semibold hover:text-purple-600 transition duration-300 hover:scale-110"
-      style="text-shadow: 2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 0 0 #000, -2px 0 0 #000, 0 2px 0 #000, 0 -2px 0 #000;"
-    >
-      Lights off
-    </button>
+        <button
+          id="toggle-languagebtn"
+          class="text-[#29cb17] p-2 uppercase tracking-widest font-semibold hover:text-purple-600 transition duration-300 hover:scale-110"
+          style="text-shadow: 2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 0 0 #000, -2px 0 0 #000, 0 2px 0 #000, 0 -2px 0 #000;"
+        >
+          English
+        </button>
 
-    <button
-      id="toggle-soundbtn"
-      onclick="toggleSound()"
-      class="text-[#29cb17] p-2 uppercase tracking-widest font-semibold hover:text-purple-600 transition duration-300 hover:scale-110"
-      style="text-shadow: 2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 0 0 #000, -2px 0 0 #000, 0 2px 0 #000, 0 -2px 0 #000;"
-    >
-      Sound on
-    </button>
-
-    <button
-      id="toggle-languagebtn"
-      class="text-[#29cb17] p-2 uppercase tracking-widest font-semibold hover:text-purple-600 transition duration-300 hover:scale-110"
-      style="text-shadow: 2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 0 0 #000, -2px 0 0 #000, 0 2px 0 #000, 0 -2px 0 #000;"
-    >
-      English
-    </button>
-
-  </div>
-</div>
+      </div>
+    </div>
 
     <script is:inline>
       const video1 = document.getElementById('bg-video-1');
@@ -140,45 +140,39 @@ import '../styles/global.css';
         nextVideo.classList.add('active');
 
         if (button) {
-          button.textContent = showingFirst
-            ? 'Lights on'
-            : 'Lights off';
+          button.textContent = showingFirst ? 'Lights on' : 'Lights off';
         }
 
         showingFirst = !showingFirst;
       };
-//Lydkontrol
-const audio = document.getElementById('bg-audio');
-let audioPlaying = false;
 
-// Start musik ved første interaktion med siden
-document.addEventListener('click', () => {
-  if (!audioPlaying) {
-    audio.play();
-    audioPlaying = true;
-    document.getElementById('toggle-soundbtn').textContent = 'Sound on';
-  }
-}, { once: true });
+      // Lydkontrol
+      const audio = document.getElementById('bg-audio');
+      let audioPlaying = false;
 
-window.toggleSound = () => {
-  const button = document.getElementById('toggle-soundbtn');
-  if (!audio) return;
+      document.addEventListener('click', () => {
+        if (!audioPlaying) {
+          audio.play();
+          audioPlaying = true;
+          document.getElementById('toggle-soundbtn').textContent = 'Sound off';
+        }
+      }, { once: true });
 
-  if (audioPlaying) {
-    audio.pause();
-    button.textContent = 'Sound on';
-  } else {
-    audio.play();
-    button.textContent = 'Sound off';
-  }
+      window.toggleSound = () => {
+        const button = document.getElementById('toggle-soundbtn');
+        if (!audio) return;
 
-  audioPlaying = !audioPlaying;
-};
+        if (audioPlaying) {
+          audio.pause();
+          button.textContent = 'Sound on';
+        } else {
+          audio.play();
+          button.textContent = 'Sound off';
+        }
 
-
+        audioPlaying = !audioPlaying;
+      };
     </script>
 
-    		 <!-- Footer -->
-    </footer>
   </body>
 </html>
