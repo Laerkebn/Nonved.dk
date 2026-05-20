@@ -1,0 +1,130 @@
+---
+import Layout from '../layouts/Layout.astro';
+import '../styles/global.css';
+---
+
+<Layout title="GRUMS | My Portfolio" page="projects">
+
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-20">
+
+    <!-- Tilbage knap -->
+    <div class="fade-in">
+      <a href="/projects" class="proj-back-btn">
+        ← Projects
+      </a>
+    </div>
+    
+<!-- HERO -->
+<div class="proj-hero fade-in" style="display: flex; flex-direction: column; justify-content: space-between;">
+  <div class="proj-title">GRUMS</div>
+
+  <!-- Tag øverst -->
+  <span class="proj-tag">Eksamen · 2024</span>
+
+  <!-- h1 i midten -->
+ <div class="proj-hero-content" style="margin-top: -20rem;">
+    <h1
+      class="text-5xl sm:text-7xl font-black"
+      style="text-shadow: 3px 3px 0 #29cb17, -2px -2px 0 #0a4b09, 3px -2px 0 #406f40, -2px 3px 0 #75db77;"
+    >
+      GRUMS
+    </h1>
+  </div>
+
+  <!-- Pil nederst -->
+  <div class="flex justify-center mb-8">
+    <img
+      src="/Billeder/PILNED.svg"
+      alt="Scroll ned"
+      class="w-10 transition-transform duration-700 hover:scale-110 cursor-pointer"
+      onclick="const el = document.getElementById('projekt'); window.scrollTo({ top: el.offsetTop - 80, behavior: 'smooth' })"
+    />
+  </div>
+</div>
+
+<div id="projekt">
+
+<!-- Projektet starter her -->
+<div id="projekt">
+
+
+    <!-- Stort billede -->
+    <div class="proj-gallery-full rounded-2xl overflow-hidden border border-[#272425] mb-2 fade-in">
+      <img src="/Billeder/GRUMS/GRUMSSTART.png" alt="GRUMS" />
+    </div>
+
+    <!-- Intro tekst -->
+    <div class="py-16 px-4 sm:px-0 fade-in">
+      <div class="proj-text-block mx-auto text-center">
+        <p class="text-xl text-gray-200 leading-relaxed">
+          Through layered textures, distorted forms, and muted color palettes, <strong class="text-[#29cb17]">GRUMS</strong> reflects how silence can exist even in overwhelming noise — a visual language built from imperfection.
+        </p>
+      </div>
+    </div>
+
+    <div class="proj-divider mb-2 fade-in"></div>
+
+    <!-- Split: billede venstre, tekst højre -->
+    <div class="proj-split rounded-2xl overflow-hidden border border-[#272425] mb-4 fade-in">
+      <div class="proj-split-img">
+        <img src="/Billeder/GRUMS/GRUMSSTART.png" alt="GRUMS detalje 1" />
+      </div>
+      <div class="proj-split-text">
+        <div class="proj-number">01</div>
+        <h3 class="text-2xl font-bold text-[#29cb17]">Fragmenteret visuel fortælling</h3>
+        <p class="text-gray-300 leading-relaxed">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        </p>
+      </div>
+    </div>
+
+    <!-- Split: tekst venstre, billede højre -->
+    <div class="proj-split rounded-2xl overflow-hidden border border-[#272425] mb-4 fade-in">
+      <div class="proj-split-text order-2 md:order-1">
+        <div class="proj-number">02</div>
+        <h3 class="text-2xl font-bold text-[#29cb17]">Identitet i støj</h3>
+        <p class="text-gray-300 leading-relaxed">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        </p>
+      </div>
+      <div class="proj-split-img order-1 md:order-2">
+        <img src="/Billeder/GRUMS/GRUMSSTART.png" alt="GRUMS detalje 2" />
+      </div>
+    </div>
+
+    <!-- Split: billede venstre, tekst højre -->
+    <div class="proj-split rounded-2xl overflow-hidden border border-[#272425] mb-16 fade-in">
+      <div class="proj-split-img">
+        <img src="/Billeder/GRUMS/GRUMSSTART.png" alt="GRUMS detalje 3" />
+      </div>
+      <div class="proj-split-text">
+        <div class="proj-number">03</div>
+        <h3 class="text-2xl font-bold text-[#29cb17]">Det menneskelige i kaos</h3>
+        <p class="text-gray-300 leading-relaxed">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        </p>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="site-footer mt-10">
+      <div class="footer-box">
+        <p>© Lærke Buch Nonved portfolio</p>
+      </div>
+    </footer>
+
+  </div>
+
+  <script is:inline>
+    const fadeEls = document.querySelectorAll('.fade-in');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(el => {
+        if (el.isIntersecting) {
+          el.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+    fadeEls.forEach(el => observer.observe(el));
+  </script>
+
+</Layout>
