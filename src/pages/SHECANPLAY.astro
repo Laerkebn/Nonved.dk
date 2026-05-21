@@ -1,0 +1,65 @@
+---
+import Layout from '../layouts/Layout.astro';
+import '../styles/global.css';
+---
+
+<Layout title="GRUMS | My Portfolio" page="projects">
+
+   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-20">
+
+   <div class="fade-in" style="position: absolute; top: 5rem; left: 2rem; z-index: 20;">
+  <a href="/projects" class="proj-back-btn">← Projects</a>
+</div>
+
+    <!-- HERO -->
+    <div class="proj-hero fade-in">
+      <div class="proj-title">SHE CAN PLAY</div>
+
+      <span class="proj-tag" style="position: absolute; top: 25%; left: 50%; transform: translateX(-50%);">Branding & identity</span>
+
+      <div class="proj-hero-content" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+        <h1
+          class="text-5xl sm:text-7xl font-black"
+          style="text-shadow: 3px 3px 0 #29cb17, -2px -2px 0 #0a4b09, 3px -2px 0 #406f40, -2px 3px 0 #75db77;"
+        >
+          SHE CAN PLAY
+        </h1>
+      </div>
+
+      <div style="position: absolute; bottom: 20%; left: 50%; transform: translateX(-50%);">
+        <img
+          src="/Billeder/PILNED.svg"
+          alt="Scroll ned"
+          class="w-10 transition-transform duration-700 hover:scale-110 cursor-pointer"
+          onclick="const el = document.getElementById('projekt'); window.scrollTo({ top: el.offsetTop - 80, behavior: 'smooth' })"
+        />
+      </div>
+    </div>
+
+    <div id="projekt">
+
+   <div class="proj-gallery-full rounded-2xl overflow-hidden border border-[#272425] mb-2 fade-in">
+  <video autoplay muted loop playsinline style="width: 100%; height: 100%; object-fit: cover; transform: scale(1.2);">
+    <source src="/Billeder/SHECANPLAY/SHECANPLAY.mp4" type="video/mp4" />
+  </video>
+</div>
+
+      <div class="py-16 px-4 sm:px-0 fade-in">
+        <div class="proj-text-block mx-auto text-center">
+          <p class="text-xl text-gray-200 leading-relaxed">
+            Through layered textures, distorted forms, and muted color palettes, <strong class="text-[#29cb17]">SHE CAN PLAY</strong> reflects how silence can exist even in overwhelming noise — a visual language built from imperfection.
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+    <footer class="site-footer mt-10">
+      <div class="footer-box">
+        <p>© Lærke Buch Nonved portfolio</p>
+      </div>
+    </footer>
+
+  </div>
+
+</Layout>

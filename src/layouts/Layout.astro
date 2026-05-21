@@ -172,6 +172,19 @@ const isStaticPage = page === 'about' || page === 'projects';
 
         audioPlaying = !audioPlaying;
       };
+
+     // Fade-in for alle sider
+function initFadeIn() {
+  const fadeEls = document.querySelectorAll('.fade-in');
+ const observer = new IntersectionObserver((entries) => {
+  entries.forEach(el => {
+    if (el.isIntersecting) el.target.classList.add('visible');
+  });
+}, { threshold: 0 });
+  fadeEls.forEach(el => observer.observe(el));
+}
+document.addEventListener('astro:page-load', initFadeIn);
+setTimeout(initFadeIn, 50);
     </script>
 
   </body>

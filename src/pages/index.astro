@@ -4,99 +4,69 @@ import '../styles/global.css';
 ---
 
 <Layout title="Home | My Portfolio">
-<!-- HERO -->
-<div class="min-h-screen flex flex-col justify-between text-center lg:text-left px-5 sm:px-10 lg:px-20 pt-5">
-  <h1
-    class="text-4xl sm:text-5xl lg:text-8xl xl:text-8xl font-black"
-    style="text-shadow: 3px 3px 0 #29cb17, -2px -2px 0 #0a4b09, 3px -2px 0 #406f40, -2px 3px 0 #75db77;"
-  >
-    Exploring ideas through design, motion and digital experiments.
-  </h1>
 
-  <!-- PIL -->
-  <div class="flex justify-center mb-60">
-    <img
-      src="/Billeder/PILNED.svg"
-      alt="Scroll ned"
-      class="w-10 h-full transition-transform duration-700 hover:scale-110 cursor-pointer"
-      onclick="const el = document.getElementById('about'); window.scrollTo({ top: el.offsetTop - 80, behavior: 'smooth' })"
-    />
-  </div>
-</div>
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-20">
 
-<!-- ABOUT ME + PROJECTS GRID -->
-<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-20">
+    <!-- HERO -->
+    <div class="proj-hero fade-in">
+      <span class="proj-tag" style="position: absolute; top: 25%; left: 50%; transform: translateX(-50%);">Lærke's portefolio</span>
 
-  <!-- Fælles header -->
-  <div id="about" class="text-center mb-6 lg:mb-20">
-    <h1
-      class="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-black mb-6"
-      style="text-shadow: 3px 3px 0 #29cb17, -2px -2px 0 #0a4b09, 3px -2px 0 #406f40, -2px 3px 0 #75db77;"
-    >
-      About Me & Projects
-    </h1>
-  </div>
+      <div class="proj-hero-content" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+        <h1
+          class="text-3xl sm:text-5xl font-black"
+          style="text-shadow: 3px 3px 0 #29cb17, -2px -2px 0 #0a4b09, 3px -2px 0 #406f40, -2px 3px 0 #75db77;"
+        >
+          Exploring ideas through design, motion and digital experiments.
+        </h1>
+      </div>
 
-  <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-
-    <!-- ABOUT ME -->
-    <div class="rounded-2xl overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.9)] border border-[#272425] transition-all duration-500">
-      <div class="grid grid-cols-1 gap-0">
-        <div class="relative overflow-hidden h-[300px]">
-          <img
-            src="/Billeder/pb.JPG"
-            alt="Picture of me"
-            class="w-full h-full object-contain bg-black/80"
-          />
-        </div>
-        <div class="p-8 lg:p-10 flex flex-col justify-center bg-black">
-          <h2 class="text-4xl lg:text-5xl font-bold text-[#29cb17] mb-6">About me</h2>
-          <div class="space-y-4 text-lg text-gray-200 leading-relaxed mb-8">
-            <p>Hello, my name is Lærke. I'm a Danish woman studying Visual Communication with a specialization in Coded Design. I work in the intersection of design and code, with a particular interest in creating digital experiences that feel playful, aesthetic, and human. I'd love for you to get to know me a little better. click below to enter my about page.</p>
-          </div>
-          <a
-            href="/about"
-            class="inline-block bg-[#29cb17] hover:bg-lime-700 text-white font-bold py-4 px-8 rounded-xl transition-all duration-300 transform hover:scale-105 w-fit"
-          >
-            Read More
-          </a>
-        </div>
+    <div style="position: absolute; bottom: 20%; left: 50%; transform: translateX(-50%);">
+        <img
+          src="/Billeder/PILNED.svg"
+          alt="Scroll ned"
+          class="w-10 transition-transform duration-700 hover:scale-110 cursor-pointer"
+          onclick="const el = document.getElementById('about'); window.scrollTo({ top: el.offsetTop - 80, behavior: 'smooth' })"
+        />
       </div>
     </div>
 
-    <!-- MY PROJECTS -->
-    <div class="rounded-2xl overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.9)] border border-[#272425] transition-all duration-500">
-      <div class="grid grid-cols-1 gap-0">
+    <!-- ABOUT ME + PROJECTS GRID -->
+    <div id="about" class="grid grid-cols-1 sm:grid-cols-2 gap-8">
+
+      <div class="rounded-2xl overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.9)] border border-[#272425] transition-all duration-500 fade-in">
         <div class="relative overflow-hidden h-[300px]">
-          <img
-            src="/Billeder/PH.png"
-            alt="My Projects"
-            class="w-full h-full object-contain bg-black/80"
-          />
+          <img src="/Billeder/pb.JPG" alt="Picture of me" class="w-full h-full object-contain bg-black/60" />
         </div>
-        <div class="p-8 lg:p-10 flex flex-col justify-center bg-black">
+        <div class="p-8 lg:p-10 flex flex-col justify-center bg-black/80">
+          <h2 class="text-4xl lg:text-5xl font-bold text-[#29cb17] mb-6">About me</h2>
+          <div class="space-y-4 text-lg text-gray-200 leading-relaxed mb-8">
+            <p>Hello, my name is Lærke. I'm a Danish woman studying Visual Communication with a specialization in Coded Design. I work in the intersection of design and code, with a particular interest in creating digital experiences that feel playful, aesthetic, and human. I'd love for you to get to know me a little better.</p>
+          </div>
+          <a href="/about" class="inline-block bg-[#29cb17] hover:bg-lime-700 text-white font-bold py-4 px-8 rounded-xl transition-all duration-300 transform hover:scale-105 w-fit">Read More</a>
+        </div>
+      </div>
+
+      <div class="rounded-2xl overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.9)] border border-[#272425] transition-all duration-500 fade-in">
+        <div class="relative overflow-hidden h-[300px]">
+          <img src="/Billeder/PH.png" alt="My Projects" class="w-full h-full object-contain bg-black/60" />
+        </div>
+        <div class="p-8 lg:p-10 flex flex-col justify-center bg-black/80">
           <h2 class="text-4xl lg:text-5xl font-bold text-[#29cb17] mb-6">My Projects</h2>
           <div class="space-y-4 text-lg text-gray-200 leading-relaxed mb-8">
             <p>I love creating — from interactive code experiments to visual storytelling. My work lives in the space between design, code, and human experience, driven by playfulness, aesthetics, and atmosphere. Every project starts with curiosity and a desire to create something that feels human. Click below to explore my work.</p>
           </div>
-          <a
-            href="/projects"
-            class="inline-block bg-[#29cb17] hover:bg-lime-700 text-white font-bold py-4 px-8 rounded-xl transition-all duration-300 transform hover:scale-105 w-fit"
-          >
-            Read More
-          </a>
+          <a href="/projects" class="inline-block bg-[#29cb17] hover:bg-lime-700 text-white font-bold py-4 px-8 rounded-xl transition-all duration-300 transform hover:scale-105 w-fit">Read More</a>
         </div>
       </div>
+
     </div>
+
+    <footer class="site-footer mt-10">
+      <div class="footer-box">
+        <p>© Lærke Buch Nonved portfolio</p>
+      </div>
+    </footer>
 
   </div>
 
-  <!-- Footer -->
-  <footer class="site-footer mt-10">
-    <div class="footer-box">
-      <p>© Lærke Buch Nonved portfolio</p>
-    </div>
-  </footer>
-
-</div>
 </Layout>

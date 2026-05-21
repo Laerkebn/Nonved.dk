@@ -5,68 +5,55 @@ import '../styles/global.css';
 
 <Layout title="About | My Portfolio" page="about">
 
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-20">
-    <div class="text-center mb-16 lg:mb-24">
-      <h1
-        class="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-black mb-6"
-        style="text-shadow: 3px 3px 0 #29cb17, -2px -2px 0 #0a4b09, 3px -2px 0 #406f40, -2px 3px 0 #75db77;"
-      >
-        About Me
-      </h1>
-      <p class="text-xl lg:text-2xl text-[#29cb17] max-w-4xl mx-auto leading-relaxed">
-        Get to know me a little better and find out what I am passionate about
-      </p>
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-20">
+
+    <!-- HERO -->
+    <div class="proj-hero fade-in">
+      <div class="proj-title">ABOUT ME</div>
+
+      <span class="proj-tag" style="position: absolute; top: 25%; left: 50%; transform: translateX(-50%);">Who am I?</span>
+
+      <div class="proj-hero-content" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+        <h1
+          class="text-3xl sm:text-5xl font-black"
+          style="text-shadow: 3px 3px 0 #29cb17, -2px -2px 0 #0a4b09, 3px -2px 0 #406f40, -2px 3px 0 #75db77;"
+        >
+          About Me
+        </h1>
+      </div>
+
+      <div style="position: absolute; bottom: 20%; left: 50%; transform: translateX(-50%);">
+        <img
+          src="/Billeder/PILNED.svg"
+          alt="Scroll ned"
+          class="w-10 transition-transform duration-700 hover:scale-110 cursor-pointer"
+          onclick="const el = document.getElementById('about-content'); window.scrollTo({ top: el.offsetTop - 80, behavior: 'smooth' })"
+        />
+      </div>
     </div>
 
-    <div class="mb-16 lg:mb-24">
-      <div class="rounded-2xl overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.9)] border border-[#272425]">
+    <div id="about-content" class="mb-16 lg:mb-24">
+      <div class="rounded-2xl overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.9)] border border-[#272425] fade-in">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-0">
 
-          <!-- Billedgalleri - ingen baggrund, video skinner igennem -->
           <div class="order-1 relative overflow-hidden h-[400px] lg:h-auto">
             <div id="aboutSlider" class="flex h-full transition-transform duration-500 ease-in-out">
               <img src="/Billeder/pb.JPG" alt="Billede 1" class="w-full h-full object-contain flex-shrink-0 bg-black/60" />
               <img src="/Billeder/pb2.JPG" alt="Billede 2" class="w-full h-full object-contain flex-shrink-0 bg-black/60" />
               <img src="/Billeder/pb3.jpg" alt="Billede 3" class="w-full h-full object-contain flex-shrink-0 bg-black/60" />
             </div>
-
-            <!-- Pile -->
-            <button
-              id="aboutPrev"
-              class="absolute left-4 top-1/2 -translate-y-1/2 bg-[#272425]/70 hover:bg-[#29cb17] text-white px-4 py-3 rounded-full transition-all duration-300 hover:scale-110 text-xl font-bold z-10"
-            >
-              ◀
-            </button>
-            <button
-              id="aboutNext"
-              class="absolute right-4 top-1/2 -translate-y-1/2 bg-[#272425]/70 hover:bg-[#29cb17] text-white px-4 py-3 rounded-full transition-all duration-300 hover:scale-110 text-xl font-bold z-10"
-            >
-              ▶
-            </button>
-
-            <!-- Prikker -->
+            <button id="aboutPrev" class="absolute left-4 top-1/2 -translate-y-1/2 bg-[#272425]/70 hover:bg-[#29cb17] text-white px-4 py-3 rounded-full transition-all duration-300 hover:scale-110 text-xl font-bold z-10">◀</button>
+            <button id="aboutNext" class="absolute right-4 top-1/2 -translate-y-1/2 bg-[#272425]/70 hover:bg-[#29cb17] text-white px-4 py-3 rounded-full transition-all duration-300 hover:scale-110 text-xl font-bold z-10">▶</button>
             <div id="aboutDots" class="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-10"></div>
           </div>
 
-          <!-- Tekst - kun denne side har mørk baggrund -->
           <div class="order-2 p-8 lg:p-12 xl:p-16 flex flex-col justify-center bg-black/80 lg:rounded-r-2xl">
-            <h2 class="text-4xl lg:text-5xl font-bold text-[#29cb17] mb-6">
-              Who am I?
-            </h2>
-
+            <h2 class="text-4xl lg:text-5xl font-bold text-[#29cb17] mb-6">Who am I?</h2>
             <div class="space-y-4 text-lg text-gray-200 leading-relaxed mb-8">
-              <p>
-                My name is Lærke Buch Nonved, and I'm a Danish student currently studying Visual Communication with a specialization in Coded Design at the Danish School of Media and Journalism. I work in the intersection of design, code, and visual storytelling, with a particular interest in creating digital experiences that feel playful, aesthetic, and human.
-              </p>
-              <p>
-                My work is driven by a curious and experimental approach, where I combine creativity with technical skills through tools and technologies such as JavaScript, P5.js, Three.js, Unity, and Astro. I enjoy developing visual concepts and creating projects that invite interaction, atmosphere, and reflection.
-              </p>
-              <p>
-                Alongside my studies, I work in a nursery, where I have developed strong skills in collaboration, responsibility, and communication through several years of working closely with children, parents, and colleagues. I also have experience with festival work, coordination, and voluntary project management — including being part of organizing the Mediepuls professional festival at DMJX.
-              </p>
-              <p>
-                Whether I work with digital media, illustration, code, or physical experiences, I am always interested in creating work that feels thoughtful, engaging, and alive.
-              </p>
+              <p>My name is Lærke Buch Nonved, and I'm a Danish student currently studying Visual Communication with a specialization in Coded Design at the Danish School of Media and Journalism. I work in the intersection of design, code, and visual storytelling, with a particular interest in creating digital experiences that feel playful, aesthetic, and human.</p>
+              <p>My work is driven by a curious and experimental approach, where I combine creativity with technical skills through tools and technologies such as JavaScript, P5.js, Three.js, Unity, and Astro. I enjoy developing visual concepts and creating projects that invite interaction, atmosphere, and reflection.</p>
+              <p>Alongside my studies, I work in a nursery, where I have developed strong skills in collaboration, responsibility, and communication through several years of working closely with children, parents, and colleagues. I also have experience with festival work, coordination, and voluntary project management — including being part of organizing the Mediepuls professional festival at DMJX.</p>
+              <p>Whether I work with digital media, illustration, code, or physical experiences, I am always interested in creating work that feels thoughtful, engaging, and alive.</p>
             </div>
           </div>
 
@@ -74,7 +61,6 @@ import '../styles/global.css';
       </div>
     </div>
 
-    <!-- Footer -->
     <footer class="site-footer mt-10">
       <div class="footer-box">
         <p>© Lærke Buch Nonved portfolio</p>
@@ -84,39 +70,45 @@ import '../styles/global.css';
   </div>
 
   <script is:inline>
-    const slider = document.getElementById('aboutSlider');
-    const prev = document.getElementById('aboutPrev');
-    const next = document.getElementById('aboutNext');
-    const dotsContainer = document.getElementById('aboutDots');
+    function initAbout() {
+      const slider = document.getElementById('aboutSlider');
+      const prev = document.getElementById('aboutPrev');
+      const next = document.getElementById('aboutNext');
+      const dotsContainer = document.getElementById('aboutDots');
+      if (!slider) return;
 
-    const slides = slider.children.length;
-    let current = 0;
+      dotsContainer.innerHTML = '';
+      const slides = slider.children.length;
+      let current = 0;
 
-    for (let i = 0; i < slides; i++) {
-      const dot = document.createElement('button');
-      dot.className = i === 0
-        ? 'w-3 h-3 rounded-full bg-[#29cb17] scale-125 transition-all duration-300'
-        : 'w-3 h-3 rounded-full bg-gray-500 hover:bg-[#29cb17] transition-all duration-300';
-      dot.onclick = () => goTo(i);
-      dotsContainer.appendChild(dot);
-    }
-
-    function updateDots() {
-      Array.from(dotsContainer.children).forEach((dot, i) => {
-        dot.className = i === current
+      for (let i = 0; i < slides; i++) {
+        const dot = document.createElement('button');
+        dot.className = i === 0
           ? 'w-3 h-3 rounded-full bg-[#29cb17] scale-125 transition-all duration-300'
           : 'w-3 h-3 rounded-full bg-gray-500 hover:bg-[#29cb17] transition-all duration-300';
-      });
+        dot.onclick = () => goTo(i);
+        dotsContainer.appendChild(dot);
+      }
+
+      function updateDots() {
+        Array.from(dotsContainer.children).forEach((dot, i) => {
+          dot.className = i === current
+            ? 'w-3 h-3 rounded-full bg-[#29cb17] scale-125 transition-all duration-300'
+            : 'w-3 h-3 rounded-full bg-gray-500 hover:bg-[#29cb17] transition-all duration-300';
+        });
+      }
+
+      function goTo(n) {
+        current = n;
+        slider.style.transform = `translateX(-${current * 100}%)`;
+        updateDots();
+      }
+
+      prev.addEventListener('click', () => goTo((current - 1 + slides) % slides));
+      next.addEventListener('click', () => goTo((current + 1) % slides));
     }
 
-    function goTo(n) {
-      current = n;
-      slider.style.transform = `translateX(-${current * 100}%)`;
-      updateDots();
-    }
-
-    prev.addEventListener('click', () => goTo((current - 1 + slides) % slides));
-    next.addEventListener('click', () => goTo((current + 1) % slides));
+    document.addEventListener('astro:page-load', initAbout);
   </script>
 
 </Layout>
