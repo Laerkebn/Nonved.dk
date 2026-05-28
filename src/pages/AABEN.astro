@@ -5,7 +5,7 @@ import '../styles/global.css';
 
 <Layout title="GRUMS | My Portfolio" page="projects">
 
-   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-20">
+   <div class="page-wrapper">
 
    <div class="fade-in" style="position: absolute; top: 5rem; left: 2rem; z-index: 20;">
   <a href="/projects" class="proj-back-btn">← Projects</a>
@@ -16,16 +16,6 @@ import '../styles/global.css';
       <div class="proj-title">ÅBEN</div>
 
         <span class="proj-tag whitespace-nowrap" style="position: absolute; top: 20%; left: 50%; transform: translateX(-50%);">Branding & identity</span>
-
-      <div class="proj-hero-content" style="position: absolute; top: 36%; left: 50%; transform: translate(-50%, -50%);">
-        <h1
-          class="text-4xl sm:text-7xl font-black"
-          style="text-shadow: 3px 3px 0 #29cb17, -2px -2px 0 #0a4b09, 3px -2px 0 #406f40, -2px 3px 0 #75db77;"
-        >
-           ÅBEN
-        </h1>
-      </div>
-
       <div style="position: absolute; bottom: 20%; left: 50%; transform: translateX(-50%);">
         <img
           src="/Billeder/PILNED.svg"
@@ -47,11 +37,53 @@ import '../styles/global.css';
       <div class="py-16 px-4 sm:px-0 fade-in">
         <div class="proj-text-block mx-auto text-center">
           <p class="text-xl text-gray-200 leading-relaxed">
-            Through layered textures, distorted forms, and muted color palettes, <strong class="text-[#29cb17]">SHE CAN PLAY</strong> reflects how silence can exist even in overwhelming noise — a visual language built from imperfection.
-          </p>
+         Hvor meget tekst ville du gerne have her? </p>
         </div>
       </div>
+<p class="text-xl text-gray-200 leading-relaxed">
+  Hvor meget tekst ville du gerne have her?
+</p>
 
+<!-- BILLEDKARUSEL -->
+<div class="relative mt-8 overflow-hidden rounded-xl">
+  <div id="karusel" class="flex transition-transform duration-500 ease-in-out">
+    <img src="/Billeder/BILLEDE1.jpg" class="w-full flex-shrink-0 object-cover h-[400px] rounded-xl" />
+    <img src="/Billeder/BILLEDE2.jpg" class="w-full flex-shrink-0 object-cover h-[400px] rounded-xl" />
+    <img src="/Billeder/BILLEDE3.jpg" class="w-full flex-shrink-0 object-cover h-[400px] rounded-xl" />
+  </div>
+
+  <!-- PIL VENSTRE -->
+  <button onclick="flyt(-1)" class="absolute left-3 top-1/2 -translate-y-1/2 bg-black/60 hover:bg-black text-[#29cb17] text-2xl px-3 py-1 rounded-full">‹</button>
+  <!-- PIL HØJRE -->
+  <button onclick="flyt(1)" class="absolute right-3 top-1/2 -translate-y-1/2 bg-black/60 hover:bg-black text-[#29cb17] text-2xl px-3 py-1 rounded-full">›</button>
+
+  <!-- PRIKKER -->
+  <div id="prikker" class="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2"></div>
+</div>
+
+<script>
+  let aktuel = 0;
+  const billeder = document.querySelectorAll('#karusel img');
+  const prikContainer = document.getElementById('prikker');
+
+  // Lav prikker
+  billeder.forEach((_, i) => {
+    const prik = document.createElement('div');
+    prik.className = `w-2 h-2 rounded-full cursor-pointer transition-all duration-300 ${i === 0 ? 'bg-[#29cb17]' : 'bg-white/40'}`;
+    prik.onclick = () => gåTil(i);
+    prikContainer.appendChild(prik);
+  });
+
+  function gåTil(index) {
+    aktuel = (index + billeder.length) % billeder.length;
+    document.getElementById('karusel').style.transform = `translateX(-${aktuel * 100}%)`;
+    document.querySelectorAll('#prikker div').forEach((p, i) => {
+      p.className = `w-2 h-2 rounded-full cursor-pointer transition-all duration-300 ${i === aktuel ? 'bg-[#29cb17]' : 'bg-white/40'}`;
+    });
+  }
+
+  function flyt(retning) { gåTil(aktuel + retning); }
+</script>
     </div>
 
     <footer class="site-footer mt-10">

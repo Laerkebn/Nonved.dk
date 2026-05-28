@@ -5,39 +5,21 @@ import '../styles/global.css';
 
 <Layout title="About | My Portfolio" page="about">
 
-  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-20">
+  <div class="page-wrapper">
 
-    <!-- HERO -->
-    <div class="proj-hero fade-in">
+   <!-- HERO -->
+    <div class="proj-hero fade-in" style="min-height: 60vh;">
       <div class="proj-title">ABOUT ME</div>
-  <span class="proj-tag whitespace-nowrap" style="position: absolute; top: 15%; left: 50%; transform: translateX(-50%);">Who am I?</span>
-
-      <div class="proj-hero-content" style="position: absolute; top: 36%; left: 50%; transform: translate(-50%, -50%);">
-        <h1
-          class="text-3xl sm:text-5xl font-black"
-          style="text-shadow: 3px 3px 0 #29cb17, -2px -2px 0 #0a4b09, 3px -2px 0 #406f40, -2px 3px 0 #75db77;"
-        >
-          About Me
-        </h1>
-      </div>
-
-      <div style="position: absolute; bottom: 20%; left: 50%; transform: translateX(-50%);">
-        <img
-          src="/Billeder/PILNED.svg"
-          alt="Scroll ned"
-          class="w-10 transition-transform duration-700 hover:scale-110 cursor-pointer"
-          onclick="const el = document.getElementById('about-content'); window.scrollTo({ top: el.offsetTop - 80, behavior: 'smooth' })"
-        />
-      </div>
     </div>
-
-    <div id="about-content" class="mb-16 lg:mb-24">
+   
+     <!-- om mig -->
+    <div id="about-content" class="mb-16 lg:mb-24 -mt-52">
       <div class="rounded-2xl overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.9)] border border-[#272425] fade-in">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-0">
 
-          <div class="order-1 relative overflow-hidden h-100 lg:h-auto">
+          <div class="order-1 relative overflow-hidden h-64 lg:h-auto">
             <div id="aboutSlider" class="flex h-full transition-transform duration-500 ease-in-out">
-              <img src="/Billeder/pb.JPG" alt="Billede 1" class="w-full h-full object-contain hrink-0 bg-black/60" />
+              <img src="/Billeder/pb.JPG" alt="Billede 1" class="w-full h-full object-contain shrink-0 bg-black/60" />
               <img src="/Billeder/pb2.JPG" alt="Billede 2" class="w-full h-full object-contain shrink-0 bg-black/60" />
               <img src="/Billeder/pb3.jpg" alt="Billede 3" class="w-full h-full object-contain shrink-0 bg-black/60" />
             </div>
@@ -46,9 +28,9 @@ import '../styles/global.css';
             <div id="aboutDots" class="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-10"></div>
           </div>
 
-          <div class="order-2 p-8 lg:p-12 xl:p-16 flex flex-col justify-center bg-black/80 lg:rounded-r-2xl">
-            <h2 class="text-4xl lg:text-5xl font-bold text-[#29cb17] mb-6">Who am I?</h2>
-            <div class="space-y-4 text-lg text-gray-200 leading-relaxed mb-8">
+          <div class="order-2 p-6 lg:p-8 flex flex-col justify-center bg-black/80 lg:rounded-r-2xl">
+            <h2 class="text-3xl font-bold text-[#29cb17] mb-4">Who am I?</h2>
+            <div class="space-y-3 text-base text-gray-200 leading-relaxed mb-6">
               <p>My name is Lærke Buch Nonved, and I'm a Danish student currently studying Visual Communication with a specialization in Coded Design at the Danish School of Media and Journalism. I work in the intersection of design, code, and visual storytelling, with a particular interest in creating digital experiences that feel playful, aesthetic, and human.</p>
               <p>My work is driven by a curious and experimental approach, where I combine creativity with technical skills through tools and technologies such as JavaScript, P5.js, Three.js, Unity, and Astro. I enjoy developing visual concepts and creating projects that invite interaction, atmosphere, and reflection.</p>
               <p>Alongside my studies, I work in a nursery, where I have developed strong skills in collaboration, responsibility, and communication through several years of working closely with children, parents, and colleagues. I also have experience with festival work, coordination, and voluntary project management — including being part of organizing the Mediepuls professional festival at DMJX.</p>

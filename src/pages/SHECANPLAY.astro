@@ -5,7 +5,7 @@ import '../styles/global.css';
 
 <Layout title="SHE CAN PLAY | My Portfolio" page="projects">
 
-   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-20">
+   <div class="page-wrapper">
 
    <div class="fade-in" style="position: absolute; top: 5rem; left: 2rem; z-index: 20;">
   <a href="/projects" class="proj-back-btn">← Projects</a>
@@ -17,7 +17,6 @@ import '../styles/global.css';
 
       <span class="proj-tag whitespace-nowrap" style="position: absolute; top: 20%; left: 50%; transform: translateX(-50%);">Branding & identity</span>
 
-     
       <div class="proj-hero-content" style="position: absolute; top: 36%; left: 50%; transform: translate(-50%, -50%);">
        <h1
   class="text-3xl sm:text-5xl font-black whitespace-nowrap"
@@ -39,20 +38,56 @@ import '../styles/global.css';
 
     <div id="projekt">
 
-   <div class="proj-gallery-full rounded-2xl overflow-hidden border border-[#272425] mb-2 fade-in">
-  <video autoplay muted loop playsinline style="width: 100%; height: 100%; object-fit: cover; transform: scale(1.2);">
-    <source src="/Billeder/SHECANPLAY/SHECANPLAY.mp4" type="video/mp4" />
-  </video>
-</div>
-
-      <div class="py-16 px-4 sm:px-0 fade-in">
-        <div class="proj-text-block mx-auto text-center">
-          <p class="text-xl text-gray-200 leading-relaxed">
-            Through layered textures, distorted forms, and muted color palettes, <strong class="text-[#29cb17]">SHE CAN PLAY</strong> reflects how silence can exist even in overwhelming noise — a visual language built from imperfection.
-          </p>
-        </div>
+      <div style="margin-top: 5.25rem;" class="px-4 sm:px-0 fade-in">
+        <p class="text-xl text-gray-200 leading-relaxed">
+          Beskrivelse af mit projekt... Hvor meget tekst ville du gerne have her?
+        </p>
       </div>
 
+      <!-- BILLEDKARUSEL -->
+      <div class="relative mt-8 overflow-hidden rounded-xl fade-in">
+        <div id="karusel" class="flex transition-transform duration-500 ease-in-out">
+          <img src="/Billeder/SHECANPLAY/HJUL1.png" class="karusel-billede flex-shrink-0 object-cover h-[400px] rounded-xl cursor-pointer hover:opacity-80 transition-opacity duration-300" style="width: 33.333%;" />
+          <img src="/Billeder/SHECANPLAY/HJUL2.png" class="karusel-billede flex-shrink-0 object-cover h-[400px] rounded-xl cursor-pointer hover:opacity-80 transition-opacity duration-300" style="width: 33.333%;" />
+          <img src="/Billeder/SHECANPLAY/HJUL3.png" class="karusel-billede flex-shrink-0 object-cover h-[400px] rounded-xl cursor-pointer hover:opacity-80 transition-opacity duration-300" style="width: 33.333%;" />
+          <img src="/Billeder/SHECANPLAY/HJUL4.png" class="karusel-billede flex-shrink-0 object-cover h-[400px] rounded-xl cursor-pointer hover:opacity-80 transition-opacity duration-300" style="width: 33.333%;" />
+          <img src="/Billeder/SHECANPLAY/HJUL5.png" class="karusel-billede flex-shrink-0 object-cover h-[400px] rounded-xl cursor-pointer hover:opacity-80 transition-opacity duration-300" style="width: 33.333%;" />
+          <img src="/Billeder/SHECANPLAY/HJUL6.png" class="karusel-billede flex-shrink-0 object-cover h-[400px] rounded-xl cursor-pointer hover:opacity-80 transition-opacity duration-300" style="width: 33.333%;" />
+        </div>
+        <button id="pil-venstre" class="absolute left-3 top-1/2 -translate-y-1/2 bg-black/60 hover:bg-black text-[#29cb17] text-2xl px-3 py-1 rounded-full">‹</button>
+        <button id="pil-højre" class="absolute right-3 top-1/2 -translate-y-1/2 bg-black/60 hover:bg-black text-[#29cb17] text-2xl px-3 py-1 rounded-full">›</button>
+        <div id="prikker" class="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2"></div>
+      </div>
+
+      <div style="margin-top: 5.25rem;" class="px-4 sm:px-0 fade-in">
+        <p class="text-xl text-gray-200 leading-relaxed">
+          Beskrivelse af generator jeg har lavet... Hvor meget tekst ville du gerne have her?
+        </p>
+      </div>
+
+      <!-- VIDEO -->
+      <div class="proj-gallery-full rounded-2xl overflow-hidden border border-[#272425] mb-2 fade-in mt-8">
+        <video autoplay muted loop playsinline style="width: 100%; height: 100%; object-fit: cover; transform: scale(1.2);">
+          <source src="/Billeder/SHECANPLAY/SHECANPLAY.mp4" type="video/mp4" />
+        </video>
+      </div>
+
+      <div style="margin-top: 5.25rem;" class="px-4 sm:px-0 fade-in">
+        <p class="text-xl text-gray-200 leading-relaxed">
+          This is the visual identity we created for SHE CAN PLAY.
+        </p>
+      </div>
+
+      <!-- BILLEDE -->
+      <div class="rounded-2xl overflow-hidden border border-[#272425] mb-2 fade-in mt-8">
+        <img src="/Billeder/SHECANPLAY/Shecanplayguide.png" alt="SHE CAN PLAY" style="width: 100%;" />
+      </div>
+
+    </div>
+
+    <!-- LIGHTBOX -->
+    <div id="lightbox" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.9); z-index:1000; align-items:center; justify-content:center; cursor:zoom-out;">
+      <img id="lightbox-img" src="" style="max-width:90vw; max-height:90vh; object-fit:contain; border-radius:1rem;" />
     </div>
 
     <footer class="site-footer mt-10">
@@ -64,3 +99,52 @@ import '../styles/global.css';
   </div>
 
 </Layout>
+
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', function () {
+    // Karusel
+    const visPerSlide = 3;
+    let aktuel = 0;
+    const billeder = document.querySelectorAll('.karusel-billede');
+    const antalSlides = Math.ceil(billeder.length / visPerSlide);
+    const prikContainer = document.getElementById('prikker');
+    const karusel = document.getElementById('karusel');
+
+    function gåTil(index) {
+      aktuel = (index + antalSlides) % antalSlides;
+      karusel.style.transform = `translateX(-${aktuel * 100}%)`;
+      document.querySelectorAll('#prikker div').forEach((p, i) => {
+        p.style.background = i === aktuel ? '#29cb17' : 'rgba(255,255,255,0.4)';
+      });
+    }
+
+    for (let i = 0; i < antalSlides; i++) {
+      const prik = document.createElement('div');
+      prik.style.cssText = `width:8px; height:8px; border-radius:50%; cursor:pointer; transition:background 0.3s; background:${i === 0 ? '#29cb17' : 'rgba(255,255,255,0.4)'}`;
+      prik.addEventListener('click', () => gåTil(i));
+      prikContainer.appendChild(prik);
+    }
+
+    document.getElementById('pil-venstre').addEventListener('click', () => gåTil(aktuel - 1));
+    document.getElementById('pil-højre').addEventListener('click', () => gåTil(aktuel + 1));
+
+    // Lightbox
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+
+    billeder.forEach(img => {
+      img.addEventListener('click', () => {
+        lightboxImg.src = img.src;
+        lightbox.style.display = 'flex';
+      });
+    });
+
+    lightbox.addEventListener('click', () => {
+      lightbox.style.display = 'none';
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') lightbox.style.display = 'none';
+    });
+  });
+</script>

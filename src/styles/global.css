@@ -31,27 +31,12 @@
 
 .top-bar {
   top: 0;
-  
-}
-
-.footer-box {
-  width: min(900px, calc(100% - 2rem));
-  margin: 0 auto;
-  display: flex;
-  justify-content: center;
-  color: #29cb17;
-  pointer-events: auto;
-}
-
-.bottom-bar {
-  bottom: 0;
-  flex: auto;
 }
 
 .bar-box {
   width: min(900px, calc(100% - 2rem));
   margin: 0 auto;
-  border-radius: 1rem;
+  border-radius: 0;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
   padding: 1rem 1.25rem;
   position: relative;
@@ -60,13 +45,12 @@
 }
 .bottom-inner {
   display: flex;
-  justify-content: space-evenly; 
+  justify-content: space-evenly;
 }
 
 .page-content {
   position: relative;
   z-index: 10;
-
 }
 
 /* ========== PROJECT PAGES ========== */
@@ -78,18 +62,17 @@
   justify-content: space-between;
   flex-direction: column;
   position: relative;
-  
 }
 
 .proj-title {
-font-size: clamp(3rem, 15vw, 18rem);
+  font-size: clamp(2rem, 10vw, 10rem);
   font-weight: 900;
   line-height: 0.85;
   letter-spacing: -0.05em;
   color: transparent;
   -webkit-text-stroke: 2px #29cb17;
   text-stroke: 2px #29cb17;
-  opacity: 0.15;
+  opacity: 0.4;
   position: absolute;
   top: 36%;
   left: 50%;
@@ -136,7 +119,7 @@ font-size: clamp(3rem, 15vw, 18rem);
   width: 100%;
   height: 100%;
   object-fit: contain;
-  background: rgba(0,0,0,0.6);
+  background: rgba(0, 0, 0, 0.6);
   transition: transform 0.8s ease;
 }
 
@@ -171,7 +154,7 @@ font-size: clamp(3rem, 15vw, 18rem);
   height: 100%;
   min-height: 350px;
   object-fit: contain;
-  background: rgba(0,0,0,0.6);
+  background: rgba(0, 0, 0, 0.6);
   transition: transform 0.8s ease;
 }
 
@@ -180,7 +163,7 @@ font-size: clamp(3rem, 15vw, 18rem);
 }
 
 .proj-split-text {
-  background: rgba(0,0,0,0.8);
+  background: rgba(0, 0, 0, 0.8);
   padding: 3rem;
   display: flex;
   flex-direction: column;
@@ -192,7 +175,7 @@ font-size: clamp(3rem, 15vw, 18rem);
   font-size: 5rem;
   font-weight: 900;
   color: transparent;
-  -webkit-text-stroke: 1px rgba(41,203,23,0.3);
+  -webkit-text-stroke: 1px rgba(41, 203, 23, 0.3);
   line-height: 1;
   font-variant-numeric: tabular-nums;
 }
@@ -209,7 +192,6 @@ font-size: clamp(3rem, 15vw, 18rem);
   border-bottom: 1px solid transparent;
   transition: border-color 0.3s ease;
   padding-top: 35px;
- 
 }
 
 .proj-back-btn:hover {
@@ -219,10 +201,26 @@ font-size: clamp(3rem, 15vw, 18rem);
 .fade-in {
   opacity: 0;
   transform: translateY(30px);
-  transition: opacity 0.7s ease, transform 0.7s ease;
+  transition:
+    opacity 0.7s ease,
+    transform 0.7s ease;
 }
 
 .fade-in.visible {
   opacity: 1;
   transform: translateY(0);
+}
+/* ========== PAGE WRAPPER ========== */
+.page-wrapper {
+  padding-left: 10%;
+  padding-right: 10%;
+  padding-top: 2rem;
+  padding-bottom: 5rem;
+}
+
+@media (max-width: 768px) {
+  .page-wrapper {
+    padding-left: 5%;
+    padding-right: 5%;
+  }
 }

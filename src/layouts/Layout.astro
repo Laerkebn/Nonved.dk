@@ -3,7 +3,7 @@ import { ClientRouter } from 'astro:transitions';
 const { title = 'My Portfolio', page = '' } = Astro.props;
 import '../styles/global.css';
 
-const isStaticPage = page === 'about' || page === 'projects';
+const isStaticPage = page === 'about' || page === 'projects' || page === 'contact';
 ---
 
 <!doctype html>
@@ -44,14 +44,14 @@ const isStaticPage = page === 'about' || page === 'projects';
       <source src="/Videoer/BagrundNegativLOW80.mp4" type="video/mp4" />
     </video>
 
-    <!-- Mørk overlay på about/projects (z-index 5 = mellem video (-10) og indhold (10)) -->
+    <!-- Mørk overlay på about/projects/contact -->
     {isStaticPage && (
       <div style="position: fixed; inset: 0; background: rgba(0,0,0,0.70); z-index: 5;"></div>
     )}
 
-    <audio id="bg-audio" loop>
-      <source src="/music/fugle.mp3" type="audio/mp3" />
-    </audio>
+<audio id="bg-audio" loop transition:persist>
+  <source src="/music/fugle.mp3" type="audio/mp3" />
+</audio>
 
     <!-- Top navigation -->
     <header class="top-bar">
@@ -59,19 +59,10 @@ const isStaticPage = page === 'about' || page === 'projects';
         class="text-xs sm:text-sm md:text-base lg:text-xl bar-box bg-[#272425]/80 text-[#29cb17] flex justify-evenly w-full uppercase tracking-widest font-semibold"
         style="text-shadow: 2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 0 0 #000, -2px 0 0 #000, 0 2px 0 #000, 0 -2px 0 #000;"
       >
-        <a href="/" class="hover:text-purple-600 transition duration-300 hover:scale-110">
-  <span class="sm:hidden">Home</span>
-  <span class="hidden sm:inline">Frontpage</span>
-</a>
-        <a href="/about" class="hover:text-purple-600 transition duration-300 hover:scale-110">
-          About
-        </a>
-        <a href="/projects" class="hover:text-purple-600 transition duration-300 hover:scale-110">
-          Projects
-        </a>
-        <a href="/contact" class="hover:text-purple-600 transition duration-300 hover:scale-110">
-          Contact
-        </a>
+        <a href="/" class="hover:text-purple-600 transition duration-300 hover:scale-110">Home</a>
+        <a href="/about" class="hover:text-purple-600 transition duration-300 hover:scale-110">About</a>
+        <a href="/projects" class="hover:text-purple-600 transition duration-300 hover:scale-110">Projects</a>
+        <a href="/contact" class="hover:text-purple-600 transition duration-300 hover:scale-110">Contact</a>
       </nav>
     </header>
 
@@ -79,48 +70,34 @@ const isStaticPage = page === 'about' || page === 'projects';
     <main class="page-content">
       <slot />
     </main>
-    
-    <!-- Bottom bar -->
-    <div class="bottom-bar">
-      <div class="bar-box bottom-inner bg-[#272425]/80 text-xs sm:text-sm md:text-base lg:text-xl">
 
-        <button
-          id="toggle-btn"
-          onclick="toggleBackgroundVideo()"
-          class="text-[#29cb17] p-2 uppercase tracking-widest font-semibold hover:text-purple-600 transition duration-300 hover:scale-110"
-          style="text-shadow: 2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 0 0 #000, -2px 0 0 #000, 0 2px 0 #000, 0 -2px 0 #000;"
-        >
-          Lights off
-        </button>
+    <!-- Bottom buttons -->
+    <div style="position: fixed; bottom: 1.5rem; right: 1.5rem; z-index: 50; display: flex; gap: 1rem; pointer-events: auto;">
+      <button
+        id="toggle-btn"
+        onclick="toggleBackgroundVideo()"
+        class="transition-all duration-300 hover:scale-110 opacity-80 hover:opacity-100"
+      >
+        <img id="lights-img" src="/Billeder/SLUK.png" alt="Lights" class="w-12 h-12 object-contain" />
+      </button>
 
-        <button
-          id="toggle-soundbtn"
-          onclick="toggleSound()"
-          class="text-[#29cb17] p-2 uppercase tracking-widest font-semibold hover:text-purple-600 transition duration-300 hover:scale-110"
-          style="text-shadow: 2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 0 0 #000, -2px 0 0 #000, 0 2px 0 #000, 0 -2px 0 #000;"
-        >
-          Sound off
-        </button>
-
-        <button
-          id="toggle-languagebtn"
-          class="text-[#29cb17] p-2 uppercase tracking-widest font-semibold hover:text-purple-600 transition duration-300 hover:scale-110"
-          style="text-shadow: 2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 0 0 #000, -2px 0 0 #000, 0 2px 0 #000, 0 -2px 0 #000;"
-        >
-          English
-        </button>
-
-      </div>
+      <button
+        id="toggle-soundbtn"
+        onclick="toggleSound()"
+        class="transition-all duration-300 hover:scale-110 opacity-80 hover:opacity-100"
+      >
+        <img id="sound-img" src="/Billeder/LYDOFF.png" alt="Sound" class="w-12 h-12 object-contain" />
+      </button>
     </div>
 
     <script is:inline>
       const video1 = document.getElementById('bg-video-1');
       const video2 = document.getElementById('bg-video-2');
-
+      const audio = document.getElementById('bg-audio');
       let showingFirst = true;
+      let audioPlaying = false;
 
       window.toggleBackgroundVideo = async () => {
-        const button = document.getElementById('toggle-btn');
         if (!video1 || !video2) return;
 
         const currentVideo = showingFirst ? video1 : video2;
@@ -136,56 +113,52 @@ const isStaticPage = page === 'about' || page === 'projects';
 
         currentVideo.classList.remove('active');
         currentVideo.classList.add('hidden');
-
         nextVideo.classList.remove('hidden');
         nextVideo.classList.add('active');
 
-        if (button) {
-          button.textContent = showingFirst ? 'Lights on' : 'Lights off';
+        const lightsImg = document.getElementById('lights-img');
+        if (lightsImg) {
+          lightsImg.src = showingFirst ? '/Billeder/TÆND.png' : '/Billeder/SLUK.png';
         }
 
         showingFirst = !showingFirst;
       };
 
-      // Lydkontrol
-      const audio = document.getElementById('bg-audio');
-      let audioPlaying = false;
-
-      document.addEventListener('click', () => {
-        if (!audioPlaying) {
-          audio.play();
-          audioPlaying = true;
-          document.getElementById('toggle-soundbtn').textContent = 'Sound off';
-        }
-      }, { once: true });
+// Start lyd ved første klik ANYWHERE på siden
+document.addEventListener('click', (e) => {
+  if (!audioPlaying && e.target.closest('#toggle-soundbtn') === null) {
+    audio.play();
+    audioPlaying = true;
+    const soundImg = document.getElementById('sound-img');
+    if (soundImg) soundImg.src = '/Billeder/LYDOFF.png';
+  }
+}, { once: true });
 
       window.toggleSound = () => {
-        const button = document.getElementById('toggle-soundbtn');
         if (!audio) return;
-
+        const soundImg = document.getElementById('sound-img');
         if (audioPlaying) {
           audio.pause();
-          button.textContent = 'Sound on';
+          if (soundImg) soundImg.src = '/Billeder/LYDON.png';
         } else {
           audio.play();
-          button.textContent = 'Sound off';
+          if (soundImg) soundImg.src = '/Billeder/LYDOFF.png';
         }
-
         audioPlaying = !audioPlaying;
       };
 
-     // Fade-in for alle sider
-function initFadeIn() {
-  const fadeEls = document.querySelectorAll('.fade-in');
- const observer = new IntersectionObserver((entries) => {
-  entries.forEach(el => {
-    if (el.isIntersecting) el.target.classList.add('visible');
-  });
-}, { threshold: 0 });
-  fadeEls.forEach(el => observer.observe(el));
-}
-document.addEventListener('astro:page-load', initFadeIn);
-setTimeout(initFadeIn, 50);
+      // Fade-in for alle sider
+      function initFadeIn() {
+        const fadeEls = document.querySelectorAll('.fade-in');
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(el => {
+            if (el.isIntersecting) el.target.classList.add('visible');
+          });
+        }, { threshold: 0 });
+        fadeEls.forEach(el => observer.observe(el));
+      }
+      document.addEventListener('astro:page-load', initFadeIn);
+      setTimeout(initFadeIn, 50);
     </script>
 
   </body>
