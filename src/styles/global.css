@@ -1,5 +1,18 @@
 @import "tailwindcss";
 
+
+@font-face {
+  font-family: 'Oxanium';
+  src: url('/font/Oxanium-VariableFont_wght.ttf') format('truetype');
+  font-weight: 100 900;
+}
+
+* {
+  font-family: 'Oxanium', sans-serif;
+}
+
+
+
 .bg-video {
   position: fixed;
   inset: 0;
@@ -56,7 +69,7 @@
 /* ========== PROJECT PAGES ========== */
 
 .proj-hero {
-  min-height: 100vh;
+  min-height: 30vh;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -93,12 +106,18 @@
   display: inline-block;
   border: 1px solid #29cb17;
   color: #29cb17;
-  font-size: 0.75rem;
+  font-size: clamp(0.3rem, 1.5vw, 0.55rem);
   letter-spacing: 0.2em;
   text-transform: uppercase;
   padding: 0.4rem 1rem;
   border-radius: 999px;
-  margin-bottom: 5vh; /* større tal = mere luft til titlen */
+  margin-bottom: 0.2vh !important;
+}
+
+@media (max-width: 640px) {
+  .proj-tag {
+    font-size: clamp(0.3rem, 2vw, 0.4rem);
+  }
 }
 
 .proj-divider {
