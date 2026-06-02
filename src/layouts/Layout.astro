@@ -4,6 +4,7 @@ const { title = 'My Portfolio', page = '' } = Astro.props;
 import '../styles/global.css';
 
 const isStaticPage = page === 'about' || page === 'projects' || page === 'contact';
+const isProjectPage = page === 'grums' || page === 'aaben' || page === 'fez' || page === 'metro' || page === 'shecanplay' || page === 'viden';
 ---
 
 <!doctype html>
@@ -18,35 +19,42 @@ const isStaticPage = page === 'about' || page === 'projects' || page === 'contac
 
   <body>
     <!-- Background videos -->
-    <video
-      id="bg-video-1"
-      autoplay
-      muted
-      loop
-      playsinline
-      preload="auto"
-      class="bg-video active"
-      transition:persist
-    >
-      <source src="/Videoer/BagrundPositivLOW80.mp4" type="video/mp4" />
-    </video>
+    {!isProjectPage && (
+      <>
+        <video
+          id="bg-video-1"
+          autoplay
+          muted
+          loop
+          playsinline
+          preload="auto"
+          class="bg-video active"
+          transition:persist
+        >
+          <source src="/Videoer/BagrundPositivLOW80.mp4" type="video/mp4" />
+        </video>
 
-    <video
-      id="bg-video-2"
-      autoplay
-      muted
-      loop
-      playsinline
-      preload="auto"
-      class="bg-video hidden"
-      transition:persist
-    >
-      <source src="/Videoer/BagrundNegativLOW80.mp4" type="video/mp4" />
-    </video>
+        <video
+          id="bg-video-2"
+          autoplay
+          muted
+          loop
+          playsinline
+          preload="auto"
+          class="bg-video hidden"
+          transition:persist
+        >
+          <source src="/Videoer/BagrundNegativLOW80.mp4" type="video/mp4" />
+        </video>
+      </>
+    )}
 
     <!-- Mørk overlay på about/projects/contact -->
     {isStaticPage && (
       <div style="position: fixed; inset: 0; background: rgba(0,0,0,0.70); z-index: 5;"></div>
+    )}
+     {isProjectPage && (
+      <div style="position: fixed; inset: 0; background: #000; z-index: 5;"></div>
     )}
 
 <audio id="bg-audio" loop transition:persist>
