@@ -38,7 +38,7 @@ import '../styles/global.css';
 
     <!-- VIDEO -->
     <div class="proj-gallery-full overflow-hidden border border-[#272425] mb-8 fade-in">
-      <video autoplay muted loop playsinline style="width: 100%; height: 100%; object-fit: cover; transform: scale(1.2);">
+     <video id="intro-video" autoplay muted loop playsinline style="width: 100%; height: 100%; object-fit: cover; transform: scale(1.2);">
         <source src="/Billeder/SHECANPLAY/SHECANPLAY.mp4" type="video/mp4" />
       </video>
     </div>
@@ -46,7 +46,7 @@ import '../styles/global.css';
     <!-- ===== PROJEKT INDHOLD ===== -->
     <div id="projekt">
 
-      <!-- SEKTION 1: Intro — Branding & samarbejde -->
+      <!-- SEKTION 1: Intro -->
       <div class="fade-in mb-16">
         <p class="text-base sm:text-xl text-gray-200 leading-relaxed">
           As part of a branding and identity project, we collaborated with <span style="color:#29cb17;">She Can Play</span> to develop a new visual identity for their brand — using asemic writing as a conceptual framework, brought to life through a sound-driven generator.
@@ -60,13 +60,14 @@ import '../styles/global.css';
         <div class="lg:w-1/2 flex flex-col gap-4">
           <h2 style="color:#29cb17; font-size:1.1rem; font-weight:700; letter-spacing:0.05em; text-transform:uppercase;">Sound-driven generator</h2>
           <p class="text-base sm:text-lg text-gray-200 leading-relaxed">
-         
-
-The generator listens to audio in real time and converts each tone into asemic writing — creating a dynamic visual output driven by sound.</p>
+            The generator listens to audio in real time and converts each tone into asemic writing — creating a dynamic visual output driven by sound.
+          </p>
           <p class="text-base sm:text-lg text-gray-200 leading-relaxed">
-            Color and style are adjustable from rough to soft, and the asemic script can be swapped for other SVG shapes.</p>
+            Color and style are adjustable from rough to soft, and the asemic script can be swapped for other SVG shapes.
+          </p>
           <p class="text-base sm:text-lg text-gray-200 leading-relaxed">
-            The system works live as a concert backdrop or can process a sound file to generate a still image, such as an album cover.</p>
+            The system works live as a concert backdrop or can process a sound file to generate a still image, such as an album cover.
+          </p>
         </div>
 
         <!-- Karusel -->
@@ -78,9 +79,8 @@ The generator listens to audio in real time and converts each tone into asemic w
               <img src="/Billeder/SHECANPLAY/HJUL3.png" class="karusel-billede flex-shrink-0 object-cover cursor-pointer hover:opacity-80 transition-opacity duration-300" style="height: 340px;" />
               <img src="/Billeder/SHECANPLAY/HJUL4.png" class="karusel-billede flex-shrink-0 object-cover cursor-pointer hover:opacity-80 transition-opacity duration-300" style="height: 340px;" />
               <img src="/Billeder/SHECANPLAY/HJUL5.png" class="karusel-billede flex-shrink-0 object-cover cursor-pointer hover:opacity-80 transition-opacity duration-300" style="height: 340px;" />
-            
             </div>
-            <button id="aboutPrev" class="absolute left-4 top-1/2 -translate-y-1/2 text-white px-4 py-3  transition-all duration-300 hover:scale-140 text-xl font-bold z-10">◀</button>
+            <button id="aboutPrev" class="absolute left-4 top-1/2 -translate-y-1/2 text-white px-4 py-3 transition-all duration-300 hover:scale-140 text-xl font-bold z-10">◀</button>
             <button id="aboutNext" class="absolute right-4 top-1/2 -translate-y-1/2 text-white px-4 py-3 transition-all duration-300 hover:scale-140 text-xl font-bold z-10">▶</button>
             <div id="prikker" class="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2"></div>
           </div>
@@ -92,7 +92,7 @@ The generator listens to audio in real time and converts each tone into asemic w
       <div class="fade-in mb-16 flex flex-col lg:flex-row gap-8 items-start">
 
         <!-- Video -->
-        <div class="lg:w-200  overflow-hidden border border-[#272425]">
+        <div class="lg:w-200 overflow-hidden border border-[#272425]">
           <video autoplay muted loop playsinline style="width: 100%; height: 100%; object-fit: cover;">
             <source src="/Billeder/SHECANPLAY/SHECANPLAYwebsite.mp4" type="video/mp4" />
           </video>
@@ -104,12 +104,11 @@ The generator listens to audio in real time and converts each tone into asemic w
           <p class="text-base sm:text-lg text-gray-200 leading-relaxed">
             Alongside the generator, we developed a full website for She Can Play — covering structure, navigation principles, and how the visual system works across pages.
           </p>
-   
         </div>
 
       </div>
 
-      <!-- SEKTION 4: Visual identity guide — fuld bredde -->
+      <!-- SEKTION 4: Visual identity guide -->
       <div class="fade-in mb-4">
         <h2 style="color:#29cb17; font-size:1.1rem; font-weight:700; letter-spacing:0.05em; text-transform:uppercase; margin-bottom: 1rem;">Visual identity</h2>
         <p class="text-base sm:text-lg text-gray-200 leading-relaxed mb-6">
@@ -145,8 +144,29 @@ The generator listens to audio in real time and converts each tone into asemic w
 </Layout>
 
 <script is:inline>
+  function initIntroVideo() {
+    const video = document.getElementById('intro-video');
+    if (!video) return;
+
+    const START = 0;
+    const END = 115;
+
+    video.addEventListener('loadedmetadata', () => {
+      video.currentTime = START;
+      video.play();
+    });
+
+    video.addEventListener('timeupdate', () => {
+      if (video.currentTime >= END) {
+        video.currentTime = START;
+      }
+    });
+  }
+
   function initSheCanPlay() {
-    const visPerSlide = window.innerWidth < 640 ? 1 : 1; // 1 ad gangen i sidebar-layout
+    initIntroVideo();
+
+    const visPerSlide = 1;
     let aktuel = 0;
     const billeder = document.querySelectorAll('.karusel-billede');
     const antalSlides = billeder.length;
