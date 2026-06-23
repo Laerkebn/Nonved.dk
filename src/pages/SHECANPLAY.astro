@@ -18,9 +18,8 @@ import '../styles/global.css';
       font-weight: 900;
       line-height: 0.85;
       letter-spacing: -0.05em;
-      color: transparent;
-      -webkit-text-stroke: 2px #29cb17;
-      opacity: 0.6;
+      color: transparent !important;
+      -webkit-text-stroke: 2px #ffffff;
       pointer-events: none;
       word-break: break-word;
       text-align: center;
@@ -28,7 +27,7 @@ import '../styles/global.css';
     ">SHE CAN PLAY</div>
 
     <!-- Tags -->
-    <div class="fade-in" style="display: flex; gap: 0.5rem; flex-wrap: wrap; justify-content: center; padding: 1rem 0 2rem; opacity: 0.6;">
+    <div class="fade-in" style="display: flex; gap: 0.5rem; flex-wrap: wrap; justify-content: center; padding: 1rem 0 2rem;">
       <span class="proj-tag whitespace-nowrap">Branding & identity</span>
       <span class="proj-tag whitespace-nowrap">Asset Generator</span>
       <span class="proj-tag whitespace-nowrap">Astro</span>
@@ -59,7 +58,7 @@ import '../styles/global.css';
         <!-- Tekst -->
         <div class="lg:w-1/2 flex flex-col gap-4">
          <h2 style="
-  color: #29cb17;
+  color: #ffffff;
   font-size: 1.1rem;
   font-weight: 600;
   letter-spacing: 0.2em;
@@ -108,7 +107,7 @@ import '../styles/global.css';
         <!-- Tekst -->
         <div class="lg:w-1/2 flex flex-col gap-4">
           <h2 style="
-  color: #29cb17;
+  color: #ffffff;
   font-size: 1.1rem;
   font-weight: 600;
   letter-spacing: 0.2em;
@@ -125,7 +124,7 @@ import '../styles/global.css';
       <!-- SEKTION 4: Visual identity guide -->
       <div class="fade-in mb-4">
         <h2 style="
-  color: #29cb17;
+  color: #ffffff;
   font-size: 1.1rem;
   font-weight: 600;
   letter-spacing: 0.2em;
@@ -142,10 +141,10 @@ import '../styles/global.css';
       </div>
 
       <!-- Credits -->
-      <div class="fade-in mb-16" style="border-left: 2px solid #29cb17; padding-left: 1.5rem;">
+      <div class="fade-in mb-16" style="border-left: 2px solid #ffffff; padding-left: 1.5rem;">
         <p class="text-sm text-gray-400 leading-relaxed">
           A collaboration between CD2 and ID2.<br />
-          Group: <span style="color:#29cb17;">@maxe_mand</span> · <span style="color:#29cb17;">@en_ferdi_and</span> · <span style="color:#29cb17;">@mie_venoe</span> · <span style="color:#29cb17;">@jacob.knudsen.33</span>
+          Group: <span style="color:#ffffff;">@maxe_mand</span> · <span style="color:#ffffff;">@en_ferdi_and</span> · <span style="color:#ffffff;">@mie_venoe</span> · <span style="color:#ffffff;">@jacob.knudsen.33</span>
         </p>
       </div>
 
@@ -157,7 +156,7 @@ import '../styles/global.css';
     </div>
 
     <footer style="margin-top: 4rem; text-align: center;">
-      <p style="color: #29cb17;">© Lærke Buch Nonved portfolio</p>
+      <p style="color: #ffffff;">© Lærke Buch Nonved portfolio</p>
     </footer>
 
   </div>
@@ -206,13 +205,13 @@ import '../styles/global.css';
       aktuel = (index + antalSlides) % antalSlides;
       karusel.style.transform = `translateX(-${aktuel * 100}%)`;
       document.querySelectorAll('#prikker div').forEach((p, i) => {
-        p.style.background = i === aktuel ? '#29cb17' : 'rgba(255,255,255,0.4)';
+        p.style.background = i === aktuel ? '#ffffff' : 'rgba(255,255,255,0.4)';
       });
     }
 
     for (let i = 0; i < antalSlides; i++) {
       const prik = document.createElement('div');
-      prik.style.cssText = `width:8px; height:8px; border-radius:50%; cursor:pointer; transition:background 0.3s; background:${i === 0 ? '#29cb17' : 'rgba(255,255,255,0.4)'}`;
+      prik.style.cssText = `width:8px; height:8px; border-radius:50%; cursor:pointer; transition:background 0.3s; background:${i === 0 ? '#ffffff' : 'rgba(255,255,255,0.4)'}`;
       prik.addEventListener('click', () => gåTil(i));
       prikContainer.appendChild(prik);
     }

@@ -3,7 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import '../styles/global.css';
 ---
 
-<Layout title="METRO | My Portfolio" page="metro">
+<Layout title="SHE CAN PLAY | My Portfolio" page="shecanplay">
 
   <div class="page-wrapper">
 
@@ -18,59 +18,133 @@ import '../styles/global.css';
       font-weight: 900;
       line-height: 0.85;
       letter-spacing: -0.05em;
-      color: transparent;
-      -webkit-text-stroke: 2px #29cb17;
-      opacity: 0.6;
+      color: transparent !important;
+      -webkit-text-stroke: 2px #ffffff;
       pointer-events: none;
       word-break: break-word;
       text-align: center;
       margin-top: 2rem;
-    ">MetroWars</div>
+    ">SHE CAN PLAY</div>
 
     <!-- Tags -->
-    <div class="fade-in" style="display: flex; gap: 0.5rem; flex-wrap: wrap; justify-content: center; padding: 1rem 0 2rem; opacity: 0.6;">
-      <span class="proj-tag whitespace-nowrap">Game Design</span>
-      <span class="proj-tag whitespace-nowrap">Unity</span>
-      <span class="proj-tag whitespace-nowrap">C#</span>
-      <span class="proj-tag whitespace-nowrap">Entertainment</span>
+    <div class="fade-in" style="display: flex; gap: 0.5rem; flex-wrap: wrap; justify-content: center; padding: 1rem 0 2rem;">
+      <span class="proj-tag whitespace-nowrap">Branding & identity</span>
+      <span class="proj-tag whitespace-nowrap">Asset Generator</span>
+      <span class="proj-tag whitespace-nowrap">Astro</span>
+      <span class="proj-tag whitespace-nowrap">CSS</span>
+      <span class="proj-tag whitespace-nowrap">JavaScript</span>
     </div>
 
     <!-- VIDEO -->
-    <div class="proj-gallery-full rounded-2xl overflow-hidden border border-[#272425] mb-8 fade-in">
-      <video autoplay muted loop playsinline style="width: 100%; height: 100%; object-fit: cover; background: #322E56;">
-        <source src="/Billeder/METRO/METRO.mp4" type="video/mp4" />
+    <div class="proj-gallery-full overflow-hidden border border-[#272425] mb-8 fade-in">
+     <video id="intro-video" autoplay muted loop playsinline style="width: 100%; height: 100%; object-fit: cover; transform: scale(1.2);">
+        <source src="/Billeder/SHECANPLAY/SHECANPLAY.mp4" type="video/mp4" />
       </video>
     </div>
 
+    <!-- ===== PROJEKT INDHOLD ===== -->
     <div id="projekt">
 
-      <div class="fade-in mb-12">
+      <!-- SEKTION 1: Intro -->
+      <div class="fade-in mb-16">
         <p class="text-base sm:text-xl text-gray-200 leading-relaxed">
-          Hvor meget tekst ville du gerne have her?
+          As part of a branding and identity project, we collaborated with She Can Play to develop a new visual identity for their brand — using asemic writing as a conceptual framework, brought to life through a sound-driven generator.
         </p>
       </div>
 
-      <div class="fade-in mb-8">
-        <p class="text-base sm:text-xl text-gray-200 leading-relaxed">
-          Beskrivelse af mit projekt...
-        </p>
-      </div>
+      <!-- SEKTION 2: Generatoren — tekst + karusel side om side -->
+      <div class="fade-in mb-16 flex flex-col lg:flex-row gap-8 items-start">
 
-      <!-- BILLEDKARUSEL -->
-      <div class="relative overflow-hidden rounded-xl fade-in mb-8">
-        <div id="karusel" class="flex transition-transform duration-500 ease-in-out">
-          <img src="/Billeder/METRO/HJUL1.png" class="karusel-billede flex-shrink-0 object-cover rounded-xl cursor-pointer hover:opacity-80 transition-opacity duration-300" style="height: 400px;" />
-          <img src="/Billeder/METRO/HJUL2.png" class="karusel-billede flex-shrink-0 object-cover rounded-xl cursor-pointer hover:opacity-80 transition-opacity duration-300" style="height: 400px;" />
-          <img src="/Billeder/METRO/HJUL3.png" class="karusel-billede flex-shrink-0 object-cover rounded-xl cursor-pointer hover:opacity-80 transition-opacity duration-300" style="height: 400px;" />
+        <!-- Tekst -->
+        <div class="lg:w-1/2 flex flex-col gap-4">
+         <h2 style="
+  color: #ffffff;
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  text-shadow: 2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 0 0 #000, -2px 0 0 #000, 0 2px 0 #000, 0 -2px 0 #000;
+">Sound-driven generator</h2>
+          <p class="text-base sm:text-lg text-gray-200 leading-relaxed">
+            The generator listens to audio in real time and converts each tone into asemic writing — creating a dynamic visual output driven by sound.
+          </p>
+          <p class="text-base sm:text-lg text-gray-200 leading-relaxed">
+            Color and style are adjustable from rough to soft, and the asemic script can be swapped for other SVG shapes.
+          </p>
+          <p class="text-base sm:text-lg text-gray-200 leading-relaxed">
+            The system works live as a concert backdrop or can process a sound file to generate a still image, such as an album cover.
+          </p>
         </div>
-        <button id="pil-venstre" class="absolute left-3 top-1/2 -translate-y-1/2 bg-black/60 hover:bg-black text-[#29cb17] text-2xl px-3 py-1 rounded-full">‹</button>
-        <button id="pil-højre" class="absolute right-3 top-1/2 -translate-y-1/2 bg-black/60 hover:bg-black text-[#29cb17] text-2xl px-3 py-1 rounded-full">›</button>
-        <div id="prikker" class="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2"></div>
+
+        <!-- Karusel -->
+        <div class="lg:w-1/2">
+          <div class="relative overflow-hidden">
+            <div id="karusel" class="flex transition-transform duration-500 ease-in-out">
+              <img src="/Billeder/SHECANPLAY/HJUL1.png" class="karusel-billede flex-shrink-0 object-cover cursor-pointer hover:opacity-80 transition-opacity duration-300" style="height: 340px;" />
+              <img src="/Billeder/SHECANPLAY/HJUL2.png" class="karusel-billede flex-shrink-0 object-cover cursor-pointer hover:opacity-80 transition-opacity duration-300" style="height: 340px;" />
+              <img src="/Billeder/SHECANPLAY/HJUL3.png" class="karusel-billede flex-shrink-0 object-cover cursor-pointer hover:opacity-80 transition-opacity duration-300" style="height: 340px;" />
+              <img src="/Billeder/SHECANPLAY/HJUL4.png" class="karusel-billede flex-shrink-0 object-cover cursor-pointer hover:opacity-80 transition-opacity duration-300" style="height: 340px;" />
+              <img src="/Billeder/SHECANPLAY/HJUL5.png" class="karusel-billede flex-shrink-0 object-cover cursor-pointer hover:opacity-80 transition-opacity duration-300" style="height: 340px;" />
+            </div>
+            <button id="aboutPrev" class="absolute left-4 top-1/2 -translate-y-1/2 text-white px-4 py-3 transition-all duration-300 hover:scale-140 text-xl font-bold z-10">◀</button>
+            <button id="aboutNext" class="absolute right-4 top-1/2 -translate-y-1/2 text-white px-4 py-3 transition-all duration-300 hover:scale-140 text-xl font-bold z-10">▶</button>
+            <div id="prikker" class="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2"></div>
+          </div>
+        </div>
+
       </div>
 
-      <div class="fade-in mb-8">
-        <p class="text-base sm:text-xl text-gray-200 leading-relaxed">
-          Beskrivelse af mit projekt...
+      <!-- SEKTION 3: Hjemmesiden — video + tekst side om side -->
+      <div class="fade-in mb-16 flex flex-col lg:flex-row gap-8 items-start">
+
+        <!-- Video -->
+        <div class="lg:w-200 overflow-hidden border border-[#272425]">
+          <video autoplay muted loop playsinline style="width: 100%; height: 100%; object-fit: cover;">
+            <source src="/Billeder/SHECANPLAY/SHECANPLAYwebsite.mp4" type="video/mp4" />
+          </video>
+        </div>
+
+        <!-- Tekst -->
+        <div class="lg:w-1/2 flex flex-col gap-4">
+          <h2 style="
+  color: #ffffff;
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  text-shadow: 2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 0 0 #000, -2px 0 0 #000, 0 2px 0 #000, 0 -2px 0 #000;
+">The website</h2>
+          <p class="text-base sm:text-lg text-gray-200 leading-relaxed">
+            Alongside the generator, we developed a full website for She Can Play — covering structure, navigation principles, and how the visual system works across pages.
+          </p>
+        </div>
+
+      </div>
+
+      <!-- SEKTION 4: Visual identity guide -->
+      <div class="fade-in mb-4">
+        <h2 style="
+  color: #ffffff;
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  text-shadow: 2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 0 0 #000, -2px 0 0 #000, 0 2px 0 #000, 0 -2px 0 #000;
+">Visual identity</h2>
+        <p class="text-base sm:text-lg text-gray-200 leading-relaxed mb-6">
+          The visual identity guide below documents the complete design system developed for She Can Play — typography, color, and the visual language rooted in asemic writing.
+        </p>
+      </div>
+
+      <div class="overflow-hidden border border-[#272425] mb-16 fade-in">
+        <img src="/Billeder/SHECANPLAY/Shecanplayguide.png" alt="SHE CAN PLAY visual identity guide" style="width: 100%;" />
+      </div>
+
+      <!-- Credits -->
+      <div class="fade-in mb-16" style="border-left: 2px solid #ffffff; padding-left: 1.5rem;">
+        <p class="text-sm text-gray-400 leading-relaxed">
+          A collaboration between CD2 and ID2.<br />
+          Group: <span style="color:#ffffff;">@maxe_mand</span> · <span style="color:#ffffff;">@en_ferdi_and</span> · <span style="color:#ffffff;">@mie_venoe</span> · <span style="color:#ffffff;">@jacob.knudsen.33</span>
         </p>
       </div>
 
@@ -81,27 +155,48 @@ import '../styles/global.css';
       <img id="lightbox-img" src="" style="max-width:90vw; max-height:90vh; object-fit:contain; border-radius:1rem;" />
     </div>
 
-   <footer style="margin-top: 4rem; text-align: center;">
-  <p style="color: #29cb17;">© Lærke Buch Nonved portfolio</p>
-</footer>
+    <footer style="margin-top: 4rem; text-align: center;">
+      <p style="color: #ffffff;">© Lærke Buch Nonved portfolio</p>
+    </footer>
 
   </div>
 
 </Layout>
 
 <script is:inline>
-  function initMetro() {
-    const visPerSlide = window.innerWidth < 640 ? 1 : 3;
+  function initIntroVideo() {
+    const video = document.getElementById('intro-video');
+    if (!video) return;
+
+    const START = 0;
+    const END = 115;
+
+    video.addEventListener('loadedmetadata', () => {
+      video.currentTime = START;
+      video.play();
+    });
+
+    video.addEventListener('timeupdate', () => {
+      if (video.currentTime >= END) {
+        video.currentTime = START;
+      }
+    });
+  }
+
+  function initSheCanPlay() {
+    initIntroVideo();
+
+    const visPerSlide = 1;
     let aktuel = 0;
     const billeder = document.querySelectorAll('.karusel-billede');
-    const antalSlides = Math.ceil(billeder.length / visPerSlide);
+    const antalSlides = billeder.length;
     const prikContainer = document.getElementById('prikker');
     const karusel = document.getElementById('karusel');
 
     if (!karusel) return;
 
     billeder.forEach(img => {
-      img.style.width = `${100 / visPerSlide}%`;
+      img.style.width = '100%';
     });
 
     prikContainer.innerHTML = '';
@@ -110,19 +205,19 @@ import '../styles/global.css';
       aktuel = (index + antalSlides) % antalSlides;
       karusel.style.transform = `translateX(-${aktuel * 100}%)`;
       document.querySelectorAll('#prikker div').forEach((p, i) => {
-        p.style.background = i === aktuel ? '#29cb17' : 'rgba(255,255,255,0.4)';
+        p.style.background = i === aktuel ? '#ffffff' : 'rgba(255,255,255,0.4)';
       });
     }
 
     for (let i = 0; i < antalSlides; i++) {
       const prik = document.createElement('div');
-      prik.style.cssText = `width:8px; height:8px; border-radius:50%; cursor:pointer; transition:background 0.3s; background:${i === 0 ? '#29cb17' : 'rgba(255,255,255,0.4)'}`;
+      prik.style.cssText = `width:8px; height:8px; border-radius:50%; cursor:pointer; transition:background 0.3s; background:${i === 0 ? '#ffffff' : 'rgba(255,255,255,0.4)'}`;
       prik.addEventListener('click', () => gåTil(i));
       prikContainer.appendChild(prik);
     }
 
-    document.getElementById('pil-venstre').addEventListener('click', () => gåTil(aktuel - 1));
-    document.getElementById('pil-højre').addEventListener('click', () => gåTil(aktuel + 1));
+    document.getElementById('aboutPrev').addEventListener('click', () => gåTil(aktuel - 1));
+    document.getElementById('aboutNext').addEventListener('click', () => gåTil(aktuel + 1));
 
     const lightbox = document.getElementById('lightbox');
     const lightboxImg = document.getElementById('lightbox-img');
@@ -143,6 +238,6 @@ import '../styles/global.css';
     });
   }
 
-  document.addEventListener('astro:page-load', initMetro);
-  document.addEventListener('DOMContentLoaded', initMetro);
+  document.addEventListener('astro:page-load', initSheCanPlay);
+  document.addEventListener('DOMContentLoaded', initSheCanPlay);
 </script>

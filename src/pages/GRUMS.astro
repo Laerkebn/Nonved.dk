@@ -18,9 +18,9 @@ import '../styles/global.css';
       font-weight: 900;
       line-height: 0.85;
       letter-spacing: -0.05em;
-      color: transparent;
-      -webkit-text-stroke: 2px #29cb17;
-      opacity: 0.6;
+      color: transparent !important;
+      -webkit-text-stroke: 2px #ffffff;
+     
       pointer-events: none;
       word-break: break-word;
       text-align: center;
@@ -28,7 +28,7 @@ import '../styles/global.css';
     ">GRUMS</div>
 
     <!-- Tags -->
-    <div class="fade-in" style="display: flex; gap: 0.5rem; flex-wrap: wrap; justify-content: center; padding: 1rem 0 2rem; opacity: 0.6;">
+    <div class="fade-in" style="display: flex; gap: 0.5rem; flex-wrap: wrap; justify-content: center; padding: 1rem 0 2rem;">
       <span class="proj-tag whitespace-nowrap">Branding & identity</span>
       <span class="proj-tag whitespace-nowrap">Asset Generator</span>
       <span class="proj-tag whitespace-nowrap">JavaScript</span>
@@ -64,8 +64,8 @@ import '../styles/global.css';
           <img src="/Billeder/GRUMS/HJUL2.png" class="karusel-billede flex-shrink-0 object-cover rounded-xl cursor-pointer hover:opacity-80 transition-opacity duration-300" style="height: 400px;" />
           <img src="/Billeder/GRUMS/HJUL3.png" class="karusel-billede flex-shrink-0 object-cover rounded-xl cursor-pointer hover:opacity-80 transition-opacity duration-300" style="height: 400px;" />
         </div>
-        <button id="pil-venstre" class="absolute left-3 top-1/2 -translate-y-1/2 bg-black/60 hover:bg-black text-[#29cb17] text-2xl px-3 py-1 rounded-full">‹</button>
-        <button id="pil-højre" class="absolute right-3 top-1/2 -translate-y-1/2 bg-black/60 hover:bg-black text-[#29cb17] text-2xl px-3 py-1 rounded-full">›</button>
+        <button id="pil-venstre" class="absolute left-3 top-1/2 -translate-y-1/2 bg-black/60 hover:bg-black text-[#ffffff] text-2xl px-3 py-1 rounded-full">‹</button>
+        <button id="pil-højre" class="absolute right-3 top-1/2 -translate-y-1/2 bg-black/60 hover:bg-black text-[#ffffff] text-2xl px-3 py-1 rounded-full">›</button>
         <div id="prikker" class="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2"></div>
       </div>
 
@@ -83,7 +83,7 @@ import '../styles/global.css';
     </div>
 
 <footer style="margin-top: 4rem; text-align: center;">
-  <p style="color: #29cb17;">© Lærke Buch Nonved portfolio</p>
+  <p style="color: #ffffff;">© Lærke Buch Nonved portfolio</p>
 </footer>
 
   </div>
@@ -111,13 +111,13 @@ import '../styles/global.css';
       aktuel = (index + antalSlides) % antalSlides;
       karusel.style.transform = `translateX(-${aktuel * 100}%)`;
       document.querySelectorAll('#prikker div').forEach((p, i) => {
-        p.style.background = i === aktuel ? '#29cb17' : 'rgba(255,255,255,0.4)';
+        p.style.background = i === aktuel ? '#ffffff' : 'rgba(255,255,255,0.4)';
       });
     }
 
     for (let i = 0; i < antalSlides; i++) {
       const prik = document.createElement('div');
-      prik.style.cssText = `width:8px; height:8px; border-radius:50%; cursor:pointer; transition:background 0.3s; background:${i === 0 ? '#29cb17' : 'rgba(255,255,255,0.4)'}`;
+      prik.style.cssText = `width:8px; height:8px; border-radius:50%; cursor:pointer; transition:background 0.3s; background:${i === 0 ? '#ffffff' : 'rgba(255,255,255,0.4)'}`;
       prik.addEventListener('click', () => gåTil(i));
       prikContainer.appendChild(prik);
     }

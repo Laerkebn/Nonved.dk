@@ -18,37 +18,6 @@ const isProjectPage = page === 'grums' || page === 'aaben' || page === 'fez' || 
   </head>
 
   <body>
-    <!-- Background videos -->
-    {!isProjectPage && (
-      <>
-        <video
-          id="bg-video-1"
-          autoplay
-          muted
-          loop
-          playsinline
-          preload="auto"
-          class="bg-video active"
-          transition:persist
-        >
-          <source src="/Videoer/BagrundPositivLOW80.mp4" type="video/mp4" />
-        </video>
-
-        <video
-          id="bg-video-2"
-          autoplay
-          muted
-          loop
-          playsinline
-          preload="auto"
-          class="bg-video hidden"
-          transition:persist
-        >
-          <source src="/Videoer/BagrundNegativLOW80.mp4" type="video/mp4" />
-        </video>
-      </>
-    )}
-
     <!-- Mørk overlay på about/projects/contact -->
     {isStaticPage && (
       <div style="position: fixed; inset: 0; background: rgba(0,0,0,0.70); z-index: 5;"></div>
@@ -64,7 +33,7 @@ const isProjectPage = page === 'grums' || page === 'aaben' || page === 'fez' || 
     <!-- Top navigation -->
     <header class="top-bar">
       <nav
-        class="text-xs sm:text-sm md:text-base lg:text-xl bar-box bg-[#272425]/80 text-[#29cb17] flex justify-evenly w-full uppercase tracking-widest font-semibold"
+        class="text-xs sm:text-sm md:text-base lg:text-sm bar-box bg-[#272425]/80 text-[#ffffff] flex justify-evenly w-full uppercase tracking-widest font-semibold"
         style="text-shadow: 2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 0 0 #000, -2px 0 0 #000, 0 2px 0 #000, 0 -2px 0 #000;"
       >
         <a href="/" class=" transition duration-300 hover:scale-110">Home</a>
@@ -79,82 +48,7 @@ const isProjectPage = page === 'grums' || page === 'aaben' || page === 'fez' || 
       <slot />
     </main>
 
-    <!-- Bottom buttons -->
-    <div style="position: fixed; bottom: 1.5rem; right: 1.5rem; z-index: 50; display: flex; gap: 1rem; pointer-events: auto;">
-      <button
-        id="toggle-btn"
-        onclick="toggleBackgroundVideo()"
-        class="transition-all duration-300 hover:scale-110 opacity-80 hover:opacity-100"
-      >
-        <img id="lights-img" src="/Billeder/SLUK.png" alt="Lights" class="w-12 h-12 object-contain" />
-      </button>
-
-      <button
-        id="toggle-soundbtn"
-        onclick="toggleSound()"
-        class="transition-all duration-300 hover:scale-110 opacity-80 hover:opacity-100"
-      >
-        <img id="sound-img" src="/Billeder/LYDOFF.png" alt="Sound" class="w-12 h-12 object-contain" />
-      </button>
-    </div>
-
     <script is:inline>
-      const video1 = document.getElementById('bg-video-1');
-      const video2 = document.getElementById('bg-video-2');
-      const audio = document.getElementById('bg-audio');
-      let showingFirst = true;
-      let audioPlaying = false;
-
-      window.toggleBackgroundVideo = async () => {
-        if (!video1 || !video2) return;
-
-        const currentVideo = showingFirst ? video1 : video2;
-        const nextVideo = showingFirst ? video2 : video1;
-
-        nextVideo.currentTime = currentVideo.currentTime;
-
-        try {
-          await nextVideo.play();
-        } catch (error) {
-          console.error('Kunne ikke starte næste video:', error);
-        }
-
-        currentVideo.classList.remove('active');
-        currentVideo.classList.add('hidden');
-        nextVideo.classList.remove('hidden');
-        nextVideo.classList.add('active');
-
-        const lightsImg = document.getElementById('lights-img');
-        if (lightsImg) {
-          lightsImg.src = showingFirst ? '/Billeder/TÆND.png' : '/Billeder/SLUK.png';
-        }
-
-        showingFirst = !showingFirst;
-      };
-
-// Start lyd ved første klik ANYWHERE på siden
-document.addEventListener('click', (e) => {
-  if (!audioPlaying && e.target.closest('#toggle-soundbtn') === null) {
-    audio.play();
-    audioPlaying = true;
-    const soundImg = document.getElementById('sound-img');
-    if (soundImg) soundImg.src = '/Billeder/LYDOFF.png';
-  }
-}, { once: true });
-
-      window.toggleSound = () => {
-        if (!audio) return;
-        const soundImg = document.getElementById('sound-img');
-        if (audioPlaying) {
-          audio.pause();
-          if (soundImg) soundImg.src = '/Billeder/LYDON.png';
-        } else {
-          audio.play();
-          if (soundImg) soundImg.src = '/Billeder/LYDOFF.png';
-        }
-        audioPlaying = !audioPlaying;
-      };
-
       // Fade-in for alle sider
       function initFadeIn() {
         const fadeEls = document.querySelectorAll('.fade-in');

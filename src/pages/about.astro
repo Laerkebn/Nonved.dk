@@ -13,23 +13,16 @@ import '../styles/global.css';
     </div>
    
      <!-- om mig -->
-    <div id="about-content" class="mb-16 lg:mb-24 -mt-52">
-      <div class="rounded-2xl overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.9)] border border-[#272425] fade-in">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-0">
+    <div id="about-content" class="mb-16 lg:mb-24">
+      <div class=" overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.9)] fade-in">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-0 items-start">
 
-          <div class="order-1 relative overflow-hidden h-64 lg:h-auto">
-            <div id="aboutSlider" class="flex h-full transition-transform duration-500 ease-in-out">
-              <img src="/Billeder/pb.png" alt="Billede 1" class="w-full h-full object-contain shrink-0 bg-black/60" />
-              <img src="/Billeder/pb2.jpeg" alt="Billede 2" class="w-full h-full object-contain shrink-0 bg-black/60" />
-              <img src="/Billeder/pb3.jpeg" alt="Billede 3" class="w-full h-full object-contain shrink-0 bg-black/60" />
-            </div>
-          <button id="aboutPrev" class="absolute left-4 top-1/2 -translate-y-1/2 text-white px-4 py-3 rounded-full transition-all duration-300 hover:scale-140 text-xl font-bold z-10">◀</button>
-<button id="aboutNext" class="absolute right-4 top-1/2 -translate-y-1/2 text-white px-4 py-3 rounded-full transition-all duration-300 hover:scale-140 text-xl font-bold z-10">▶</button>
-            <div id="aboutDots" class="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-10"></div>
+<div class="order-1 relative overflow-hidden aspect-[4/3]">
+            <img src="/Billeder/pb.webp" alt="Lærke Buch Nonved" class="w-full h-full object-cover object-[center_25%] lg:object-contain lg:object-center" />
           </div>
 
           <div class="order-2 p-6 lg:p-8 flex flex-col justify-center bg-black/80 lg:rounded-r-2xl">
-            <h2 class="text-3xl font-bold text-[#29cb17] mb-4">Who am I?</h2>
+            <h2 class="text-3xl font-bold text-[#ffffff] mb-4">Who am I?</h2>
             <div class="space-y-3 text-base text-gray-200 leading-relaxed mb-6">
               <p>I'm Lærke Buch Nonved — a Danish student studying Visual Communication with a specialisation in Coded Design at DMJX, working at the intersection of design, code, and visual storytelling.</p>
               <p>I'm happiest when projects feel alive and human — something you can actually sense. Technically, I work with a range of tools, including JavaScript, P5.js, Three.js, Unity, and Astro, but what really drives me is the experimental approach: combining creativity with code and seeing what emerges.</p>
@@ -43,51 +36,9 @@ import '../styles/global.css';
     </div>
 
 <footer style="margin-top: 4rem; text-align: center;">
-  <p style="color: #29cb17;">© Lærke Buch Nonved portfolio</p>
+  <p style="color: #ffffff;">© Lærke Buch Nonved portfolio</p>
 </footer>
 
   </div>
-
-  <script is:inline>
-    function initAbout() {
-      const slider = document.getElementById('aboutSlider');
-      const prev = document.getElementById('aboutPrev');
-      const next = document.getElementById('aboutNext');
-      const dotsContainer = document.getElementById('aboutDots');
-      if (!slider) return;
-
-      dotsContainer.innerHTML = '';
-      const slides = slider.children.length;
-      let current = 0;
-
-      for (let i = 0; i < slides; i++) {
-        const dot = document.createElement('button');
-        dot.className = i === 0
-          ? 'w-3 h-3 rounded-full bg-[#29cb17] scale-125 transition-all duration-300'
-          : 'w-3 h-3 rounded-full bg-gray-500 hover:bg-[#29cb17] transition-all duration-300';
-        dot.onclick = () => goTo(i);
-        dotsContainer.appendChild(dot);
-      }
-
-      function updateDots() {
-        Array.from(dotsContainer.children).forEach((dot, i) => {
-          dot.className = i === current
-            ? 'w-3 h-3 rounded-full bg-[#29cb17] scale-125 transition-all duration-300'
-            : 'w-3 h-3 rounded-full bg-gray-500 hover:bg-[#29cb17] transition-all duration-300';
-        });
-      }
-
-      function goTo(n) {
-        current = n;
-        slider.style.transform = `translateX(-${current * 100}%)`;
-        updateDots();
-      }
-
-      prev.addEventListener('click', () => goTo((current - 1 + slides) % slides));
-      next.addEventListener('click', () => goTo((current + 1) % slides));
-    }
-
-    document.addEventListener('astro:page-load', initAbout);
-  </script>
 
 </Layout>

@@ -5,14 +5,20 @@ import '../styles/global.css';
 
 <Layout title="Home | My Portfolio">
 
+  <!-- Baggrundsvideo (kun forsiden) -->
+  <video class="bg-video" autoplay muted loop playsinline preload="auto">
+    <source src="videoer/bølger.mp4" type="video/mp4" />
+  </video>
+
   <div class="page-wrapper">
 
     <!-- HERO -->
     <div class="proj-hero fade-in">
 <div class="proj-hero-content" style="position: absolute; top: 90%; left: 50%; transform: translate(-50%, -50%);">
         <h1
+          id="typewriter"
           class="text-3xl sm:text-5xl font-black text-left"
-          style="text-shadow: 3px 3px 0 #29cb17, -2px -2px 0 #0a4b09, 3px -2px 0 #406f40, -2px 3px 0 #75db77;"
+          style="text-shadow: none;"
         >
           Exploring ideas through design, motion and digital experiments.
         </h1>
@@ -20,9 +26,52 @@ import '../styles/global.css';
     </div>
 
 <footer style="position: fixed; bottom: 1rem; left: 0; width: 100%; text-align: center; z-index: 20;">
-  <p style="color: #29cb17;">© Lærke Buch Nonved portfolio</p>
+  <p style="color: #ffffff;">© Lærke Buch Nonved portfolio</p>
 </footer>
 
   </div>
+
+  <script is:inline>
+    function initTypewriter() {
+      const el = document.getElementById('typewriter');
+      if (!el) return;
+
+      // Læs teksten (gem den, så den kan genbruges ved navigation tilbage til home)
+      const full = (el.dataset.text || el.textContent || '').trim();
+      if (!full) return;
+      el.dataset.text = full;
+
+      // Nulstil hvis animationen kører i forvejen
+      if (el._twTimer) clearTimeout(el._twTimer);
+      el.textContent = '';
+
+      const textSpan = document.createElement('span');
+      const caret = document.createElement('span');
+      caret.className = 'tw-caret';
+      caret.setAttribute('aria-hidden', 'true');
+      el.append(textSpan, caret);
+
+      let i = 0;
+      const speed = 40; // ms pr. tegn
+
+      function type() {
+        textSpan.textContent = full.slice(0, i);
+        if (i < full.length) {
+          i++;
+          el._twTimer = setTimeout(type, speed);
+        }
+        // caret bliver ved med at blinke, også når teksten er færdig
+      }
+
+      // Lille forsinkelse så hero'en er faded ind, før den skriver
+      el._twTimer = setTimeout(type, 400);
+    }
+
+    if (!window.__twBound) {
+      window.__twBound = true;
+      document.addEventListener('astro:page-load', initTypewriter);
+    }
+    setTimeout(initTypewriter, 50);
+  </script>
 
 </Layout>
