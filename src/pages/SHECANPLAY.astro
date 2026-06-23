@@ -37,7 +37,7 @@ import '../styles/global.css';
 
     <!-- VIDEO -->
     <div class="proj-gallery-full overflow-hidden border border-[#272425] mb-8 fade-in">
-     <video id="intro-video" autoplay muted loop playsinline style="width: 100%; height: 100%; object-fit: cover; transform: scale(1.2);">
+     <video id="intro-video" class="klikbar-video" autoplay muted loop playsinline style="width: 100%; height: 100%; object-fit: cover; transform: scale(1.2); cursor: zoom-in;">
         <source src="/Billeder/SHECANPLAY/SHECANPLAY.mp4" type="video/mp4" />
       </video>
     </div>
@@ -76,22 +76,26 @@ import '../styles/global.css';
           </p>
         </div>
 
-        <!-- Karusel -->
+        <!-- Stilbillede -->
         <div class="lg:w-1/2">
-          <div class="relative overflow-hidden">
-            <div id="karusel" class="flex transition-transform duration-500 ease-in-out">
-              <img src="/Billeder/SHECANPLAY/HJUL1.png" class="karusel-billede flex-shrink-0 object-cover cursor-pointer hover:opacity-80 transition-opacity duration-300" style="height: 340px;" />
-              <img src="/Billeder/SHECANPLAY/HJUL2.png" class="karusel-billede flex-shrink-0 object-cover cursor-pointer hover:opacity-80 transition-opacity duration-300" style="height: 340px;" />
-              <img src="/Billeder/SHECANPLAY/HJUL3.png" class="karusel-billede flex-shrink-0 object-cover cursor-pointer hover:opacity-80 transition-opacity duration-300" style="height: 340px;" />
-              <img src="/Billeder/SHECANPLAY/HJUL4.png" class="karusel-billede flex-shrink-0 object-cover cursor-pointer hover:opacity-80 transition-opacity duration-300" style="height: 340px;" />
-              <img src="/Billeder/SHECANPLAY/HJUL5.png" class="karusel-billede flex-shrink-0 object-cover cursor-pointer hover:opacity-80 transition-opacity duration-300" style="height: 340px;" />
-            </div>
-            <button id="aboutPrev" class="absolute left-4 top-1/2 -translate-y-1/2 text-white px-4 py-3 transition-all duration-300 hover:scale-140 text-xl font-bold z-10">◀</button>
-            <button id="aboutNext" class="absolute right-4 top-1/2 -translate-y-1/2 text-white px-4 py-3 transition-all duration-300 hover:scale-140 text-xl font-bold z-10">▶</button>
-            <div id="prikker" class="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2"></div>
-          </div>
+          <img id="still-billede" src="/Billeder/SHECANPLAY/HJUL2.png" class="cursor-pointer hover:opacity-80 transition-opacity duration-300" style="width: 100%; height: 340px; object-fit: cover;" />
         </div>
 
+      </div>
+
+  <!-- SEKTION: Karusel -->
+      <div class="fade-in mb-16">
+        <div class="relative overflow-hidden">
+          <div id="karusel" class="flex transition-transform duration-500 ease-in-out">
+   <img src="/Billeder/SHECANPLAY/HJUL1.png" class="karusel-billede flex-shrink-0 object-contain cursor-pointer hover:opacity-80 transition-opacity duration-300" style="height: 440px; background: #EEE7DB; transform: scale(1.2);" />
+            <img src="/Billeder/SHECANPLAY/HJUL3.png" class="karusel-billede flex-shrink-0 object-contain cursor-pointer hover:opacity-80 transition-opacity duration-300" style="height: 440px; background: #E7E7D9;" />
+            <img src="/Billeder/SHECANPLAY/HJUL4.png" class="karusel-billede flex-shrink-0 object-contain cursor-pointer hover:opacity-80 transition-opacity duration-300" style="height: 440px; background: #E5E5D6;" />
+            <img src="/Billeder/SHECANPLAY/HJUL5.png" class="karusel-billede flex-shrink-0 object-contain cursor-pointer hover:opacity-80 transition-opacity duration-300" style="height: 440px; background: #E5E5D6;" />
+          </div>
+          <button id="aboutPrev" class="absolute left-4 top-1/2 -translate-y-1/2 text-black px-4 py-3 transition-all duration-300 hover:scale-140 text-xl font-bold z-10">◀</button>
+          <button id="aboutNext" class="absolute right-4 top-1/2 -translate-y-1/2 text-black px-4 py-3 transition-all duration-300 hover:scale-140 text-xl font-bold z-10">▶</button>
+          <div id="prikker" class="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2"></div>
+        </div>
       </div>
 
       <!-- SEKTION 3: Hjemmesiden — video + tekst side om side -->
@@ -99,7 +103,7 @@ import '../styles/global.css';
 
         <!-- Video -->
         <div class="lg:w-200 overflow-hidden border border-[#272425]">
-          <video autoplay muted loop playsinline style="width: 100%; height: 100%; object-fit: cover;">
+          <video class="klikbar-video" autoplay muted loop playsinline style="width: 100%; height: 100%; object-fit: cover; cursor: zoom-in;">
             <source src="/Billeder/SHECANPLAY/SHECANPLAYwebsite.mp4" type="video/mp4" />
           </video>
         </div>
@@ -152,7 +156,10 @@ import '../styles/global.css';
 
     <!-- LIGHTBOX -->
     <div id="lightbox" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.9); z-index:1000; align-items:center; justify-content:center; cursor:zoom-out;">
-      <img id="lightbox-img" src="" style="max-width:90vw; max-height:90vh; object-fit:contain; border-radius:1rem;" />
+      <button id="lightboxPrev" style="display:none; position:absolute; left:1.5rem; top:50%; transform:translateY(-50%); color:#000; font-size:2rem; font-weight:bold; background:none; border:none; cursor:pointer; z-index:1010; padding:1rem;">◀</button>
+      <img id="lightbox-img" src="" style="max-width:90vw; max-height:90vh; object-fit:contain;" />
+      <video id="lightbox-video" muted loop playsinline style="display:none; max-width:90vw; max-height:90vh; object-fit:contain;"></video>
+      <button id="lightboxNext" style="display:none; position:absolute; right:1.5rem; top:50%; transform:translateY(-50%); color:#000; font-size:2rem; font-weight:bold; background:none; border:none; cursor:pointer; z-index:1010; padding:1rem;">▶</button>
     </div>
 
     <footer style="margin-top: 4rem; text-align: center;">
@@ -221,20 +228,90 @@ import '../styles/global.css';
 
     const lightbox = document.getElementById('lightbox');
     const lightboxImg = document.getElementById('lightbox-img');
+    const lightboxVideo = document.getElementById('lightbox-video');
+    const lightboxPrev = document.getElementById('lightboxPrev');
+    const lightboxNext = document.getElementById('lightboxNext');
 
-    billeder.forEach(img => {
-      img.addEventListener('click', () => {
-        lightboxImg.src = img.src;
+    let lightboxIndex = 0;
+    let lightboxNavAktiv = false;
+
+    function lukLightbox() {
+      lightbox.style.display = 'none';
+      lightboxVideo.pause();
+      lightboxVideo.style.display = 'none';
+      lightboxImg.style.display = 'none';
+      lightboxPrev.style.display = 'none';
+      lightboxNext.style.display = 'none';
+      lightboxNavAktiv = false;
+    }
+
+    function visBilledeILightbox(index) {
+      lightboxIndex = (index + billeder.length) % billeder.length;
+      lightboxNavAktiv = true;
+      lightboxVideo.pause();
+      lightboxVideo.style.display = 'none';
+      lightboxImg.src = billeder[lightboxIndex].src;
+      lightboxImg.style.display = 'block';
+      lightboxPrev.style.display = 'block';
+      lightboxNext.style.display = 'block';
+      lightbox.style.display = 'flex';
+    }
+
+    // Karusel-billeder → lightbox (med navigation)
+    billeder.forEach((img, i) => {
+      img.addEventListener('click', () => visBilledeILightbox(i));
+    });
+
+    // Stilbillede → lightbox (uden navigation)
+    const stillBillede = document.getElementById('still-billede');
+    if (stillBillede) {
+      stillBillede.addEventListener('click', () => {
+        lightboxNavAktiv = false;
+        lightboxVideo.pause();
+        lightboxVideo.style.display = 'none';
+        lightboxPrev.style.display = 'none';
+        lightboxNext.style.display = 'none';
+        lightboxImg.src = stillBillede.src;
+        lightboxImg.style.display = 'block';
         lightbox.style.display = 'flex';
+      });
+    }
+
+    lightboxPrev.addEventListener('click', (e) => {
+      e.stopPropagation();
+      visBilledeILightbox(lightboxIndex - 1);
+    });
+
+    lightboxNext.addEventListener('click', (e) => {
+      e.stopPropagation();
+      visBilledeILightbox(lightboxIndex + 1);
+    });
+
+    // Videoer → lightbox
+    document.querySelectorAll('.klikbar-video').forEach(video => {
+      video.addEventListener('click', () => {
+        const kilde = video.currentSrc || video.querySelector('source')?.src;
+        if (!kilde) return;
+        lightboxNavAktiv = false;
+        lightboxImg.style.display = 'none';
+        lightboxPrev.style.display = 'none';
+        lightboxNext.style.display = 'none';
+        lightboxVideo.src = kilde;
+        lightboxVideo.style.display = 'block';
+        lightbox.style.display = 'flex';
+        lightboxVideo.play();
       });
     });
 
-    lightbox.addEventListener('click', () => {
-      lightbox.style.display = 'none';
-    });
+    lightbox.addEventListener('click', lukLightbox);
 
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') lightbox.style.display = 'none';
+      if (lightbox.style.display !== 'flex') return;
+      if (e.key === 'Escape') lukLightbox();
+      if (lightboxNavAktiv) {
+        if (e.key === 'ArrowLeft') visBilledeILightbox(lightboxIndex - 1);
+        if (e.key === 'ArrowRight') visBilledeILightbox(lightboxIndex + 1);
+      }
     });
   }
 
