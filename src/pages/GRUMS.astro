@@ -20,7 +20,6 @@ import '../styles/global.css';
       letter-spacing: -0.05em;
       color: transparent !important;
       -webkit-text-stroke: 2px #ffffff;
-     
       pointer-events: none;
       word-break: break-word;
       text-align: center;
@@ -49,64 +48,75 @@ import '../styles/global.css';
       <!-- SEKTION 1: Intro -->
       <div class="fade-in mb-16">
         <p class="text-base sm:text-xl text-gray-200 leading-relaxed">
-          As part of a branding and identity project, we collaborated with She Can Play to develop a new visual identity for their brand — using asemic writing as a conceptual framework, brought to life through a sound-driven generator.
+          Grums is a fictional coffee and tea brand developed as part of a branding and identity project. The project includes a custom asset generator that translates product attributes into unique packaging designs.
         </p>
       </div>
 
-      <!-- SEKTION 2: Generatoren — tekst + karusel side om side -->
+      <!-- SEKTION 2: Generatoren — tekst + stilbillede side om side -->
       <div class="fade-in mb-16 flex flex-col lg:flex-row gap-8 items-start">
 
         <!-- Tekst -->
         <div class="lg:w-1/2 flex flex-col gap-4">
-         <h2 style="
+          <h2 style="
   color: #ffffff;
   font-size: 1.1rem;
   font-weight: 600;
   letter-spacing: 0.2em;
   text-transform: uppercase;
   text-shadow: 2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 0 0 #000, -2px 0 0 #000, 0 2px 0 #000, 0 -2px 0 #000;
-">Sound-driven generator</h2>
+">Flavour-driven generator</h2>
           <p class="text-base sm:text-lg text-gray-200 leading-relaxed">
-            The generator listens to audio in real time and converts each tone into asemic writing — creating a dynamic visual output driven by sound.
+            The generator uses three product attributes — sweetness, fruitiness and steeping time — as input parameters for a generative pattern system.
           </p>
           <p class="text-base sm:text-lg text-gray-200 leading-relaxed">
-            Color and style are adjustable from rough to soft, and the asemic script can be swapped for other SVG shapes.
+            Different combinations of values produce different visual outcomes, creating packaging designs that reflect the characteristics of each tea.
           </p>
           <p class="text-base sm:text-lg text-gray-200 leading-relaxed">
-            The system works live as a concert backdrop or can process a sound file to generate a still image, such as an album cover.
+            The visual identity is integrated into the product through the generator, making the design system an active part of the packaging process.
           </p>
         </div>
 
         <!-- Stilbillede -->
         <div class="lg:w-1/2">
-          <img id="still-billede" src="/Billeder/SHECANPLAY/HJUL2.png" class="cursor-pointer hover:opacity-80 transition-opacity duration-300" style="width: 100%; height: 340px; object-fit: cover;" />
+          <img id="still-billede" src="/Billeder/GRUMS/GRUMSSTART.png" class="cursor-pointer hover:opacity-80 transition-opacity duration-300" style="width: 100%; height: 340px; object-fit: cover;" />
         </div>
 
       </div>
 
-  <!-- SEKTION: Karusel -->
+      <!-- SEKTION: Karusel -->
       <div class="fade-in mb-16">
         <div class="relative overflow-hidden">
           <div id="karusel" class="flex transition-transform duration-500 ease-in-out">
-   <img src="/Billeder/SHECANPLAY/HJUL1.png" class="karusel-billede flex-shrink-0 object-contain cursor-pointer hover:opacity-80 transition-opacity duration-300" style="height: 440px; background: #EEE7DB; transform: scale(1.2);" />
-            <img src="/Billeder/SHECANPLAY/HJUL3.png" class="karusel-billede flex-shrink-0 object-contain cursor-pointer hover:opacity-80 transition-opacity duration-300" style="height: 440px; background: #E7E7D9;" />
-            <img src="/Billeder/SHECANPLAY/HJUL4.png" class="karusel-billede flex-shrink-0 object-contain cursor-pointer hover:opacity-80 transition-opacity duration-300" style="height: 440px; background: #E5E5D6;" />
-            <img src="/Billeder/SHECANPLAY/HJUL5.png" class="karusel-billede flex-shrink-0 object-contain cursor-pointer hover:opacity-80 transition-opacity duration-300" style="height: 440px; background: #E5E5D6;" />
+            <img src="/Billeder/GRUMS/1.png" class="karusel-billede flex-shrink-0 object-contain cursor-pointer hover:opacity-80 transition-opacity duration-300" style="height: 440px; background: #ffffff;" />
+            <img src="/Billeder/GRUMS/2.jpeg" class="karusel-billede flex-shrink-0 object-contain cursor-pointer hover:opacity-80 transition-opacity duration-300" style="height: 440px; background: #F5EABD;" />
+            <img src="/Billeder/GRUMS/3.png" class="karusel-billede flex-shrink-0 object-contain cursor-pointer hover:opacity-80 transition-opacity duration-300" style="height: 440px; background: #F5E9BC;" />
+            <img src="/Billeder/GRUMS/4.png" class="karusel-billede flex-shrink-0 object-contain cursor-pointer hover:opacity-80 transition-opacity duration-300" style="height: 440px; background: #F8E8BC;" />
           </div>
-          <button id="aboutPrev" class="absolute left-4 top-1/2 -translate-y-1/2 text-black px-4 py-3 transition-all duration-300 hover:scale-140 text-xl font-bold z-10">◀</button>
-          <button id="aboutNext" class="absolute right-4 top-1/2 -translate-y-1/2 text-black px-4 py-3 transition-all duration-300 hover:scale-140 text-xl font-bold z-10">▶</button>
+<button
+  id="aboutPrev"
+  class="absolute left-4 top-1/2 -translate-y-1/2 px-4 py-3 transition-all duration-300 hover:scale-140 text-xl font-bold z-10"
+  style="color:#000 !important;"
+>
+  ◀
+</button>
+
+<button
+  id="aboutNext"
+  class="absolute right-4 top-1/2 -translate-y-1/2 px-4 py-3 transition-all duration-300 hover:scale-140 text-xl font-bold z-10"
+  style="color:#000 !important;"
+>
+  ▶
+</button>
           <div id="prikker" class="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2"></div>
         </div>
       </div>
 
-      <!-- SEKTION 3: Hjemmesiden — video + tekst side om side -->
+      <!-- SEKTION 3: Idéudvikling — billede + tekst side om side -->
       <div class="fade-in mb-16 flex flex-col lg:flex-row gap-8 items-start">
 
-        <!-- Video -->
-        <div class="lg:w-200 overflow-hidden border border-[#272425]">
-          <video class="klikbar-video" autoplay muted loop playsinline style="width: 100%; height: 100%; object-fit: cover; cursor: zoom-in;">
-            <source src="/Billeder/SHECANPLAY/SHECANPLAYwebsite.mp4" type="video/mp4" />
-          </video>
+        <!-- Billede -->
+        <div class="lg:w-1/2 overflow-hidden border border-[#272425]">
+          <img id="brainstorm-billede" src="/Billeder/GRUMS/Brainstorm.png" alt="Grums brainstorm and idea development" class="cursor-pointer hover:opacity-80 transition-opacity duration-300" style="width: 100%; height: 100%; object-fit: cover;" />
         </div>
 
         <!-- Tekst -->
@@ -118,9 +128,9 @@ import '../styles/global.css';
   letter-spacing: 0.2em;
   text-transform: uppercase;
   text-shadow: 2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 0 0 #000, -2px 0 0 #000, 0 2px 0 #000, 0 -2px 0 #000;
-">The website</h2>
+">From idea to identity</h2>
           <p class="text-base sm:text-lg text-gray-200 leading-relaxed">
-            Alongside the generator, we developed a full website for She Can Play — covering structure, navigation principles, and how the visual system works across pages.
+            The project began with research, sketching and concept development. These explorations informed both the visual identity and the structure of the generator.
           </p>
         </div>
 
@@ -137,19 +147,19 @@ import '../styles/global.css';
   text-shadow: 2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 0 0 #000, -2px 0 0 #000, 0 2px 0 #000, 0 -2px 0 #000;
 ">Visual identity</h2>
         <p class="text-base sm:text-lg text-gray-200 leading-relaxed mb-6">
-          The visual identity guide below documents the complete design system developed for She Can Play — typography, color, and the visual language rooted in asemic writing.
+          The visual identity guide below documents the complete design system developed for Grums — typography, colour, and the generative pattern language at the core of the brand.
         </p>
       </div>
 
       <div class="overflow-hidden border border-[#272425] mb-16 fade-in">
-        <img src="/Billeder/SHECANPLAY/Shecanplayguide.png" alt="SHE CAN PLAY visual identity guide" style="width: 100%;" />
+        <img src="/Billeder/GRUMS/Grumsvisueltskema.png" alt="GRUMS visual identity guide" style="width: 100%;" />
       </div>
 
       <!-- Credits -->
       <div class="fade-in mb-16" style="border-left: 2px solid #ffffff; padding-left: 1.5rem;">
         <p class="text-sm text-gray-400 leading-relaxed">
-          A collaboration between CD2 and ID2.<br />
-          Group: <span style="color:#ffffff;">@maxe_mand</span> · <span style="color:#ffffff;">@en_ferdi_and</span> · <span style="color:#ffffff;">@mie_venoe</span> · <span style="color:#ffffff;">@jacob.knudsen.33</span>
+          A solo project — concept, branding and generator built from the ground up.<br />
+          Role: <span style="color:#ffffff;">Concept · Visual identity · Asset generator</span>
         </p>
       </div>
 
@@ -172,28 +182,7 @@ import '../styles/global.css';
 </Layout>
 
 <script is:inline>
-  function initIntroVideo() {
-    const video = document.getElementById('intro-video');
-    if (!video) return;
-
-    const START = 0;
-    const END = 115;
-
-    video.addEventListener('loadedmetadata', () => {
-      video.currentTime = START;
-      video.play();
-    });
-
-    video.addEventListener('timeupdate', () => {
-      if (video.currentTime >= END) {
-        video.currentTime = START;
-      }
-    });
-  }
-
-  function initSheCanPlay() {
-    initIntroVideo();
-
+  function initGrums() {
     const visPerSlide = 1;
     let aktuel = 0;
     const billeder = document.querySelectorAll('.karusel-billede');
@@ -263,20 +252,22 @@ import '../styles/global.css';
       img.addEventListener('click', () => visBilledeILightbox(i));
     });
 
-    // Stilbillede → lightbox (uden navigation)
-    const stillBillede = document.getElementById('still-billede');
-    if (stillBillede) {
-      stillBillede.addEventListener('click', () => {
-        lightboxNavAktiv = false;
-        lightboxVideo.pause();
-        lightboxVideo.style.display = 'none';
-        lightboxPrev.style.display = 'none';
-        lightboxNext.style.display = 'none';
-        lightboxImg.src = stillBillede.src;
-        lightboxImg.style.display = 'block';
-        lightbox.style.display = 'flex';
-      });
+    // Enkeltstående billeder → lightbox (uden navigation)
+    function visEnkeltBillede(src) {
+      lightboxNavAktiv = false;
+      lightboxVideo.pause();
+      lightboxVideo.style.display = 'none';
+      lightboxPrev.style.display = 'none';
+      lightboxNext.style.display = 'none';
+      lightboxImg.src = src;
+      lightboxImg.style.display = 'block';
+      lightbox.style.display = 'flex';
     }
+
+    ['still-billede', 'brainstorm-billede'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.addEventListener('click', () => visEnkeltBillede(el.src));
+    });
 
     lightboxPrev.addEventListener('click', (e) => {
       e.stopPropagation();
@@ -316,6 +307,6 @@ import '../styles/global.css';
     });
   }
 
-  document.addEventListener('astro:page-load', initSheCanPlay);
-  document.addEventListener('DOMContentLoaded', initSheCanPlay);
+  document.addEventListener('astro:page-load', initGrums);
+  document.addEventListener('DOMContentLoaded', initGrums);
 </script>
