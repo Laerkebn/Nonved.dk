@@ -49,9 +49,8 @@ import '../styles/global.css';
       <!-- SEKTION 1: Intro -->
       <div class="fade-in mb-16">
         <p class="text-base sm:text-xl text-gray-200 leading-relaxed">
-          As part of a branding and identity project, we collaborated with She Can Play to develop a new visual identity for their brand — using asemic writing as a conceptual framework, brought to life through a sound-driven generator.
-        </p>
-      </div>
+   FEZ is a city branding project for Fez, Morocco. It is a modular frame inspired by the city's historic leather tanneries. The frame adapts to different formats, including souvenirs, public signage and large-scale advertising.
+     </div>
 
       <!-- SEKTION 2: Generatoren — tekst + karusel side om side -->
       <div class="fade-in mb-16 flex flex-col lg:flex-row gap-8 items-start">
@@ -65,33 +64,38 @@ import '../styles/global.css';
   letter-spacing: 0.2em;
   text-transform: uppercase;
   text-shadow: 2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 0 0 #000, -2px 0 0 #000, 0 2px 0 #000, 0 -2px 0 #000;
-">Sound-driven generator</h2>
+">Frame generator & Blender</h2>
           <p class="text-base sm:text-lg text-gray-200 leading-relaxed">
-            The generator listens to audio in real time and converts each tone into asemic writing — creating a dynamic visual output driven by sound.
-          </p>
+     The frame was modelled in Blender and integrated into a web-based asset generator. Users can adjust its colour and shape to create assets for different formats and campaigns. 
+     <p 
+
+     class="text-base sm:text-lg text-gray-200 leading-relaxed">
+      The frame can be used across social media, creating a consistent visual identity by framing images and graphic content. </p>
           <p class="text-base sm:text-lg text-gray-200 leading-relaxed">
-            Color and style are adjustable from rough to soft, and the asemic script can be swapped for other SVG shapes.
-          </p>
-          <p class="text-base sm:text-lg text-gray-200 leading-relaxed">
-            The system works live as a concert backdrop or can process a sound file to generate a still image, such as an album cover.
-          </p>
+        The identity system is generative rather than fixed. Each application is different while maintaining a consistent visual language. </p>
         </div>
 
         <!-- Stilbillede -->
         <div class="lg:w-1/2">
-          <img id="still-billede" src="/Billeder/SHECANPLAY/HJUL2.png" class="cursor-pointer hover:opacity-80 transition-opacity duration-300" style="width: 100%; height: 340px; object-fit: cover;" />
+          <img id="still-billede" src="/Billeder/FEZ/2.png" class="cursor-pointer hover:opacity-80 transition-opacity duration-300" style="width: 100%; height: 340px; object-fit: cover;" />
         </div>
 
       </div>
 
-  <!-- SEKTION: Karusel -->
+<!-- SEKTION: Karusel -->
       <div class="fade-in mb-16">
         <div class="relative overflow-hidden">
           <div id="karusel" class="flex transition-transform duration-500 ease-in-out">
-            <img src="/Billeder/FEZ/Frame 2.png" class="karusel-billede flex-shrink-0 object-contain cursor-pointer hover:opacity-80 transition-opacity duration-300" style="height: 440px; background: #EEE7DB; transform: scale(1.2);" />
-            <img src="/Billeder/FEZ/Frame 3.png" class="karusel-billede flex-shrink-0 object-contain cursor-pointer hover:opacity-80 transition-opacity duration-300" style="height: 440px; background: #E7E7D9;" />
-            <img src="/Billeder/FEZ/Frame 4.png" class="karusel-billede flex-shrink-0 object-contain cursor-pointer hover:opacity-80 transition-opacity duration-300" style="height: 440px; background: #E5E5D6;" />
-            <img src="/Billeder/FEZ/Frame 5.png" class="karusel-billede flex-shrink-0 object-contain cursor-pointer hover:opacity-80 transition-opacity duration-300" style="height: 440px; background: #E5E5D6;" />
+
+            <!-- Slide 1 — sløret baggrund af samme billede -->
+            <div class="karusel-billede flex-shrink-0 relative overflow-hidden cursor-pointer" style="height: clamp(240px, 55vw, 440px); width: 100%;" data-src="/Billeder/FEZ/stor.png">
+              <img src="/Billeder/FEZ/stor.png" aria-hidden="true" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; filter:blur(20px) brightness(0.7); transform:scale(1.1);" />
+              <img src="/Billeder/FEZ/stor.png" class="karusel-forgrund hover:opacity-80 transition-opacity duration-300" style="position:relative; z-index:10; width:100%; height:100%; object-fit:contain;" />
+            </div>
+
+            <!-- Slide 2 -->
+            <img src="/Billeder/FEZ/3.png" class="karusel-billede flex-shrink-0 object-contain cursor-pointer hover:opacity-80 transition-opacity duration-300" style="height: clamp(240px, 55vw, 440px); max-width: 100%; background: #fffff;" />
+
           </div>
           <button id="aboutPrev" class="absolute left-4 top-1/2 -translate-y-1/2 text-black px-4 py-3 transition-all duration-300 hover:scale-140 text-xl font-bold z-10">◀</button>
           <button id="aboutNext" class="absolute right-4 top-1/2 -translate-y-1/2 text-black px-4 py-3 transition-all duration-300 hover:scale-140 text-xl font-bold z-10">▶</button>
@@ -99,7 +103,29 @@ import '../styles/global.css';
         </div>
       </div>
 
-        <!-- SEKTION 3: Idéudvikling — billede + tekst side om side -->
+         <!-- SEKTION 3: Idéudvikling — billede + tekst side om side -->
+      <div class="fade-in mb-16 flex flex-col lg:flex-row gap-8 items-start">
+
+        <!-- Billede -->
+        <div class="lg:w-1/2 overflow-hidden ">
+          <img id="brainstorm-billede" src="/Billeder/FEZ/1.png" alt="Grums brainstorm and idea development" class="cursor-pointer hover:opacity-80 transition-opacity duration-300" style="width: 100%; height: 100%; object-fit: cover; cursor: zoom-in;" />
+        </div>
+
+        <!-- Tekst -->
+        <div class="lg:w-1/2 flex flex-col gap-4">
+          <h2 style="
+  color: #ffffff;
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  text-shadow: 2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 0 0 #000, -2px 0 0 #000, 0 2px 0 #000, 0 -2px 0 #000;
+">Leather Tannery</h2>
+          <p class="text-base sm:text-lg text-gray-200 leading-relaxed">
+The frame pattern is based on the layout of the leather tanneries in Fez. The circular dye pits were simplified into a modular graphic system that forms the basis of the visual identity.div>
+        </div>
+
+        <!-- casa de musica -->
       <div class="fade-in mb-16 flex flex-col lg:flex-row gap-8 items-start">
 
         <!-- Billede -->
@@ -116,16 +142,13 @@ import '../styles/global.css';
   letter-spacing: 0.2em;
   text-transform: uppercase;
   text-shadow: 2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 0 0 #000, -2px 0 0 #000, 0 2px 0 #000, 0 -2px 0 #000;
-">The website</h2>
+">Casa da Música Sagmeister</h2>
           <p class="text-base sm:text-lg text-gray-200 leading-relaxed">
-            Alongside the generator, we developed a full website for She Can Play — covering structure, navigation principles, and how the visual system works across pages.
-          </p>
-        </div>
-
+     The project references Stefan Sagmeister's identity for Casa da Música, where a single graphic form changes in colour and proportion depending on the application while remaining recognisable.
       </div>
 
       <!-- SEKTION 4: Visual identity guide -->
-      <div class="fade-in mb-4">
+      <div class="fade-in mb-4">$
         <h2 style="
   color: #ffffff;
   font-size: 1.1rem;
@@ -133,21 +156,19 @@ import '../styles/global.css';
   letter-spacing: 0.2em;
   text-transform: uppercase;
   text-shadow: 2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 0 0 #000, -2px 0 0 #000, 0 2px 0 #000, 0 -2px 0 #000;
-">Visual identity</h2>
-        <p class="text-base sm:text-lg text-gray-200 leading-relaxed mb-6">
-          The visual identity guide below documents the complete design system developed for She Can Play — typography, color, and the visual language rooted in asemic writing.
-        </p>
+">Visual identity & inspiration board</h2>
+     
       </div>
 
       <div class="overflow-hidden border border-[#272425] mb-16 fade-in">
-        <img src="/Billeder/SHECANPLAY/Shecanplayguide.png" alt="SHE CAN PLAY visual identity guide" style="width: 100%;" />
+        <img src="/Billeder/FEZ/FEZvisueltskema.png" alt="SHE CAN PLAY visual identity guide" style="width: 100%;" />
       </div>
 
-      <!-- Credits -->
+    <!-- Credits -->
       <div class="fade-in mb-16" style="border-left: 2px solid #ffffff; padding-left: 1.5rem;">
         <p class="text-sm text-gray-400 leading-relaxed">
-          A collaboration between CD2 and ID2.<br />
-          Group: <span style="color:#ffffff;">@maxe_mand</span> · <span style="color:#ffffff;">@en_ferdi_and</span> · <span style="color:#ffffff;">@mie_venoe</span> · <span style="color:#ffffff;">@jacob.knudsen.33</span>
+          Solo project.<br />
+          Role: <span style="color:#ffffff;">Concept development · Asset generator design</span>
         </p>
       </div>
 

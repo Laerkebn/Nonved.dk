@@ -3,7 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import '../styles/global.css';
 ---
 
-<Layout title="METRO | My Portfolio" page="metro">
+<Layout title="FEZ | My Portfolio" page="fez">
 
   <div class="page-wrapper">
 
@@ -13,32 +13,33 @@ import '../styles/global.css';
     </div>
 
     <!-- TITEL -->
-    <div style="
+ <div style="
       font-size: clamp(1rem, 5vw, 5rem); 
       font-weight: 900;
       line-height: 0.85;
       letter-spacing: -0.05em;
       color: transparent !important;
       -webkit-text-stroke: 2px #ffffff;
+     
       pointer-events: none;
       word-break: break-word;
       text-align: center;
       margin-top: 2rem;
-    ">METROWARS</div>
+    ">FEZ - City Branding</div>
 
     <!-- Tags -->
-    <div class="fade-in" style="display: flex; gap: 0.5rem; flex-wrap: wrap; justify-content: center; padding: 1rem 0 2rem;">
-      <span class="proj-tag whitespace-nowrap">Game Design</span>
-      <span class="proj-tag whitespace-nowrap">Unity</span>
-      <span class="proj-tag whitespace-nowrap">C#</span>
-      <span class="proj-tag whitespace-nowrap">Figma</span>
-   
+    <div class="fade-in" style="display: flex; gap: 0.5rem; flex-wrap: wrap; justify-content: center; padding: 1rem 0 2rem; ">
+      <span class="proj-tag whitespace-nowrap">Branding & identity</span>
+      <span class="proj-tag whitespace-nowrap">Blender</span>
+      <span class="proj-tag whitespace-nowrap">JavaScript</span>
+      <span class="proj-tag whitespace-nowrap">CSS</span>
+      <span class="proj-tag whitespace-nowrap">HTML</span>
     </div>
 
     <!-- VIDEO -->
-    <div class="proj-gallery-full overflow-hidden mb-8 fade-in">
-     <video id="intro-video" class="klikbar-video" autoplay muted loop playsinline style="width: 100%; height: 100%; object-fit: cover; transform: scale(1.2); cursor: zoom-in;">
-        <source src="/Billeder/METRO/METRO.mp4" type="video/mp4" />
+    <div class="proj-gallery-full overflow-hidden border border-[#272425] mb-8 fade-in">
+      <video class="klikbar-video" autoplay muted loop playsinline style="width: 100%; height: 100%; object-fit: cover; cursor: zoom-in;">
+        <source src="/Billeder/FEZ/fez.mp4" type="video/mp4" />
       </video>
     </div>
 
@@ -47,8 +48,8 @@ import '../styles/global.css';
 
       <!-- SEKTION 1: Intro -->
       <div class="fade-in mb-16">
-       <p class="text-base sm:text-lg text-gray-200 leading-relaxed">
-          As part of a branding and identity project, we collaborated with She Can Play to develop a new visual identity based on asemic writing and a sound-driven visual generator.
+        <p class="text-base sm:text-xl text-gray-200 leading-relaxed">
+          As part of a branding and identity project, we collaborated with She Can Play to develop a new visual identity for their brand — using asemic writing as a conceptual framework, brought to life through a sound-driven generator.
         </p>
       </div>
 
@@ -66,19 +67,19 @@ import '../styles/global.css';
   text-shadow: 2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 0 0 #000, -2px 0 0 #000, 0 2px 0 #000, 0 -2px 0 #000;
 ">Sound-driven generator</h2>
           <p class="text-base sm:text-lg text-gray-200 leading-relaxed">
-            The generator listens to audio in real time and translates sound into asemic writing, creating visuals that respond directly to the input.
+            The generator listens to audio in real time and converts each tone into asemic writing — creating a dynamic visual output driven by sound.
           </p>
           <p class="text-base sm:text-lg text-gray-200 leading-relaxed">
-            Colours and visual styles can be adjusted, and the asemic writing can be replaced with other SVG-based forms
+            Color and style are adjustable from rough to soft, and the asemic script can be swapped for other SVG shapes.
           </p>
           <p class="text-base sm:text-lg text-gray-200 leading-relaxed">
-            The system can be used live as a concert backdrop or generate static visuals from audio files, for example album artwork.
+            The system works live as a concert backdrop or can process a sound file to generate a still image, such as an album cover.
           </p>
         </div>
 
         <!-- Stilbillede -->
         <div class="lg:w-1/2">
-          <img id="still-billede" src="/Billeder/SHECANPLAY/HJUL2.png" class="cursor-pointer hover:opacity-80 transition-opacity duration-300" style="width: 100%; height: 340px; object-fit: cover;" />
+          <img id="still-billede" src="/Billeder/SHECANPLAY/HJUL2.png" class="cursor-pointer hover:opacity-80 transition-opacity duration-300 klikbar" style="width: 100%; height: 340px; object-fit: cover; cursor: zoom-in;" />
         </div>
 
       </div>
@@ -87,10 +88,10 @@ import '../styles/global.css';
       <div class="fade-in mb-16">
         <div class="relative overflow-hidden">
           <div id="karusel" class="flex transition-transform duration-500 ease-in-out">
-   <img src="/Billeder/SHECANPLAY/HJUL1.png" class="karusel-billede flex-shrink-0 object-contain cursor-pointer hover:opacity-80 transition-opacity duration-300" style="height: 440px; background: #EEE7DB; transform: scale(1.2);" />
-            <img src="/Billeder/SHECANPLAY/HJUL3.png" class="karusel-billede flex-shrink-0 object-contain cursor-pointer hover:opacity-80 transition-opacity duration-300" style="height: 440px; background: #E7E7D9;" />
-            <img src="/Billeder/SHECANPLAY/HJUL4.png" class="karusel-billede flex-shrink-0 object-contain cursor-pointer hover:opacity-80 transition-opacity duration-300" style="height: 440px; background: #E5E5D6;" />
-            <img src="/Billeder/SHECANPLAY/HJUL5.png" class="karusel-billede flex-shrink-0 object-contain cursor-pointer hover:opacity-80 transition-opacity duration-300" style="height: 440px; background: #E5E5D6;" />
+            <img src="/Billeder/FEZ/Frame 2.png" class="karusel-billede flex-shrink-0 object-contain cursor-pointer hover:opacity-80 transition-opacity duration-300" style="height: 440px; background: #EEE7DB; transform: scale(1.2);" />
+            <img src="/Billeder/FEZ/Frame 3.png" class="karusel-billede flex-shrink-0 object-contain cursor-pointer hover:opacity-80 transition-opacity duration-300" style="height: 440px; background: #E7E7D9;" />
+            <img src="/Billeder/FEZ/Frame 4.png" class="karusel-billede flex-shrink-0 object-contain cursor-pointer hover:opacity-80 transition-opacity duration-300" style="height: 440px; background: #E5E5D6;" />
+            <img src="/Billeder/FEZ/Frame 5.png" class="karusel-billede flex-shrink-0 object-contain cursor-pointer hover:opacity-80 transition-opacity duration-300" style="height: 440px; background: #E5E5D6;" />
           </div>
           <button id="aboutPrev" class="absolute left-4 top-1/2 -translate-y-1/2 text-black px-4 py-3 transition-all duration-300 hover:scale-140 text-xl font-bold z-10">◀</button>
           <button id="aboutNext" class="absolute right-4 top-1/2 -translate-y-1/2 text-black px-4 py-3 transition-all duration-300 hover:scale-140 text-xl font-bold z-10">▶</button>
@@ -98,14 +99,12 @@ import '../styles/global.css';
         </div>
       </div>
 
-      <!-- SEKTION 3: Hjemmesiden — video + tekst side om side -->
+        <!-- SEKTION 3: Idéudvikling — billede + tekst side om side -->
       <div class="fade-in mb-16 flex flex-col lg:flex-row gap-8 items-start">
 
-        <!-- Video -->
-        <div class="lg:w-200 overflow-hidden">
-          <video class="klikbar-video" autoplay muted loop playsinline style="width: 100%; height: 100%; object-fit: cover; cursor: zoom-in;">
-            <source src="/Billeder/SHECANPLAY/SHECANPLAYwebsite.mp4" type="video/mp4" />
-          </video>
+        <!-- Billede -->
+        <div class="lg:w-1/2 overflow-hidden ">
+          <img id="brainstorm-billede" src="/Billeder/FEZ/CASA.png" alt="Grums brainstorm and idea development" class="cursor-pointer hover:opacity-80 transition-opacity duration-300 klikbar" style="width: 100%; height: 100%; object-fit: cover; cursor: zoom-in;" />
         </div>
 
         <!-- Tekst -->
@@ -119,7 +118,7 @@ import '../styles/global.css';
   text-shadow: 2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 0 0 #000, -2px 0 0 #000, 0 2px 0 #000, 0 -2px 0 #000;
 ">The website</h2>
           <p class="text-base sm:text-lg text-gray-200 leading-relaxed">
-            Alongside the generator, we designed and developed a website for She Can Play, focusing on navigation, content structure, and the implementation of the visual identity.
+            Alongside the generator, we developed a full website for She Can Play — covering structure, navigation principles, and how the visual system works across pages.
           </p>
         </div>
 
@@ -136,27 +135,20 @@ import '../styles/global.css';
   text-shadow: 2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 0 0 #000, -2px 0 0 #000, 0 2px 0 #000, 0 -2px 0 #000;
 ">Visual identity</h2>
         <p class="text-base sm:text-lg text-gray-200 leading-relaxed mb-6">
-          The visual identity guide documents the design system developed for She Can Play, including typography, color, and the visual language based on asemic writing.
+          The visual identity guide below documents the complete design system developed for She Can Play — typography, color, and the visual language rooted in asemic writing.
         </p>
       </div>
 
-      <div class="overflow-hidden mb-16 fade-in">
-        <img src="/Billeder/SHECANPLAY/Shecanplayguide.png" alt="SHE CAN PLAY visual identity guide" style="width: 100%;" />
+      <div class="overflow-hidden border border-[#272425] mb-16 fade-in">
+        <img class="klikbar" src="/Billeder/SHECANPLAY/Shecanplayguide.png" alt="SHE CAN PLAY visual identity guide" style="width: 100%; cursor: zoom-in;" />
       </div>
 
       <!-- Credits -->
       <div class="fade-in mb-16" style="border-left: 2px solid #ffffff; padding-left: 1.5rem;">
-       <p class="text-sm text-gray-400 leading-relaxed">
-  A collaboration between CD2 and ID2.<br />
-  Group:
-  <a href="https://www.instagram.com/maxe_mand" target="_blank" rel="noopener noreferrer" style="color:#ffffff;">@maxe_mand</a>
-  ·
-  <a href="https://www.instagram.com/en_ferdi_and" target="_blank" rel="noopener noreferrer" style="color:#ffffff;">@en_ferdi_and</a>
-  ·
-  <a href="https://www.instagram.com/mie_venoe" target="_blank" rel="noopener noreferrer" style="color:#ffffff;">@mie_venoe</a>
-  ·
-  <a href="https://www.instagram.com/jacob.knudsen.33" target="_blank" rel="noopener noreferrer" style="color:#ffffff;">@jacob.knudsen.33</a>
-</p>
+        <p class="text-sm text-gray-400 leading-relaxed">
+          A collaboration between CD2 and ID2.<br />
+          Group: <span style="color:#ffffff;">@maxe_mand</span> · <span style="color:#ffffff;">@en_ferdi_and</span> · <span style="color:#ffffff;">@mie_venoe</span> · <span style="color:#ffffff;">@jacob.knudsen.33</span>
+        </p>
       </div>
 
     </div>
@@ -178,150 +170,148 @@ import '../styles/global.css';
 </Layout>
 
 <script is:inline>
+  let lightbox, lightboxImg, lightboxVideo, lightboxPrev, lightboxNext;
+  let aktivtSæt = [];
+  let lightboxIndex = 0;
+  let lightboxNavAktiv = false;
+  let lyttereSat = false;
+
+  // Henter den rigtige billedkilde uanset om elementet er et <img>,
+  // en slide-div med data-src, eller en wrapper med et billede indeni.
+  function hentKilde(el) {
+    if (el.dataset && el.dataset.src) return el.dataset.src;
+    if (el.tagName === 'IMG') return el.currentSrc || el.src;
+    const img = el.querySelector('.karusel-billede, .karusel-forgrund, img:not([aria-hidden])');
+    return img ? (img.currentSrc || img.src) : '';
+  }
+
   function initIntroVideo() {
     const video = document.getElementById('intro-video');
     if (!video) return;
-
     const START = 0;
     const END = 115;
-
-    video.addEventListener('loadedmetadata', () => {
-      video.currentTime = START;
-      video.play();
-    });
-
-    video.addEventListener('timeupdate', () => {
-      if (video.currentTime >= END) {
-        video.currentTime = START;
-      }
-    });
+    video.addEventListener('loadedmetadata', () => { video.currentTime = START; video.play(); });
+    video.addEventListener('timeupdate', () => { if (video.currentTime >= END) video.currentTime = START; });
   }
 
-  function initSheCanPlay() {
-    initIntroVideo();
+  function lukLightbox() {
+    lightbox.style.display = 'none';
+    lightboxVideo.pause();
+    lightboxVideo.style.display = 'none';
+    lightboxImg.style.display = 'none';
+    lightboxPrev.style.display = 'none';
+    lightboxNext.style.display = 'none';
+    lightboxNavAktiv = false;
+  }
 
-    const visPerSlide = 1;
-    let aktuel = 0;
-    const billeder = document.querySelectorAll('.karusel-billede');
-    const antalSlides = billeder.length;
-    const prikContainer = document.getElementById('prikker');
-    const karusel = document.getElementById('karusel');
+  function visBilledeILightbox(index) {
+    lightboxIndex = (index + aktivtSæt.length) % aktivtSæt.length;
+    lightboxNavAktiv = aktivtSæt.length > 1;
+    lightboxVideo.pause();
+    lightboxVideo.style.display = 'none';
+    lightboxImg.src = hentKilde(aktivtSæt[lightboxIndex]);
+    lightboxImg.style.display = 'block';
+    lightboxPrev.style.display = lightboxNavAktiv ? 'block' : 'none';
+    lightboxNext.style.display = lightboxNavAktiv ? 'block' : 'none';
+    lightbox.style.display = 'flex';
+  }
 
+  function visVideoILightbox(video) {
+    const kilde = video.currentSrc || video.querySelector('source')?.src;
+    if (!kilde) return;
+    lightboxNavAktiv = false;
+    lightboxImg.style.display = 'none';
+    lightboxPrev.style.display = 'none';
+    lightboxNext.style.display = 'none';
+    lightboxVideo.src = kilde;
+    lightboxVideo.style.display = 'block';
+    lightbox.style.display = 'flex';
+    lightboxVideo.play();
+  }
+
+  function opsætKarusel(karuselId, prevId, nextId, prikId, perVisning = 1) {
+    const karusel = document.getElementById(karuselId);
     if (!karusel) return;
+    const slides = Array.from(karusel.children);
+    const antal = slides.length;
+    const prikContainer = document.getElementById(prikId);
+    let aktuel = 0;
 
-    billeder.forEach(img => {
-      img.style.width = '100%';
-    });
-
+    slides.forEach(s => { s.style.width = `${100 / perVisning}%`; s.style.flexShrink = '0'; });
     prikContainer.innerHTML = '';
 
+    const antalTrin = Math.max(1, antal - perVisning + 1);
+
     function gåTil(index) {
-      aktuel = (index + antalSlides) % antalSlides;
-      karusel.style.transform = `translateX(-${aktuel * 100}%)`;
-      document.querySelectorAll('#prikker div').forEach((p, i) => {
+      aktuel = (index + antalTrin) % antalTrin;
+      karusel.style.transform = `translateX(-${aktuel * (100 / perVisning)}%)`;
+      prikContainer.querySelectorAll('div').forEach((p, i) => {
         p.style.background = i === aktuel ? '#ffffff' : 'rgba(255,255,255,0.4)';
       });
     }
 
-    for (let i = 0; i < antalSlides; i++) {
+    for (let i = 0; i < antalTrin; i++) {
       const prik = document.createElement('div');
       prik.style.cssText = `width:8px; height:8px; border-radius:50%; cursor:pointer; transition:background 0.3s; background:${i === 0 ? '#ffffff' : 'rgba(255,255,255,0.4)'}`;
       prik.addEventListener('click', () => gåTil(i));
       prikContainer.appendChild(prik);
     }
 
-    document.getElementById('aboutPrev').addEventListener('click', () => gåTil(aktuel - 1));
-    document.getElementById('aboutNext').addEventListener('click', () => gåTil(aktuel + 1));
+    // Klon knapperne for at fjerne gamle listeners (undgår dobbelt-binding)
+    const prevBtn = document.getElementById(prevId);
+    const nextBtn = document.getElementById(nextId);
+    const prevNy = prevBtn.cloneNode(true);
+    const nextNy = nextBtn.cloneNode(true);
+    prevBtn.replaceWith(prevNy);
+    nextBtn.replaceWith(nextNy);
+    prevNy.addEventListener('click', () => gåTil(aktuel - 1));
+    nextNy.addEventListener('click', () => gåTil(aktuel + 1));
 
-    const lightbox = document.getElementById('lightbox');
-    const lightboxImg = document.getElementById('lightbox-img');
-    const lightboxVideo = document.getElementById('lightbox-video');
-    const lightboxPrev = document.getElementById('lightboxPrev');
-    const lightboxNext = document.getElementById('lightboxNext');
-
-    let lightboxIndex = 0;
-    let lightboxNavAktiv = false;
-
-    function lukLightbox() {
-      lightbox.style.display = 'none';
-      lightboxVideo.pause();
-      lightboxVideo.style.display = 'none';
-      lightboxImg.style.display = 'none';
-      lightboxPrev.style.display = 'none';
-      lightboxNext.style.display = 'none';
-      lightboxNavAktiv = false;
-    }
-
-    function visBilledeILightbox(index) {
-      lightboxIndex = (index + billeder.length) % billeder.length;
-      lightboxNavAktiv = true;
-      lightboxVideo.pause();
-      lightboxVideo.style.display = 'none';
-      lightboxImg.src = billeder[lightboxIndex].src;
-      lightboxImg.style.display = 'block';
-      lightboxPrev.style.display = 'block';
-      lightboxNext.style.display = 'block';
-      lightbox.style.display = 'flex';
-    }
-
-    // Karusel-billeder → lightbox (med navigation)
-    billeder.forEach((img, i) => {
-      img.addEventListener('click', () => visBilledeILightbox(i));
-    });
-
-    // Stilbillede → lightbox (uden navigation)
-    const stillBillede = document.getElementById('still-billede');
-    if (stillBillede) {
-      stillBillede.addEventListener('click', () => {
-        lightboxNavAktiv = false;
-        lightboxVideo.pause();
-        lightboxVideo.style.display = 'none';
-        lightboxPrev.style.display = 'none';
-        lightboxNext.style.display = 'none';
-        lightboxImg.src = stillBillede.src;
-        lightboxImg.style.display = 'block';
-        lightbox.style.display = 'flex';
+    slides.forEach((slide, i) => {
+      slide.addEventListener('click', () => {
+        aktivtSæt = slides;
+        visBilledeILightbox(i);
       });
-    }
-
-    lightboxPrev.addEventListener('click', (e) => {
-      e.stopPropagation();
-      visBilledeILightbox(lightboxIndex - 1);
-    });
-
-    lightboxNext.addEventListener('click', (e) => {
-      e.stopPropagation();
-      visBilledeILightbox(lightboxIndex + 1);
-    });
-
-    // Videoer → lightbox
-    document.querySelectorAll('.klikbar-video').forEach(video => {
-      video.addEventListener('click', () => {
-        const kilde = video.currentSrc || video.querySelector('source')?.src;
-        if (!kilde) return;
-        lightboxNavAktiv = false;
-        lightboxImg.style.display = 'none';
-        lightboxPrev.style.display = 'none';
-        lightboxNext.style.display = 'none';
-        lightboxVideo.src = kilde;
-        lightboxVideo.style.display = 'block';
-        lightbox.style.display = 'flex';
-        lightboxVideo.play();
-      });
-    });
-
-    lightbox.addEventListener('click', lukLightbox);
-
-    document.addEventListener('keydown', (e) => {
-      if (lightbox.style.display !== 'flex') return;
-      if (e.key === 'Escape') lukLightbox();
-      if (lightboxNavAktiv) {
-        if (e.key === 'ArrowLeft') visBilledeILightbox(lightboxIndex - 1);
-        if (e.key === 'ArrowRight') visBilledeILightbox(lightboxIndex + 1);
-      }
     });
   }
 
-  document.addEventListener('astro:page-load', initSheCanPlay);
-  document.addEventListener('DOMContentLoaded', initSheCanPlay);
+  function initSide() {
+    lightbox = document.getElementById('lightbox');
+    lightboxImg = document.getElementById('lightbox-img');
+    lightboxVideo = document.getElementById('lightbox-video');
+    lightboxPrev = document.getElementById('lightboxPrev');
+    lightboxNext = document.getElementById('lightboxNext');
+    if (!lightbox) return;
+
+    initIntroVideo();
+    opsætKarusel('karusel', 'aboutPrev', 'aboutNext', 'prikker');
+
+    // Enkeltbilleder (stilbilleder, brainstorm, visuel guide osv.)
+    document.querySelectorAll('.klikbar').forEach(el => {
+      el.addEventListener('click', () => { aktivtSæt = [el]; visBilledeILightbox(0); });
+    });
+
+    // Videoer
+    document.querySelectorAll('.klikbar-video').forEach(video => {
+      video.addEventListener('click', () => visVideoILightbox(video));
+    });
+
+    if (!lyttereSat) {
+      lyttereSat = true;
+      lightboxPrev.addEventListener('click', (e) => { e.stopPropagation(); visBilledeILightbox(lightboxIndex - 1); });
+      lightboxNext.addEventListener('click', (e) => { e.stopPropagation(); visBilledeILightbox(lightboxIndex + 1); });
+      lightbox.addEventListener('click', lukLightbox);
+      document.addEventListener('keydown', (e) => {
+        if (lightbox.style.display !== 'flex') return;
+        if (e.key === 'Escape') lukLightbox();
+        if (lightboxNavAktiv) {
+          if (e.key === 'ArrowLeft') visBilledeILightbox(lightboxIndex - 1);
+          if (e.key === 'ArrowRight') visBilledeILightbox(lightboxIndex + 1);
+        }
+      });
+    }
+  }
+
+  document.addEventListener('astro:page-load', initSide);
+  document.addEventListener('DOMContentLoaded', initSide);
 </script>

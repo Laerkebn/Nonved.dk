@@ -24,7 +24,7 @@ import '../styles/global.css';
       word-break: break-word;
       text-align: center;
       margin-top: 2rem;
-    ">SIND</div>
+    ">SIND UNGDOM</div>
 
     <!-- Tags -->
     <div class="fade-in" style="display: flex; gap: 0.5rem; flex-wrap: wrap; justify-content: center; padding: 1rem 0 2rem;">
@@ -77,7 +77,7 @@ import '../styles/global.css';
 
         <!-- Stilbillede -->
         <div class="lg:w-1/2">
-          <img id="still-billede" src="/Billeder/SIND/adoino.JPG" class="cursor-pointer hover:opacity-80 transition-opacity duration-300" style="width: 100%; height: 340px; object-fit: cover;" />
+          <img id="still-billede" src="/Billeder/SIND/adoino.JPG" class="cursor-pointer hover:opacity-80 transition-opacity duration-300 klikbar" style="width: 100%; height: 340px; object-fit: cover; cursor: zoom-in;" />
         </div>
 
       </div>
@@ -117,7 +117,7 @@ import '../styles/global.css';
 
         <!-- Billede -->
         <div class="lg:w-1/2 overflow-hidden ">
-          <img id="brainstorm-billede" src="/Billeder/SIND/hjul4.JPG" alt="Grums brainstorm and idea development" class="cursor-pointer hover:opacity-80 transition-opacity duration-300" style="width: 100%; height: 100%; object-fit: cover;" />
+          <img id="brainstorm-billede" src="/Billeder/SIND/hjul4.JPG" alt="Grums brainstorm and idea development" class="cursor-pointer hover:opacity-80 transition-opacity duration-300 klikbar" style="width: 100%; height: 100%; object-fit: cover; cursor: zoom-in;" />
         </div>
 
         <!-- Tekst -->
@@ -166,151 +166,148 @@ import '../styles/global.css';
 </Layout>
 
 <script is:inline>
+  let lightbox, lightboxImg, lightboxVideo, lightboxPrev, lightboxNext;
+  let aktivtSæt = [];
+  let lightboxIndex = 0;
+  let lightboxNavAktiv = false;
+  let lyttereSat = false;
+
+  // Henter den rigtige billedkilde uanset om elementet er et <img>,
+  // en slide-div med data-src, eller en wrapper med et billede indeni.
+  function hentKilde(el) {
+    if (el.dataset && el.dataset.src) return el.dataset.src;
+    if (el.tagName === 'IMG') return el.currentSrc || el.src;
+    const img = el.querySelector('.karusel-billede, .karusel-forgrund, img:not([aria-hidden])');
+    return img ? (img.currentSrc || img.src) : '';
+  }
+
   function initIntroVideo() {
     const video = document.getElementById('intro-video');
     if (!video) return;
-
     const START = 0;
     const END = 115;
-
-    video.addEventListener('loadedmetadata', () => {
-      video.currentTime = START;
-      video.play();
-    });
-
-    video.addEventListener('timeupdate', () => {
-      if (video.currentTime >= END) {
-        video.currentTime = START;
-      }
-    });
+    video.addEventListener('loadedmetadata', () => { video.currentTime = START; video.play(); });
+    video.addEventListener('timeupdate', () => { if (video.currentTime >= END) video.currentTime = START; });
   }
 
-function initSheCanPlay() {
-    initIntroVideo();
+  function lukLightbox() {
+    lightbox.style.display = 'none';
+    lightboxVideo.pause();
+    lightboxVideo.style.display = 'none';
+    lightboxImg.style.display = 'none';
+    lightboxPrev.style.display = 'none';
+    lightboxNext.style.display = 'none';
+    lightboxNavAktiv = false;
+  }
 
-    let aktuel = 0;
-    const slides = document.querySelectorAll('.karusel-slide');
-    const billeder = document.querySelectorAll('.karusel-billede');
-    const antalSlides = slides.length;
-    const prikContainer = document.getElementById('prikker');
-    const karusel = document.getElementById('karusel');
+  function visBilledeILightbox(index) {
+    lightboxIndex = (index + aktivtSæt.length) % aktivtSæt.length;
+    lightboxNavAktiv = aktivtSæt.length > 1;
+    lightboxVideo.pause();
+    lightboxVideo.style.display = 'none';
+    lightboxImg.src = hentKilde(aktivtSæt[lightboxIndex]);
+    lightboxImg.style.display = 'block';
+    lightboxPrev.style.display = lightboxNavAktiv ? 'block' : 'none';
+    lightboxNext.style.display = lightboxNavAktiv ? 'block' : 'none';
+    lightbox.style.display = 'flex';
+  }
 
+  function visVideoILightbox(video) {
+    const kilde = video.currentSrc || video.querySelector('source')?.src;
+    if (!kilde) return;
+    lightboxNavAktiv = false;
+    lightboxImg.style.display = 'none';
+    lightboxPrev.style.display = 'none';
+    lightboxNext.style.display = 'none';
+    lightboxVideo.src = kilde;
+    lightboxVideo.style.display = 'block';
+    lightbox.style.display = 'flex';
+    lightboxVideo.play();
+  }
+
+  function opsætKarusel(karuselId, prevId, nextId, prikId, perVisning = 1) {
+    const karusel = document.getElementById(karuselId);
     if (!karusel) return;
+    const slides = Array.from(karusel.children);
+    const antal = slides.length;
+    const prikContainer = document.getElementById(prikId);
+    let aktuel = 0;
 
-    // Hver slide fylder hele containerens bredde
-    slides.forEach(slide => {
-      slide.style.width = '100%';
-    });
-
+    slides.forEach(s => { s.style.width = `${100 / perVisning}%`; s.style.flexShrink = '0'; });
     prikContainer.innerHTML = '';
 
+    const antalTrin = Math.max(1, antal - perVisning + 1);
+
     function gåTil(index) {
-      aktuel = (index + antalSlides) % antalSlides;
-      karusel.style.transform = `translateX(-${aktuel * 100}%)`;
-      document.querySelectorAll('#prikker div').forEach((p, i) => {
+      aktuel = (index + antalTrin) % antalTrin;
+      karusel.style.transform = `translateX(-${aktuel * (100 / perVisning)}%)`;
+      prikContainer.querySelectorAll('div').forEach((p, i) => {
         p.style.background = i === aktuel ? '#ffffff' : 'rgba(255,255,255,0.4)';
       });
     }
 
-    for (let i = 0; i < antalSlides; i++) {
+    for (let i = 0; i < antalTrin; i++) {
       const prik = document.createElement('div');
       prik.style.cssText = `width:8px; height:8px; border-radius:50%; cursor:pointer; transition:background 0.3s; background:${i === 0 ? '#ffffff' : 'rgba(255,255,255,0.4)'}`;
       prik.addEventListener('click', () => gåTil(i));
       prikContainer.appendChild(prik);
     }
 
-    document.getElementById('aboutPrev').addEventListener('click', () => gåTil(aktuel - 1));
-    document.getElementById('aboutNext').addEventListener('click', () => gåTil(aktuel + 1));
+    // Klon knapperne for at fjerne gamle listeners (undgår dobbelt-binding)
+    const prevBtn = document.getElementById(prevId);
+    const nextBtn = document.getElementById(nextId);
+    const prevNy = prevBtn.cloneNode(true);
+    const nextNy = nextBtn.cloneNode(true);
+    prevBtn.replaceWith(prevNy);
+    nextBtn.replaceWith(nextNy);
+    prevNy.addEventListener('click', () => gåTil(aktuel - 1));
+    nextNy.addEventListener('click', () => gåTil(aktuel + 1));
 
-    const lightbox = document.getElementById('lightbox');
-    const lightboxImg = document.getElementById('lightbox-img');
-    const lightboxVideo = document.getElementById('lightbox-video');
-    const lightboxPrev = document.getElementById('lightboxPrev');
-    const lightboxNext = document.getElementById('lightboxNext');
-
-    let lightboxIndex = 0;
-    let lightboxNavAktiv = false;
-
-    function lukLightbox() {
-      lightbox.style.display = 'none';
-      lightboxVideo.pause();
-      lightboxVideo.style.display = 'none';
-      lightboxImg.style.display = 'none';
-      lightboxPrev.style.display = 'none';
-      lightboxNext.style.display = 'none';
-      lightboxNavAktiv = false;
-    }
-
-    function visBilledeILightbox(index) {
-      lightboxIndex = (index + billeder.length) % billeder.length;
-      lightboxNavAktiv = true;
-      lightboxVideo.pause();
-      lightboxVideo.style.display = 'none';
-      lightboxImg.src = billeder[lightboxIndex].src;
-      lightboxImg.style.display = 'block';
-      lightboxPrev.style.display = 'block';
-      lightboxNext.style.display = 'block';
-      lightbox.style.display = 'flex';
-    }
-
-    // Karusel-billeder → lightbox (med navigation)
-    billeder.forEach((img, i) => {
-      img.addEventListener('click', () => visBilledeILightbox(i));
-    });
-
-    // Stilbillede → lightbox (uden navigation)
-    const stillBillede = document.getElementById('still-billede');
-    if (stillBillede) {
-      stillBillede.addEventListener('click', () => {
-        lightboxNavAktiv = false;
-        lightboxVideo.pause();
-        lightboxVideo.style.display = 'none';
-        lightboxPrev.style.display = 'none';
-        lightboxNext.style.display = 'none';
-        lightboxImg.src = stillBillede.src;
-        lightboxImg.style.display = 'block';
-        lightbox.style.display = 'flex';
+    slides.forEach((slide, i) => {
+      slide.addEventListener('click', () => {
+        aktivtSæt = slides;
+        visBilledeILightbox(i);
       });
-    }
-
-    lightboxPrev.addEventListener('click', (e) => {
-      e.stopPropagation();
-      visBilledeILightbox(lightboxIndex - 1);
-    });
-
-    lightboxNext.addEventListener('click', (e) => {
-      e.stopPropagation();
-      visBilledeILightbox(lightboxIndex + 1);
-    });
-
-    // Videoer → lightbox
-    document.querySelectorAll('.klikbar-video').forEach(video => {
-      video.addEventListener('click', () => {
-        const kilde = video.currentSrc || video.querySelector('source')?.src;
-        if (!kilde) return;
-        lightboxNavAktiv = false;
-        lightboxImg.style.display = 'none';
-        lightboxPrev.style.display = 'none';
-        lightboxNext.style.display = 'none';
-        lightboxVideo.src = kilde;
-        lightboxVideo.style.display = 'block';
-        lightbox.style.display = 'flex';
-        lightboxVideo.play();
-      });
-    });
-
-    lightbox.addEventListener('click', lukLightbox);
-
-    document.addEventListener('keydown', (e) => {
-      if (lightbox.style.display !== 'flex') return;
-      if (e.key === 'Escape') lukLightbox();
-      if (lightboxNavAktiv) {
-        if (e.key === 'ArrowLeft') visBilledeILightbox(lightboxIndex - 1);
-        if (e.key === 'ArrowRight') visBilledeILightbox(lightboxIndex + 1);
-      }
     });
   }
 
-  document.addEventListener('astro:page-load', initSheCanPlay);
-  document.addEventListener('DOMContentLoaded', initSheCanPlay);
+  function initSide() {
+    lightbox = document.getElementById('lightbox');
+    lightboxImg = document.getElementById('lightbox-img');
+    lightboxVideo = document.getElementById('lightbox-video');
+    lightboxPrev = document.getElementById('lightboxPrev');
+    lightboxNext = document.getElementById('lightboxNext');
+    if (!lightbox) return;
+
+    initIntroVideo();
+    opsætKarusel('karusel', 'aboutPrev', 'aboutNext', 'prikker');
+
+    // Enkeltbilleder (stilbilleder, brainstorm, visuel guide osv.)
+    document.querySelectorAll('.klikbar').forEach(el => {
+      el.addEventListener('click', () => { aktivtSæt = [el]; visBilledeILightbox(0); });
+    });
+
+    // Videoer
+    document.querySelectorAll('.klikbar-video').forEach(video => {
+      video.addEventListener('click', () => visVideoILightbox(video));
+    });
+
+    if (!lyttereSat) {
+      lyttereSat = true;
+      lightboxPrev.addEventListener('click', (e) => { e.stopPropagation(); visBilledeILightbox(lightboxIndex - 1); });
+      lightboxNext.addEventListener('click', (e) => { e.stopPropagation(); visBilledeILightbox(lightboxIndex + 1); });
+      lightbox.addEventListener('click', lukLightbox);
+      document.addEventListener('keydown', (e) => {
+        if (lightbox.style.display !== 'flex') return;
+        if (e.key === 'Escape') lukLightbox();
+        if (lightboxNavAktiv) {
+          if (e.key === 'ArrowLeft') visBilledeILightbox(lightboxIndex - 1);
+          if (e.key === 'ArrowRight') visBilledeILightbox(lightboxIndex + 1);
+        }
+      });
+    }
+  }
+
+  document.addEventListener('astro:page-load', initSide);
+  document.addEventListener('DOMContentLoaded', initSide);
 </script>
