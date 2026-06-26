@@ -1,9 +1,14 @@
 ---
+// Fælles layout for alle sider. Hver side sender en `title` og en `page`-prop ind,
+// så vi kan vælge den rigtige baggrunds-overlay (se nedenfor).
 import { ClientRouter } from 'astro:transitions';
 const { title = 'My Portfolio', page = '' } = Astro.props;
 import '../styles/global.css';
 
+// Statiske sider (about/projects/contact) får en halvgennemsigtig sort overlay
+// oven på baggrundsvideoen, så teksten kan læses.
 const isStaticPage = page === 'about' || page === 'projects' || page === 'contact';
+// Projektsider får en helt sort baggrund i stedet.
 const isProjectPage = page === 'grums' || page === 'aaben' || page === 'fez' || page === 'metro' || page === 'shecanplay' || page === 'viden';
 ---
 
@@ -12,13 +17,14 @@ const isProjectPage = page === 'grums' || page === 'aaben' || page === 'fez' || 
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Simple portfolio website built with Astro" />
+    <meta name="description" content="Portfolio of Lærke Buch Nonved — Visual Communication student specialising in Coded Design at DMJX." />
+    <meta name="author" content="Lærke Buch Nonved" />
     <title>{title}</title>
     <ClientRouter />
   </head>
 
   <body>
-    <!-- Mørk overlay på about/projects/contact -->
+    <!-- Baggrunds-overlays: vælges ud fra hvilken type side vi er på (se frontmatter) -->
     {isStaticPage && (
       <div style="position: fixed; inset: 0; background: rgba(0,0,0,0.70); z-index: 5;"></div>
     )}
@@ -26,9 +32,13 @@ const isProjectPage = page === 'grums' || page === 'aaben' || page === 'fez' || 
       <div style="position: fixed; inset: 0; background: #000; z-index: 5;"></div>
     )}
 
-<audio id="bg-audio" loop transition:persist>
-  <source src="/music/fugle.mp3" type="audio/mp3" />
-</audio>
+    <!-- Baggrundslyd. transition:persist sikrer at afspilningen IKKE genstarter
+         når man navigerer mellem sider (Astro genbruger samme <audio>-element).
+         Bemærk: browsere blokerer autoplay med lyd, så lyden starter først efter
+         brugeren har interageret med siden. -->
+    <audio id="bg-audio" loop transition:persist>
+      <source src="/music/fugle.mp3" type="audio/mp3" />
+    </audio>
 
     <!-- Top navigation -->
     <header class="top-bar">
@@ -49,16 +59,24 @@ const isProjectPage = page === 'grums' || page === 'aaben' || page === 'fez' || 
     </main>
 
     <script is:inline>
-      // Fade-in for alle sider
+      // Fade-in animation: alle elementer med klassen .fade-in glider blødt ind,
+      // når de kommer i syne. IntersectionObserver fortæller os hvornår.
       function initFadeIn() {
         const fadeEls = document.querySelectorAll('.fade-in');
         const observer = new IntersectionObserver((entries) => {
           entries.forEach(el => {
-            if (el.isIntersecting) el.target.classList.add('visible');
+            if (el.isIntersecting) {
+              el.target.classList.add('visible');
+              // Når elementet er vist, holder vi op med at observere det (lille
+              // performance-gevinst — vi behøver ikke at lytte længere).
+              observer.unobserve(el.target);
+            }
           });
         }, { threshold: 0 });
         fadeEls.forEach(el => observer.observe(el));
       }
+      // astro:page-load fyrer ved første load OG efter hver klient-navigation.
+      // setTimeout er et fallback, hvis page-load skulle nå at fyre før scriptet.
       document.addEventListener('astro:page-load', initFadeIn);
       setTimeout(initFadeIn, 50);
     </script>

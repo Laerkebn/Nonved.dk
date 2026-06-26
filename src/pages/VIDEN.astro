@@ -7,12 +7,12 @@ import '../styles/global.css';
 
   <div class="page-wrapper">
 
-    <!-- Tilbage knap -->
+    <!-- Tilbage til projektoversigten -->
     <div class="fade-in" style="padding-top: 2rem;">
       <a href="/projects" class="proj-back-btn">← Projects</a>
     </div>
 
-    <!-- TITEL -->
+    <!-- TITEL (kontur-look: gennemsigtig udfyldning + hvid streg) -->
     <div style="
       font-size: clamp(1rem, 5vw, 5rem); 
       font-weight: 900;
@@ -26,7 +26,7 @@ import '../styles/global.css';
       margin-top: 2rem;
     ">HAVET UNDER PRESS</div>
 
-    <!-- Tags  -->
+    <!-- Tags: kort opsummering af projektets felt og værktøjer -->
     <div class="fade-in" style="display: flex; gap: 0.5rem; flex-wrap: wrap; justify-content: center; padding: 1rem 0 2rem;">
       <span class="proj-tag whitespace-nowrap">Game Design</span>
       <span class="proj-tag whitespace-nowrap">Education</span>
@@ -35,75 +35,76 @@ import '../styles/global.css';
       <span class="proj-tag whitespace-nowrap">Tailwind CSS</span>
     </div>
 
-<!-- VIDEO -->
-<div class="proj-gallery-full overflow-hidden mb-8 fade-in">
-  <video class="klikbar-video" autoplay muted loop playsinline
-         style="width: 100%; height: 100%; object-fit: cover; cursor: zoom-in;">
-    <source src="/Billeder/VIDEN/Videnvideo.mp4" type="video/mp4" />
-  </video>
-</div>
+    <!-- TOP-VIDEO. .klikbar-video gør at den kan åbnes stort i lightboxen -->
+    <div class="proj-gallery-full overflow-hidden mb-8 fade-in">
+      <video class="klikbar-video" autoplay muted loop playsinline
+             style="width: 100%; height: 100%; object-fit: cover; cursor: zoom-in;">
+        <source src="/Billeder/VIDEN/Videnvideo.mp4" type="video/mp4" />
+      </video>
+    </div>
 
     <!-- ===== PROJEKT INDHOLD ===== -->
     <div id="projekt">
 
       <!-- SEKTION 1: Intro -->
       <div class="fade-in mb-16">
-      <p class="text-base sm:text-lg text-gray-200 leading-relaxed">
-  Havet under pres is an interactive educational game developed for Videnskab.dk. The game is aimed at children aged 5–10 and focuses on marine pollution and the importance of protecting the ocean.
-</p>
-<p class="text-base sm:text-lg text-gray-200 leading-relaxed">
-  This walkthrough demonstrates the interactive gameplay, showing how players progress through the three environments.
-</p>
+        <p class="text-base sm:text-lg text-gray-200 leading-relaxed">
+          Havet under pres is an interactive educational game developed for Videnskab.dk. The game is aimed at children aged 5–10 and focuses on marine pollution and the importance of protecting the ocean.
+        </p>
+        <p class="text-base sm:text-lg text-gray-200 leading-relaxed">
+          This walkthrough demonstrates the interactive gameplay, showing how players progress through the three environments.
+        </p>
       </div>
 
-      <!-- SEKTION 2: Generatoren — tekst + karusel side om side -->
+      <!-- SEKTION 2: Spillet — tekst + stilbillede side om side -->
       <div class="fade-in mb-16 flex flex-col lg:flex-row gap-8 items-start">
 
         <!-- Tekst -->
         <div class="lg:w-1/2 flex flex-col gap-4">
-         <h2 style="
-  color: #ffffff;
-  font-size: 1.1rem;
-  font-weight: 600;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  text-shadow: 2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 0 0 #000, -2px 0 0 #000, 0 2px 0 #000, 0 -2px 0 #000;
-">The game</h2>
+          <h2 style="
+            color: #ffffff;
+            font-size: 1.1rem;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            text-shadow: 2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 0 0 #000, -2px 0 0 #000, 0 2px 0 #000, 0 -2px 0 #000;
+          ">The game</h2>
 
-<p class="text-base sm:text-lg text-gray-200 leading-relaxed">
-  The game consists of three levels: the beach, the ocean surface, and the seabed. Each level represents a different marine habitat with its own animals, plants, and objects.
-</p>
+          <p class="text-base sm:text-lg text-gray-200 leading-relaxed">
+            The game consists of three levels: the beach, the ocean surface, and the seabed. Each level represents a different marine habitat with its own animals, plants, and objects.
+          </p>
 
-<p class="text-base sm:text-lg text-gray-200 leading-relaxed">
-  The player explores each environment by finding the correct objects while learning about the species that live there and how pollution affects their habitat.
-</p>
+          <p class="text-base sm:text-lg text-gray-200 leading-relaxed">
+            The player explores each environment by finding the correct objects while learning about the species that live there and how pollution affects their habitat.
+          </p>
 
-<p class="text-base sm:text-lg text-gray-200 leading-relaxed">
-  The project combines illustrations, animations, audio, and interactive elements to communicate scientific knowledge in a format suited for children.
-</p>
+          <p class="text-base sm:text-lg text-gray-200 leading-relaxed">
+            The project combines illustrations, animations, audio, and interactive elements to communicate scientific knowledge in a format suited for children.
+          </p>
         </div>
 
-        <!-- Stilbillede -->
+        <!-- Stilbillede (.klikbar = kan åbnes i lightbox uden bladring) -->
         <div class="lg:w-1/2">
           <img id="still-billede" src="/Billeder/VIDEN/BANE2.png" class="cursor-pointer hover:opacity-80 transition-opacity duration-300 klikbar" style="width: 100%; height: 100%; cursor: zoom-in;" />
         </div>
 
       </div>
 
-<!-- SEKTION: Karusel -->
+      <!-- SEKTION: Karusel. Hvert billede har klassen .karusel-billede;
+           scriptet (opsætKarusel) sætter bredder, laver prikker og binder pile -->
       <div class="fade-in mb-16">
         <div class="relative overflow-hidden">
           <div id="karusel" class="flex transition-transform duration-500 ease-in-out">
-            <img src="/Billeder/VIDEN/videnhero.png" class="karusel-billede flex-shrink-0 object-contain cursor-pointer hover:opacity-80 transition-opacity duration-300" style="height: 440px; background: #8DB8DA;" />
-            <img src="/Billeder/VIDEN/hjul1.png" class="karusel-billede flex-shrink-0 object-contain cursor-pointer hover:opacity-80 transition-opacity duration-300" style="height: 440px; background: #DFE3DC;" />
-            <img src="/Billeder/VIDEN/hjul2.png" class="karusel-billede flex-shrink-0 object-contain cursor-pointer hover:opacity-80 transition-opacity duration-300" style="height: 440px; background: #DFE3DC;" />
-            <img src="/Billeder/VIDEN/hjul3.png" class="karusel-billede flex-shrink-0 object-contain cursor-pointer hover:opacity-80 transition-opacity duration-300" style="height: 440px; background: #DFE3DC;" />
-            <img src="/Billeder/VIDEN/hjul4.png" class="karusel-billede flex-shrink-0 object-contain cursor-pointer hover:opacity-80 transition-opacity duration-300" style="height: 440px; background: #DFE3DC;" />
-            <img src="/Billeder/VIDEN/hjul5.png" class="karusel-billede flex-shrink-0 object-contain cursor-pointer hover:opacity-80 transition-opacity duration-300" style="height: 440px; background: #DFE3DC;" />
-            <img src="/Billeder/VIDEN/hjul6.png" class="karusel-billede flex-shrink-0 object-contain cursor-pointer hover:opacity-80 transition-opacity duration-300" style="height: 440px; background: #DFE3DC;" />
-            <img src="/Billeder/VIDEN/hjul7.png" class="karusel-billede flex-shrink-0 object-contain cursor-pointer hover:opacity-80 transition-opacity duration-300" style="height: 440px; background: #DFE3DC;" />
-            <img src="/Billeder/VIDEN/hjul8.png" class="karusel-billede flex-shrink-0 object-contain cursor-pointer hover:opacity-80 transition-opacity duration-300" style="height: 440px; background: #DFE3DC;" />
-            <img src="/Billeder/VIDEN/hjul9.png" class="karusel-billede flex-shrink-0 object-contain cursor-pointer hover:opacity-80 transition-opacity duration-300" style="height: 440px; background: #DFE3DC;" />
+            <img src="/Billeder/VIDEN/videnhero.png" class="karusel-billede shrink-0 object-contain cursor-pointer hover:opacity-80 transition-opacity duration-300" style="height: 440px; background: #8DB8DA;" />
+            <img src="/Billeder/VIDEN/hjul1.png" class="karusel-billede shrink-0 object-contain cursor-pointer hover:opacity-80 transition-opacity duration-300" style="height: 440px; background: #DFE3DC;" />
+            <img src="/Billeder/VIDEN/hjul2.png" class="karusel-billede shrink-0 object-contain cursor-pointer hover:opacity-80 transition-opacity duration-300" style="height: 440px; background: #DFE3DC;" />
+            <img src="/Billeder/VIDEN/hjul3.png" class="karusel-billede shrink-0 object-contain cursor-pointer hover:opacity-80 transition-opacity duration-300" style="height: 440px; background: #DFE3DC;" />
+            <img src="/Billeder/VIDEN/hjul4.png" class="karusel-billede shrink-0 object-contain cursor-pointer hover:opacity-80 transition-opacity duration-300" style="height: 440px; background: #DFE3DC;" />
+            <img src="/Billeder/VIDEN/hjul5.png" class="karusel-billede shrink-0 object-contain cursor-pointer hover:opacity-80 transition-opacity duration-300" style="height: 440px; background: #DFE3DC;" />
+            <img src="/Billeder/VIDEN/hjul6.png" class="karusel-billede shrink-0 object-contain cursor-pointer hover:opacity-80 transition-opacity duration-300" style="height: 440px; background: #DFE3DC;" />
+            <img src="/Billeder/VIDEN/hjul7.png" class="karusel-billede shrink-0 object-contain cursor-pointer hover:opacity-80 transition-opacity duration-300" style="height: 440px; background: #DFE3DC;" />
+            <img src="/Billeder/VIDEN/hjul8.png" class="karusel-billede shrink-0 object-contain cursor-pointer hover:opacity-80 transition-opacity duration-300" style="height: 440px; background: #DFE3DC;" />
+            <img src="/Billeder/VIDEN/hjul9.png" class="karusel-billede shrink-0 object-contain cursor-pointer hover:opacity-80 transition-opacity duration-300" style="height: 440px; background: #DFE3DC;" />
           </div>
           <button id="aboutPrev" class="absolute left-4 top-1/2 -translate-y-1/2 text-black px-4 py-3 transition-all duration-300 hover:scale-140 text-xl font-bold z-10">◀</button>
           <button id="aboutNext" class="absolute right-4 top-1/2 -translate-y-1/2 text-black px-4 py-3 transition-all duration-300 hover:scale-140 text-xl font-bold z-10">▶</button>
@@ -111,54 +112,55 @@ import '../styles/global.css';
         </div>
       </div>
 
-      <!-- SEKTION 3: Hjemmesiden — video + tekst side om side -->
+      <!-- SEKTION 3: Gameplay — video + tekst side om side -->
       <div class="fade-in mb-16 flex flex-col lg:flex-row gap-8 items-start">
 
-     <!-- Video -->
-<div class="lg:w-200 overflow-hidden">
-  <video class="klikbar-video" autoplay muted loop playsinline
-         style="width: 120%; height: 100%; object-fit: cover; margin-left: -10%; cursor: zoom-in;">
-    <source src="/Billeder/VIDEN/havetgif.mp4" type="video/mp4" />
-  </video>
-</div>
+        <!-- Video. Bredere end kolonnen (120% + negativ margin) for at fylde kanten ud -->
+        <div class="lg:w-200 overflow-hidden">
+          <video class="klikbar-video" autoplay muted loop playsinline
+                 style="width: 120%; height: 100%; object-fit: cover; margin-left: -10%; cursor: zoom-in;">
+            <source src="/Billeder/VIDEN/havetgif.mp4" type="video/mp4" />
+          </video>
+        </div>
+
         <!-- Tekst -->
         <div class="lg:w-1/2 flex flex-col gap-4">
           <h2 style="
-  color: #ffffff;
-  font-size: 1.1rem;
-  font-weight: 600;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  text-shadow: 2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 0 0 #000, -2px 0 0 #000, 0 2px 0 #000, 0 -2px 0 #000;
-">Gameplay</h2>
-<p class="text-base sm:text-lg text-gray-200 leading-relaxed">
-  The game was developed in HTML, CSS, and JavaScript. Each level contains interactive objects, animations, sound effects, and short pieces of information that appear as the player progresses through the game.
-</p>
+            color: #ffffff;
+            font-size: 1.1rem;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            text-shadow: 2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 0 0 #000, -2px 0 0 #000, 0 2px 0 #000, 0 -2px 0 #000;
+          ">Gameplay</h2>
+          <p class="text-base sm:text-lg text-gray-200 leading-relaxed">
+            The game was developed in HTML, CSS, and JavaScript. Each level contains interactive objects, animations, sound effects, and short pieces of information that appear as the player progresses through the game.
+          </p>
         </div>
 
       </div>
 
-      <!-- SEKTION 4: Visual identity guide -->
+      <!-- SEKTION 4: Visuel identitet -->
       <div class="fade-in mb-4">
         <h2 style="
-  color: #ffffff;
-  font-size: 1.1rem;
-  font-weight: 600;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  text-shadow: 2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 0 0 #000, -2px 0 0 #000, 0 2px 0 #000, 0 -2px 0 #000;
-">Visual identity</h2>
-<p class="text-base sm:text-lg text-gray-200 leading-relaxed mb-6">
-  The visual identity is based on Videnskab.dk's existing design but I expanded the visual style with new illustrations, colours, and animations while keeping the overall look recognisable.
-</p>
-
+          color: #ffffff;
+          font-size: 1.1rem;
+          font-weight: 600;
+          letter-spacing: 0.2em;
+          text-transform: uppercase;
+          text-shadow: 2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 0 0 #000, -2px 0 0 #000, 0 2px 0 #000, 0 -2px 0 #000;
+        ">Visual identity</h2>
+        <p class="text-base sm:text-lg text-gray-200 leading-relaxed mb-6">
+          The visual identity is based on Videnskab.dk's existing design but I expanded the visual style with new illustrations, colours, and animations while keeping the overall look recognisable.
+        </p>
       </div>
 
+      <!-- Visuel guide (.klikbar = kan åbnes i lightbox) -->
       <div class="overflow-hidden mb-16 fade-in">
-        <img class="klikbar" src="/Billeder/VIDEN/videnvisueltskema.png" alt="SHE CAN PLAY visual identity guide" style="width: 100%; cursor: zoom-in;" />
+        <img class="klikbar" src="/Billeder/VIDEN/videnvisueltskema.png" alt="Havet under press visual identity guide" style="width: 100%; cursor: zoom-in;" />
       </div>
 
-  <!-- Credits -->
+      <!-- Credits -->
       <div class="fade-in mb-16" style="border-left: 2px solid #ffffff; padding-left: 1.5rem;">
         <p class="text-sm text-gray-400 leading-relaxed">
           Solo project.<br />
@@ -168,7 +170,7 @@ import '../styles/global.css';
 
     </div>
 
-    <!-- LIGHTBOX -->
+    <!-- LIGHTBOX: fælles overlay til både billeder og video. Skjult som standard -->
     <div id="lightbox" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.9); z-index:1000; align-items:center; justify-content:center; cursor:zoom-out;">
       <button id="lightboxPrev" style="display:none; position:absolute; left:1.5rem; top:50%; transform:translateY(-50%); color:#000; font-size:2rem; font-weight:bold; background:none; border:none; cursor:pointer; z-index:1010; padding:1rem;">◀</button>
       <img id="lightbox-img" src="" style="max-width:90vw; max-height:90vh; object-fit:contain;" />
@@ -185,14 +187,26 @@ import '../styles/global.css';
 </Layout>
 
 <script is:inline>
-  let lightbox, lightboxImg, lightboxVideo, lightboxPrev, lightboxNext;
-  let aktivtSæt = [];
-  let lightboxIndex = 0;
-  let lightboxNavAktiv = false;
-  let lyttereSat = false;
+  /* =====================================================================
+     KARUSEL + LIGHTBOX-MOTOR
+     ---------------------------------------------------------------------
+     - .karusel-billede  : billeder i karusellen (kan bladres + åbnes i lightbox)
+     - .klikbar          : enkeltbilleder der åbnes i lightbox (uden bladring)
+     - .klikbar-video    : videoer der åbnes i lightbox
+     opsætKarusel() KLONER pile-knapperne ved hver init, så gamle listeners
+     ryger med (ingen dobbelt-binding). De globale lyttere (klik udenfor +
+     tastatur) sættes kun ÉN gang via flaget `lyttereSat`.
+     ===================================================================== */
 
-  // Henter den rigtige billedkilde uanset om elementet er et <img>,
-  // en slide-div med data-src, eller en wrapper med et billede indeni.
+  // Delte referencer til lightbox-elementerne (sættes i initSide).
+  let lightbox, lightboxImg, lightboxVideo, lightboxPrev, lightboxNext;
+  let aktivtSæt = [];           // billedsættet lightboxen aktuelt bladrer i
+  let lightboxIndex = 0;        // hvilket billede i sættet der vises
+  let lightboxNavAktiv = false; // om pile/tastatur-navigation er aktiv
+  let lyttereSat = false;       // sikrer at globale lyttere kun bindes én gang
+
+  // Finder den rigtige billedkilde uanset om elementet er et <img>,
+  // en slide med data-src, eller en wrapper med et billede indeni.
   function hentKilde(el) {
     if (el.dataset && el.dataset.src) return el.dataset.src;
     if (el.tagName === 'IMG') return el.currentSrc || el.src;
@@ -200,15 +214,7 @@ import '../styles/global.css';
     return img ? (img.currentSrc || img.src) : '';
   }
 
-  function initIntroVideo() {
-    const video = document.getElementById('intro-video');
-    if (!video) return;
-    const START = 0;
-    const END = 115;
-    video.addEventListener('loadedmetadata', () => { video.currentTime = START; video.play(); });
-    video.addEventListener('timeupdate', () => { if (video.currentTime >= END) video.currentTime = START; });
-  }
-
+  // Lukker lightboxen og nulstiller dens tilstand.
   function lukLightbox() {
     lightbox.style.display = 'none';
     lightboxVideo.pause();
@@ -219,6 +225,7 @@ import '../styles/global.css';
     lightboxNavAktiv = false;
   }
 
+  // Viser et billede fra det aktive sæt. Pile vises kun hvis sættet har >1 billede.
   function visBilledeILightbox(index) {
     lightboxIndex = (index + aktivtSæt.length) % aktivtSæt.length;
     lightboxNavAktiv = aktivtSæt.length > 1;
@@ -231,6 +238,7 @@ import '../styles/global.css';
     lightbox.style.display = 'flex';
   }
 
+  // Viser en video i lightboxen (uden bladring).
   function visVideoILightbox(video) {
     const kilde = video.currentSrc || video.querySelector('source')?.src;
     if (!kilde) return;
@@ -244,6 +252,7 @@ import '../styles/global.css';
     lightboxVideo.play();
   }
 
+  // Bygger karusellen: sætter bredde på slides, laver prikker og binder knapper.
   function opsætKarusel(karuselId, prevId, nextId, prikId, perVisning = 1) {
     const karusel = document.getElementById(karuselId);
     if (!karusel) return;
@@ -257,6 +266,7 @@ import '../styles/global.css';
 
     const antalTrin = Math.max(1, antal - perVisning + 1);
 
+    // Flytter karusellen til et bestemt trin og opdaterer prikkerne.
     function gåTil(index) {
       aktuel = (index + antalTrin) % antalTrin;
       karusel.style.transform = `translateX(-${aktuel * (100 / perVisning)}%)`;
@@ -265,6 +275,7 @@ import '../styles/global.css';
       });
     }
 
+    // Én navigations-prik pr. trin.
     for (let i = 0; i < antalTrin; i++) {
       const prik = document.createElement('div');
       prik.style.cssText = `width:8px; height:8px; border-radius:50%; cursor:pointer; transition:background 0.3s; background:${i === 0 ? '#ffffff' : 'rgba(255,255,255,0.4)'}`;
@@ -272,7 +283,7 @@ import '../styles/global.css';
       prikContainer.appendChild(prik);
     }
 
-    // Klon knapperne for at fjerne gamle listeners (undgår dobbelt-binding)
+    // Klon knapperne for at fjerne gamle listeners (undgår dobbelt-binding).
     const prevBtn = document.getElementById(prevId);
     const nextBtn = document.getElementById(nextId);
     const prevNy = prevBtn.cloneNode(true);
@@ -282,6 +293,7 @@ import '../styles/global.css';
     prevNy.addEventListener('click', () => gåTil(aktuel - 1));
     nextNy.addEventListener('click', () => gåTil(aktuel + 1));
 
+    // Klik på et karusel-billede åbner det i lightboxen med bladring.
     slides.forEach((slide, i) => {
       slide.addEventListener('click', () => {
         aktivtSæt = slides;
@@ -290,6 +302,7 @@ import '../styles/global.css';
     });
   }
 
+  // Initialiserer siden. Kaldes ved hver page-load.
   function initSide() {
     lightbox = document.getElementById('lightbox');
     lightboxImg = document.getElementById('lightbox-img');
@@ -298,19 +311,19 @@ import '../styles/global.css';
     lightboxNext = document.getElementById('lightboxNext');
     if (!lightbox) return;
 
-    initIntroVideo();
     opsætKarusel('karusel', 'aboutPrev', 'aboutNext', 'prikker');
 
-    // Enkeltbilleder (stilbilleder, brainstorm, visuel guide osv.)
+    // Enkeltbilleder (stilbillede, visuel guide) → lightbox uden bladring.
     document.querySelectorAll('.klikbar').forEach(el => {
       el.addEventListener('click', () => { aktivtSæt = [el]; visBilledeILightbox(0); });
     });
 
-    // Videoer
+    // Videoer → lightbox.
     document.querySelectorAll('.klikbar-video').forEach(video => {
       video.addEventListener('click', () => visVideoILightbox(video));
     });
 
+    // Globale lyttere bindes kun én gang (document/lightbox overlever navigation).
     if (!lyttereSat) {
       lyttereSat = true;
       lightboxPrev.addEventListener('click', (e) => { e.stopPropagation(); visBilledeILightbox(lightboxIndex - 1); });
@@ -327,6 +340,8 @@ import '../styles/global.css';
     }
   }
 
+  // page-load fyrer ved første load og efter hver klient-navigation;
+  // DOMContentLoaded er fallback ved allerførste indlæsning.
   document.addEventListener('astro:page-load', initSide);
   document.addEventListener('DOMContentLoaded', initSide);
 </script>
