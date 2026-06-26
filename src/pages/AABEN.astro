@@ -37,11 +37,11 @@ import '../styles/global.css';
     </div>
 
     <!-- VIDEO -->
-    <div class="proj-gallery-full overflow-hidden border border-[#272425] mb-8 fade-in">
-      <video autoplay muted loop playsinline style="width: 100%; height: 100%; object-fit: cover; transform: scale(1.0) translateX(7%);">
-        <source src="/Billeder/AABEN/AABEN2.mp4" type="video/mp4" />
-      </video>
-    </div>
+  <div class="proj-gallery-full overflow-hidden mb-8 fade-in" style="background: #464649;">
+  <video autoplay muted loop playsinline style="width: 100%; height: 100%; object-fit: cover; transform: scale(1.0) translateX(7%);">
+    <source src="/Billeder/AABEN/AABEN2.mp4" type="video/mp4" />
+  </video>
+</div>
  
     <!-- ===== PROJEKT INDHOLD ===== -->
     <div id="projekt">
@@ -49,8 +49,8 @@ import '../styles/global.css';
       <!-- SEKTION 1: Intro -->
       <div class="fade-in mb-16">
         <p class="text-base sm:text-xl text-gray-200 leading-relaxed">
-          As part of a branding and identity project, we collaborated with She Can Play to develop a new visual identity for their brand — using asemic writing as a conceptual framework, brought to life through a sound-driven generator.
-        </p>
+  I made a label generator developed as part of a branding and identity project for the Danish craft beer brand ÅBEN. The generator creates unique beer labels based on a set of input values, allowing the visual expression to reflect the characteristics of each beer.
+</p>
       </div>
 
       <!-- SEKTION 2: Generatoren — tekst + karusel side om side -->
@@ -65,22 +65,50 @@ import '../styles/global.css';
   letter-spacing: 0.2em;
   text-transform: uppercase;
   text-shadow: 2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 0 0 #000, -2px 0 0 #000, 0 2px 0 #000, 0 -2px 0 #000;
-">Sound-driven generator</h2>
-          <p class="text-base sm:text-lg text-gray-200 leading-relaxed">
-            The generator listens to audio in real time and converts each tone into asemic writing — creating a dynamic visual output driven by sound.
-          </p>
-          <p class="text-base sm:text-lg text-gray-200 leading-relaxed">
-            Color and style are adjustable from rough to soft, and the asemic script can be swapped for other SVG shapes.
-          </p>
-          <p class="text-base sm:text-lg text-gray-200 leading-relaxed">
-            The system works live as a concert backdrop or can process a sound file to generate a still image, such as an album cover.
-          </p>
+">Label generator</h2>
+        <p class="text-base sm:text-lg text-gray-200 leading-relaxed">
+  The generator translates beer characteristics into visual outcomes through a system of generative patterns and colour combinations.
+</p>
+
+<p class="text-base sm:text-lg text-gray-200 leading-relaxed">
+  By adjusting values such as alcohol percentage, bitterness, colour, and beer style, each label develops its own visual identity while remaining part of the overall ÅBEN brand.
+</p>
+
+<p class="text-base sm:text-lg text-gray-200 leading-relaxed">
+  The result is a flexible design system where every label is unique, yet clearly connected to the same visual language.
+</p>
         </div>
 
-        <!-- Stilbillede -->
-        <div class="lg:w-1/2">
-          <img id="still-billede" src="/Billeder/SHECANPLAY/HJUL2.png" class="cursor-pointer hover:opacity-80 transition-opacity duration-300" style="width: 100%; height: 340px; object-fit: cover;" />
-        </div>
+       <!-- Stilbillede -->
+     <div class="lg:w-1/2 w-full">
+  <div class="relative overflow-hidden">
+    <div id="karusel-still" class="flex transition-transform duration-500 ease-in-out">
+       <div class="karusel-billede flex-shrink-0 relative overflow-hidden cursor-pointer" style="height: 340px; width: 100%;" data-src="/Billeder/AABEN/all.jpeg">
+        <img src="/Billeder/AABEN/all.jpeg" aria-hidden="true" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; filter:blur(20px) brightness(0.7); transform:scale(1.1);" />
+        <img src="/Billeder/AABEN/all.jpeg" class="karusel-forgrund hover:opacity-80 transition-opacity duration-300" style="position:relative; width:100%; height:100%; object-fit:contain;" />
+      </div>
+      <div class="karusel-billede flex-shrink-0 relative overflow-hidden cursor-pointer" style="height: 340px; width: 100%;" data-src="/Billeder/AABEN/nødt.jpeg">
+        <img src="/Billeder/AABEN/nødt.jpeg" aria-hidden="true" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; filter:blur(20px) brightness(0.7); transform:scale(1.1);" />
+        <img src="/Billeder/AABEN/nødt.jpeg" class="karusel-forgrund hover:opacity-80 transition-opacity duration-300" style="position:relative; width:100%; height:100%; object-fit:contain;" />
+      </div>
+      <div class="karusel-billede flex-shrink-0 relative overflow-hidden cursor-pointer" style="height: 340px; width: 100%;" data-src="/Billeder/AABEN/AABENSTART.jpeg">
+        <img src="/Billeder/AABEN/AABENSTART.jpeg" aria-hidden="true" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; filter:blur(20px) brightness(0.7); transform:scale(1.1);" />
+        <img src="/Billeder/AABEN/AABENSTART.jpeg" class="karusel-forgrund hover:opacity-80 transition-opacity duration-300" style="position:relative; width:100%; height:100%; object-fit:contain;" />
+      </div>
+      <div class="karusel-billede flex-shrink-0 relative overflow-hidden cursor-pointer" style="height: 340px; width: 100%;" data-src="/Billeder/AABEN/lime.jpeg">
+        <img src="/Billeder/AABEN/lime.jpeg" aria-hidden="true" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; filter:blur(20px) brightness(0.7); transform:scale(1.1);" />
+        <img src="/Billeder/AABEN/lime.jpeg" class="karusel-forgrund hover:opacity-80 transition-opacity duration-300" style="position:relative; width:100%; height:100%; object-fit:contain;" />
+      </div>
+      <div class="karusel-billede flex-shrink-0 relative overflow-hidden cursor-pointer" style="height: 340px; width: 100%;" data-src="/Billeder/AABEN/blomme.jpeg">
+        <img src="/Billeder/AABEN/blomme.jpeg" aria-hidden="true" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; filter:blur(20px) brightness(0.7); transform:scale(1.1);" />
+        <img src="/Billeder/AABEN/blomme.jpeg" class="karusel-forgrund hover:opacity-80 transition-opacity duration-300" style="position:relative; width:100%; height:100%; object-fit:contain;" />
+      </div>
+    </div>
+    <button id="stillPrev" class="absolute left-4 top-1/2 -translate-y-1/2 text-white px-4 py-3 transition-all duration-300 hover:scale-140 text-xl font-bold z-10">◀</button>
+    <button id="stillNext" class="absolute right-4 top-1/2 -translate-y-1/2 text-white px-4 py-3 transition-all duration-300 hover:scale-140 text-xl font-bold z-10">▶</button>
+    <div id="prikker-still" class="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2"></div>
+  </div>
+</div>
 
       </div>
 
@@ -88,25 +116,27 @@ import '../styles/global.css';
       <div class="fade-in mb-16">
         <div class="relative overflow-hidden">
           <div id="karusel" class="flex transition-transform duration-500 ease-in-out">
-   <img src="/Billeder/SHECANPLAY/HJUL1.png" class="karusel-billede flex-shrink-0 object-contain cursor-pointer hover:opacity-80 transition-opacity duration-300" style="height: 440px; background: #EEE7DB; transform: scale(1.2);" />
-            <img src="/Billeder/SHECANPLAY/HJUL3.png" class="karusel-billede flex-shrink-0 object-contain cursor-pointer hover:opacity-80 transition-opacity duration-300" style="height: 440px; background: #E7E7D9;" />
-            <img src="/Billeder/SHECANPLAY/HJUL4.png" class="karusel-billede flex-shrink-0 object-contain cursor-pointer hover:opacity-80 transition-opacity duration-300" style="height: 440px; background: #E5E5D6;" />
-            <img src="/Billeder/SHECANPLAY/HJUL5.png" class="karusel-billede flex-shrink-0 object-contain cursor-pointer hover:opacity-80 transition-opacity duration-300" style="height: 440px; background: #E5E5D6;" />
-          </div>
+   <img src="/Billeder/AABEN/label1.png" class="karusel-billede flex-shrink-0 object-contain cursor-pointer hover:opacity-80 transition-opacity duration-300" style="height: 440px; background: #EEE7DB;;" />
+    <img src="/Billeder/AABEN/label2.png" class="karusel-billede flex-shrink-0 object-contain cursor-pointer hover:opacity-80 transition-opacity duration-300" style="height: 440px; background: #EEE7DB;" />
+           <img src="/Billeder/AABEN/label3.png" class="karusel-billede flex-shrink-0 object-contain cursor-pointer hover:opacity-80 transition-opacity duration-300" style="height: 440px; background: #EEE7DB;" />
+           <img src="/Billeder/AABEN/label4.png" class="karusel-billede flex-shrink-0 object-contain cursor-pointer hover:opacity-80 transition-opacity duration-300" style="height: 440px; background: #EEE7DB;" />
+              <img src="/Billeder/AABEN/label5.png" class="karusel-billede flex-shrink-0 object-contain cursor-pointer hover:opacity-80 transition-opacity duration-300" style="height: 440px; background: #EEE7DB;" />
+                 <img src="/Billeder/AABEN/label6.png" class="karusel-billede flex-shrink-0 object-contain cursor-pointer hover:opacity-80 transition-opacity duration-300" style="height: 440px; background: #EEE7DB;" />      
+  </div>
           <button id="aboutPrev" class="absolute left-4 top-1/2 -translate-y-1/2 text-black px-4 py-3 transition-all duration-300 hover:scale-140 text-xl font-bold z-10">◀</button>
           <button id="aboutNext" class="absolute right-4 top-1/2 -translate-y-1/2 text-black px-4 py-3 transition-all duration-300 hover:scale-140 text-xl font-bold z-10">▶</button>
           <div id="prikker" class="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2"></div>
         </div>
       </div>
 
-      <!-- SEKTION 3: Hjemmesiden — video + tekst side om side -->
+  <!-- SEKTION 3: Her vises en video af chaikin curves og hvordan de virker — video + tekst side om side -->
       <div class="fade-in mb-16 flex flex-col lg:flex-row gap-8 items-start">
 
         <!-- Video -->
-        <div class="lg:w-200 overflow-hidden border border-[#272425]">
-          <video class="klikbar-video" autoplay muted loop playsinline style="width: 100%; height: 100%; object-fit: cover; cursor: zoom-in;">
-            <source src="/Billeder/SHECANPLAY/SHECANPLAYwebsite.mp4" type="video/mp4" />
-          </video>
+        <div class="lg:w-200 overflow-hidden">
+        <video class="klikbar-video" autoplay muted loop playsinline style="width: 100%; height: 100%; object-fit: cover; cursor: zoom-in;">
+  <source src="/Billeder/AABEN/ChaikinCurves.mp4" type="video/mp4" />
+</video>
         </div>
 
         <!-- Tekst -->
@@ -118,10 +148,13 @@ import '../styles/global.css';
   letter-spacing: 0.2em;
   text-transform: uppercase;
   text-shadow: 2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 0 0 #000, -2px 0 0 #000, 0 2px 0 #000, 0 -2px 0 #000;
-">The website</h2>
-          <p class="text-base sm:text-lg text-gray-200 leading-relaxed">
-            Alongside the generator, we developed a full website for She Can Play — covering structure, navigation principles, and how the visual system works across pages.
-          </p>
+">Chaikin Curves</h2>
+        <p class="text-base sm:text-lg text-gray-200 leading-relaxed">
+  The generative patterns are built using Chaikin Curves, an algorithm that transforms angular lines into smooth organic shapes through repeated subdivision.
+</p>
+<p class="text-base sm:text-lg text-gray-200 leading-relaxed">
+  By experimenting with different curve parameters, I developed a visual system capable of producing a wide range of unique patterns while maintaining a consistent aesthetic across the label collection.
+</p>
         </div>
 
       </div>
@@ -136,20 +169,21 @@ import '../styles/global.css';
   text-transform: uppercase;
   text-shadow: 2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 0 0 #000, -2px 0 0 #000, 0 2px 0 #000, 0 -2px 0 #000;
 ">Visual identity</h2>
-        <p class="text-base sm:text-lg text-gray-200 leading-relaxed mb-6">
-          The visual identity guide below documents the complete design system developed for She Can Play — typography, color, and the visual language rooted in asemic writing.
-        </p>
+       <p class="text-base sm:text-lg text-gray-200 leading-relaxed mb-6">
+  The visual identity guide documents the design system developed for ÅBEN, including typography, colour principles, label structure, and the generative patterns that define the brand's visual expression.
+</p>
       </div>
 
-      <div class="overflow-hidden border border-[#272425] mb-16 fade-in">
-        <img src="/Billeder/SHECANPLAY/Shecanplayguide.png" alt="SHE CAN PLAY visual identity guide" style="width: 100%;" />
+      <div class="overflow-hidden mb-16 fade-in">
+        <img src="/Billeder/AABEN/Aabenvisueltskema.png" alt="Aaben visual identity guide" style="width: 100%;" />
       </div>
 
+    
       <!-- Credits -->
       <div class="fade-in mb-16" style="border-left: 2px solid #ffffff; padding-left: 1.5rem;">
         <p class="text-sm text-gray-400 leading-relaxed">
-          A collaboration between CD2 and ID2.<br />
-          Group: <span style="color:#ffffff;">@maxe_mand</span> · <span style="color:#ffffff;">@en_ferdi_and</span> · <span style="color:#ffffff;">@mie_venoe</span> · <span style="color:#ffffff;">@jacob.knudsen.33</span>
+          Solo project.<br />
+          Role: <span style="color:#ffffff;">Concept development · Asset generator design</span>
         </p>
       </div>
 
@@ -170,125 +204,92 @@ import '../styles/global.css';
   </div>
 
 </Layout>
-
 <script is:inline>
-  function initIntroVideo() {
-    const video = document.getElementById('intro-video');
-    if (!video) return;
+  let lightbox, lightboxImg, lightboxVideo, lightboxPrev, lightboxNext;
+  let aktivtSæt = [];
+  let lightboxIndex = 0;
+  let lightboxNavAktiv = false;
+  let lyttereSat = false;
 
-    const START = 0;
-    const END = 115;
-
-    video.addEventListener('loadedmetadata', () => {
-      video.currentTime = START;
-      video.play();
-    });
-
-    video.addEventListener('timeupdate', () => {
-      if (video.currentTime >= END) {
-        video.currentTime = START;
-      }
-    });
+  function lukLightbox() {
+    lightbox.style.display = 'none';
+    lightboxVideo.pause();
+    lightboxVideo.style.display = 'none';
+    lightboxImg.style.display = 'none';
+    lightboxPrev.style.display = 'none';
+    lightboxNext.style.display = 'none';
+    lightboxNavAktiv = false;
   }
 
-  function initSheCanPlay() {
-    initIntroVideo();
+  function visBilledeILightbox(index) {
+    lightboxIndex = (index + aktivtSæt.length) % aktivtSæt.length;
+    lightboxNavAktiv = aktivtSæt.length > 1;
+    lightboxVideo.pause();
+    lightboxVideo.style.display = 'none';
+    lightboxImg.src = aktivtSæt[lightboxIndex].dataset.src || aktivtSæt[lightboxIndex].src;
+    lightboxImg.style.display = 'block';
+    lightboxPrev.style.display = lightboxNavAktiv ? 'block' : 'none';
+    lightboxNext.style.display = lightboxNavAktiv ? 'block' : 'none';
+    lightbox.style.display = 'flex';
+  }
 
-    const visPerSlide = 1;
-    let aktuel = 0;
-    const billeder = document.querySelectorAll('.karusel-billede');
-    const antalSlides = billeder.length;
-    const prikContainer = document.getElementById('prikker');
-    const karusel = document.getElementById('karusel');
-
+  function opsætKarusel(karuselId, prevId, nextId, prikId, perVisning = 1) {
+    const karusel = document.getElementById(karuselId);
     if (!karusel) return;
+    const billeder = karusel.querySelectorAll('.karusel-billede');
+    const antal = billeder.length;
+    const prikContainer = document.getElementById(prikId);
+    let aktuel = 0;
 
-    billeder.forEach(img => {
-      img.style.width = '100%';
-    });
-
+    billeder.forEach(img => { img.style.width = `${100 / perVisning}%`; });
     prikContainer.innerHTML = '';
 
+    const antalTrin = Math.max(1, antal - perVisning + 1);
+
     function gåTil(index) {
-      aktuel = (index + antalSlides) % antalSlides;
-      karusel.style.transform = `translateX(-${aktuel * 100}%)`;
-      document.querySelectorAll('#prikker div').forEach((p, i) => {
+      aktuel = (index + antalTrin) % antalTrin;
+      karusel.style.transform = `translateX(-${aktuel * (100 / perVisning)}%)`;
+      prikContainer.querySelectorAll('div').forEach((p, i) => {
         p.style.background = i === aktuel ? '#ffffff' : 'rgba(255,255,255,0.4)';
       });
     }
 
-    for (let i = 0; i < antalSlides; i++) {
+    for (let i = 0; i < antalTrin; i++) {
       const prik = document.createElement('div');
       prik.style.cssText = `width:8px; height:8px; border-radius:50%; cursor:pointer; transition:background 0.3s; background:${i === 0 ? '#ffffff' : 'rgba(255,255,255,0.4)'}`;
       prik.addEventListener('click', () => gåTil(i));
       prikContainer.appendChild(prik);
     }
 
-    document.getElementById('aboutPrev').addEventListener('click', () => gåTil(aktuel - 1));
-    document.getElementById('aboutNext').addEventListener('click', () => gåTil(aktuel + 1));
+    // Klon knapperne for at fjerne gamle listeners (undgår dobbelt-binding)
+    const prevBtn = document.getElementById(prevId);
+    const nextBtn = document.getElementById(nextId);
+    const prevNy = prevBtn.cloneNode(true);
+    const nextNy = nextBtn.cloneNode(true);
+    prevBtn.replaceWith(prevNy);
+    nextBtn.replaceWith(nextNy);
+    prevNy.addEventListener('click', () => gåTil(aktuel - 1));
+    nextNy.addEventListener('click', () => gåTil(aktuel + 1));
 
-    const lightbox = document.getElementById('lightbox');
-    const lightboxImg = document.getElementById('lightbox-img');
-    const lightboxVideo = document.getElementById('lightbox-video');
-    const lightboxPrev = document.getElementById('lightboxPrev');
-    const lightboxNext = document.getElementById('lightboxNext');
-
-    let lightboxIndex = 0;
-    let lightboxNavAktiv = false;
-
-    function lukLightbox() {
-      lightbox.style.display = 'none';
-      lightboxVideo.pause();
-      lightboxVideo.style.display = 'none';
-      lightboxImg.style.display = 'none';
-      lightboxPrev.style.display = 'none';
-      lightboxNext.style.display = 'none';
-      lightboxNavAktiv = false;
-    }
-
-    function visBilledeILightbox(index) {
-      lightboxIndex = (index + billeder.length) % billeder.length;
-      lightboxNavAktiv = true;
-      lightboxVideo.pause();
-      lightboxVideo.style.display = 'none';
-      lightboxImg.src = billeder[lightboxIndex].src;
-      lightboxImg.style.display = 'block';
-      lightboxPrev.style.display = 'block';
-      lightboxNext.style.display = 'block';
-      lightbox.style.display = 'flex';
-    }
-
-    // Karusel-billeder → lightbox (med navigation)
-    billeder.forEach((img, i) => {
-      img.addEventListener('click', () => visBilledeILightbox(i));
-    });
-
-    // Stilbillede → lightbox (uden navigation)
-    const stillBillede = document.getElementById('still-billede');
-    if (stillBillede) {
-      stillBillede.addEventListener('click', () => {
-        lightboxNavAktiv = false;
-        lightboxVideo.pause();
-        lightboxVideo.style.display = 'none';
-        lightboxPrev.style.display = 'none';
-        lightboxNext.style.display = 'none';
-        lightboxImg.src = stillBillede.src;
-        lightboxImg.style.display = 'block';
-        lightbox.style.display = 'flex';
+    billeder.forEach((slide, i) => {
+      slide.addEventListener('click', () => {
+        aktivtSæt = Array.from(billeder);
+        visBilledeILightbox(i);
       });
-    }
-
-    lightboxPrev.addEventListener('click', (e) => {
-      e.stopPropagation();
-      visBilledeILightbox(lightboxIndex - 1);
     });
+  }
 
-    lightboxNext.addEventListener('click', (e) => {
-      e.stopPropagation();
-      visBilledeILightbox(lightboxIndex + 1);
-    });
+  function initSheCanPlay() {
+    lightbox = document.getElementById('lightbox');
+    lightboxImg = document.getElementById('lightbox-img');
+    lightboxVideo = document.getElementById('lightbox-video');
+    lightboxPrev = document.getElementById('lightboxPrev');
+    lightboxNext = document.getElementById('lightboxNext');
+    if (!lightbox) return;
 
-    // Videoer → lightbox
+    opsætKarusel('karusel', 'aboutPrev', 'aboutNext', 'prikker', 2);
+    opsætKarusel('karusel-still', 'stillPrev', 'stillNext', 'prikker-still');
+
     document.querySelectorAll('.klikbar-video').forEach(video => {
       video.addEventListener('click', () => {
         const kilde = video.currentSrc || video.querySelector('source')?.src;
@@ -304,16 +305,22 @@ import '../styles/global.css';
       });
     });
 
-    lightbox.addEventListener('click', lukLightbox);
+    if (!lyttereSat) {
+      lyttereSat = true;
 
-    document.addEventListener('keydown', (e) => {
-      if (lightbox.style.display !== 'flex') return;
-      if (e.key === 'Escape') lukLightbox();
-      if (lightboxNavAktiv) {
-        if (e.key === 'ArrowLeft') visBilledeILightbox(lightboxIndex - 1);
-        if (e.key === 'ArrowRight') visBilledeILightbox(lightboxIndex + 1);
-      }
-    });
+      lightboxPrev.addEventListener('click', (e) => { e.stopPropagation(); visBilledeILightbox(lightboxIndex - 1); });
+      lightboxNext.addEventListener('click', (e) => { e.stopPropagation(); visBilledeILightbox(lightboxIndex + 1); });
+      lightbox.addEventListener('click', lukLightbox);
+
+      document.addEventListener('keydown', (e) => {
+        if (lightbox.style.display !== 'flex') return;
+        if (e.key === 'Escape') lukLightbox();
+        if (lightboxNavAktiv) {
+          if (e.key === 'ArrowLeft') visBilledeILightbox(lightboxIndex - 1);
+          if (e.key === 'ArrowRight') visBilledeILightbox(lightboxIndex + 1);
+        }
+      });
+    }
   }
 
   document.addEventListener('astro:page-load', initSheCanPlay);

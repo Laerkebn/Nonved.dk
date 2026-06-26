@@ -17,14 +17,14 @@ import '../styles/global.css';
       <!-- billede + tekst: side om side på store skærme, stablet på små.
            samme gap på begge akser = altid samme luft imellem dem.
            items-start = teksten flugter med toppen af billedet -->
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
+     <div class="grid grid-cols-1 lg:grid-cols-[auto_1fr] gap-10 items-start">
 
         <!-- billede (øverst på små skærme, venstre på store) -->
         <div>
-      <img
+  <img
   src="/Billeder/pb.webp"
   alt="Lærke Buch Nonved"
-  class="block w-full aspect-[4/3] object-cover object-[center_25%] lg:aspect-auto lg:h-auto"
+  class="block w-full aspect-[4/3] object-cover object-[center_25%] lg:aspect-auto lg:h-auto lg:max-w-[35rem] lg:ml-auto"
 />
         </div>
 
@@ -32,10 +32,10 @@ import '../styles/global.css';
         <div>
           <h2 class="text-3xl font-bold mb-4">Who am I?</h2>
           <div class="space-y-3 text-base leading-relaxed">
-            <p>I'm Lærke Buch Nonved — a Danish student studying Visual Communication with a specialisation in Coded Design at DMJX, working at the intersection of design, code, and visual storytelling.</p>
-            <p>I'm happiest when projects feel alive and human — something you can actually sense. Technically, I work with a range of tools, including JavaScript, P5.js, Three.js, Unity, and Astro, but what really drives me is the experimental approach: combining creativity with code and seeing what emerges.</p>
-            <p>Alongside my studies, I work in a nursery, which has given me a strong sense of the human side of things — collaboration, responsibility, and meeting people where they are. I also have experience in festival coordination and voluntary project management, including helping organise the Mediepuls festival at DMJX.</p>
-            <p>Whether it's digital media, illustration, or physical experiences, I'm always trying to make something that means something.</p>
+            <p>I'm Lærke Buch Nonved, a Danish Visual Communication student specialising in Coded Design at DMJX. My work combines design, technology, and visual storytelling, with a focus on using code to create engaging visual experiences.</p>
+            <p>I work with tools such as JavaScript, P5.js, Three.js, Unity, and Astro, but i also explore other mediums and techniques.</p>
+            <p>Alongside my studies, I have experience in festival coordination, childcare, and volunteer project management, including helping organise the Mediepuls festival and serving on the Student Council (DSR) at DMJX.</p>
+            <p>Whether through digital media, illustration, or physical experiences, I aim to create work that connects with people.</p>
           </div>
         </div>
 
