@@ -3,7 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import '../styles/global.css';
 ---
 
-<Layout title="FEZ | My Portfolio" page="fez">
+<Layout title="METRO | My Portfolio" page="metro">
 
   <div class="page-wrapper">
 
@@ -13,45 +13,48 @@ import '../styles/global.css';
     </div>
 
     <!-- TITEL -->
- <div style="
+    <div style="
       font-size: clamp(1rem, 5vw, 5rem); 
       font-weight: 900;
       line-height: 0.85;
       letter-spacing: -0.05em;
       color: transparent !important;
       -webkit-text-stroke: 2px #ffffff;
-     
       pointer-events: none;
       word-break: break-word;
       text-align: center;
       margin-top: 2rem;
-    ">FEZ - City Branding</div>
+    ">METROWARS</div>
 
     <!-- Tags -->
-    <div class="fade-in" style="display: flex; gap: 0.5rem; flex-wrap: wrap; justify-content: center; padding: 1rem 0 2rem; ">
-      <span class="proj-tag whitespace-nowrap">Branding & identity</span>
-      <span class="proj-tag whitespace-nowrap">Blender</span>
-      <span class="proj-tag whitespace-nowrap">JavaScript</span>
-      <span class="proj-tag whitespace-nowrap">CSS</span>
-      <span class="proj-tag whitespace-nowrap">HTML</span>
+    <div class="fade-in" style="display: flex; gap: 0.5rem; flex-wrap: wrap; justify-content: center; padding: 1rem 0 2rem;">
+      <span class="proj-tag whitespace-nowrap">Game Design</span>
+      <span class="proj-tag whitespace-nowrap">Unity</span>
+      <span class="proj-tag whitespace-nowrap">C#</span>
+      <span class="proj-tag whitespace-nowrap">Figma</span>
+   
     </div>
 
     <!-- VIDEO -->
-    <div class="proj-gallery-full overflow-hidden border border-[#272425] mb-8 fade-in">
-      <video class="klikbar-video" autoplay muted loop playsinline style="width: 100%; height: 100%; object-fit: cover; cursor: zoom-in;">
-        <source src="/Billeder/FEZ/fez.mp4" type="video/mp4" />
+    <div class="proj-gallery-full overflow-hidden mb-8 fade-in">
+     <video id="intro-video" class="klikbar-video" autoplay muted loop playsinline style="width: 100%; height: 100%; object-fit: cover; transform: scale(1.2); cursor: zoom-in;">
+        <source src="/Billeder/METRO/METRO.mp4" type="video/mp4" />
       </video>
     </div>
 
     <!-- ===== PROJEKT INDHOLD ===== -->
     <div id="projekt">
 
-      <!-- SEKTION 1: Intro -->
-      <div class="fade-in mb-16">
-        <p class="text-base sm:text-xl text-gray-200 leading-relaxed">
-          As part of a branding and identity project, we collaborated with She Can Play to develop a new visual identity for their brand — using asemic writing as a conceptual framework, brought to life through a sound-driven generator.
-        </p>
-      </div>
+   <!-- SEKTION 1: Intro -->
+<div class="fade-in mb-16">
+  <p class="text-base sm:text-lg text-gray-200 leading-relaxed">
+    METROWARS is a multiplayer mini-game developed in Unity using C#. The game was designed as a concept for the DSB app to encourage safer travel on weekend nights through friendly competition and gamification.
+  </p>
+
+  <p class="text-base sm:text-lg text-gray-200 leading-relaxed">
+    Players can only access the game while checked into the Metro through the DSB app. Between Thursday and Sunday from 5 PM to 6 AM, users are invited to join one of two teams and compete by playing short mini-games during their journey.
+  </p>
+</div>
 
       <!-- SEKTION 2: Generatoren — tekst + karusel side om side -->
       <div class="fade-in mb-16 flex flex-col lg:flex-row gap-8 items-start">
@@ -65,21 +68,23 @@ import '../styles/global.css';
   letter-spacing: 0.2em;
   text-transform: uppercase;
   text-shadow: 2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 0 0 #000, -2px 0 0 #000, 0 2px 0 #000, 0 -2px 0 #000;
-">Sound-driven generator</h2>
-          <p class="text-base sm:text-lg text-gray-200 leading-relaxed">
-            The generator listens to audio in real time and converts each tone into asemic writing — creating a dynamic visual output driven by sound.
-          </p>
-          <p class="text-base sm:text-lg text-gray-200 leading-relaxed">
-            Color and style are adjustable from rough to soft, and the asemic script can be swapped for other SVG shapes.
-          </p>
-          <p class="text-base sm:text-lg text-gray-200 leading-relaxed">
-            The system works live as a concert backdrop or can process a sound file to generate a still image, such as an album cover.
-          </p>
+">Gameplay & progression</h2>
+         <p class="text-base sm:text-lg text-gray-200 leading-relaxed">
+  Players choose between two teams based on opposing hot takes. Every completed mini-game adds points to the team's shared score, creating a competition that lasts throughout the weekend.
+</p>
+
+<p class="text-base sm:text-lg text-gray-200 leading-relaxed">
+  The mini-games increase in difficulty through different items and obstacles. Players unlock badges and level up as they play, making it possible to compare progress with friends.
+</p>
+
+<p class="text-base sm:text-lg text-gray-200 leading-relaxed">
+  Every Sunday, both teams enter a final battle where the team with the highest combined score wins. After each game, players receive their score together with feedback reinforcing the campaign's message about safer travel.
+</p>
         </div>
 
         <!-- Stilbillede -->
         <div class="lg:w-1/2">
-          <img id="still-billede" src="/Billeder/SHECANPLAY/HJUL2.png" class="cursor-pointer hover:opacity-80 transition-opacity duration-300 klikbar" style="width: 100%; height: 340px; object-fit: cover; cursor: zoom-in;" />
+          <img id="still-billede" src="/Billeder/METRO/hold.png" class="cursor-pointer hover:opacity-80 transition-opacity duration-300 klikbar" style="width: 100%; height: 100%; object-fit: cover; cursor: zoom-in;" />
         </div>
 
       </div>
@@ -88,10 +93,10 @@ import '../styles/global.css';
       <div class="fade-in mb-16">
         <div class="relative overflow-hidden">
           <div id="karusel" class="flex transition-transform duration-500 ease-in-out">
-            <img src="/Billeder/FEZ/Frame 2.png" class="karusel-billede flex-shrink-0 object-contain cursor-pointer hover:opacity-80 transition-opacity duration-300" style="height: 440px; background: #EEE7DB; transform: scale(1.2);" />
-            <img src="/Billeder/FEZ/Frame 3.png" class="karusel-billede flex-shrink-0 object-contain cursor-pointer hover:opacity-80 transition-opacity duration-300" style="height: 440px; background: #E7E7D9;" />
-            <img src="/Billeder/FEZ/Frame 4.png" class="karusel-billede flex-shrink-0 object-contain cursor-pointer hover:opacity-80 transition-opacity duration-300" style="height: 440px; background: #E5E5D6;" />
-            <img src="/Billeder/FEZ/Frame 5.png" class="karusel-billede flex-shrink-0 object-contain cursor-pointer hover:opacity-80 transition-opacity duration-300" style="height: 440px; background: #E5E5D6;" />
+            <img src="/Billeder/METRO/Startskærm.png" class="karusel-billede flex-shrink-0 object-contain cursor-pointer hover:opacity-80 transition-opacity duration-300" style="height: 550px; background: #26254A;" />
+            <img src="/Billeder/METRO/Gardrobe_Hovedbeklædning.png" class="karusel-billede flex-shrink-0 object-contain cursor-pointer hover:opacity-80 transition-opacity duration-300" style="height: 550px; background: #26254A;" />
+            <img src="/Billeder/METRO/Vaaben.png" class="karusel-billede flex-shrink-0 object-contain cursor-pointer hover:opacity-80 transition-opacity duration-300" style="height: 550px; background: #26254A;" />
+            <img src="/Billeder/METRO/vinder.png" class="karusel-billede flex-shrink-0 object-contain cursor-pointer hover:opacity-80 transition-opacity duration-300" style="height: 550px; background: #26254A;" />
           </div>
           <button id="aboutPrev" class="absolute left-4 top-1/2 -translate-y-1/2 text-black px-4 py-3 transition-all duration-300 hover:scale-140 text-xl font-bold z-10">◀</button>
           <button id="aboutNext" class="absolute right-4 top-1/2 -translate-y-1/2 text-black px-4 py-3 transition-all duration-300 hover:scale-140 text-xl font-bold z-10">▶</button>
@@ -99,12 +104,12 @@ import '../styles/global.css';
         </div>
       </div>
 
-        <!-- SEKTION 3: Idéudvikling — billede + tekst side om side -->
+ <!-- SEKTION 3: Idéudvikling — billede + tekst side om side -->
       <div class="fade-in mb-16 flex flex-col lg:flex-row gap-8 items-start">
 
         <!-- Billede -->
         <div class="lg:w-1/2 overflow-hidden ">
-          <img id="brainstorm-billede" src="/Billeder/FEZ/CASA.png" alt="Grums brainstorm and idea development" class="cursor-pointer hover:opacity-80 transition-opacity duration-300 klikbar" style="width: 100%; height: 100%; object-fit: cover; cursor: zoom-in;" />
+          <img id="brainstorm-billede" src="/Billeder/METRO/METROSTAR2.jpeg" alt="Grums brainstorm and idea development" class="cursor-pointer hover:opacity-80 transition-opacity duration-300" style="width: 100%; height: 100%; object-fit: cover;" />
         </div>
 
         <!-- Tekst -->
@@ -116,10 +121,10 @@ import '../styles/global.css';
   letter-spacing: 0.2em;
   text-transform: uppercase;
   text-shadow: 2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 0 0 #000, -2px 0 0 #000, 0 2px 0 #000, 0 -2px 0 #000;
-">The website</h2>
-          <p class="text-base sm:text-lg text-gray-200 leading-relaxed">
-            Alongside the generator, we developed a full website for She Can Play — covering structure, navigation principles, and how the visual system works across pages.
-          </p>
+">DSB app integration</h2>
+      <p class="text-base sm:text-lg text-gray-200 leading-relaxed">
+  The game is integrated directly into the DSB app. During check-in between 11 PM and 5 AM on Thursday, Friday and Saturday, users are shown a popup inviting them to participate. Accepting the invitation leads to team selection before the game begins.
+</p>
         </div>
 
       </div>
@@ -133,23 +138,26 @@ import '../styles/global.css';
   letter-spacing: 0.2em;
   text-transform: uppercase;
   text-shadow: 2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 0 0 #000, -2px 0 0 #000, 0 2px 0 #000, 0 -2px 0 #000;
-">Visual identity</h2>
-        <p class="text-base sm:text-lg text-gray-200 leading-relaxed mb-6">
-          The visual identity guide below documents the complete design system developed for She Can Play — typography, color, and the visual language rooted in asemic writing.
-        </p>
+">Visual identity guide</h2>
+     
       </div>
 
-      <div class="overflow-hidden border border-[#272425] mb-16 fade-in">
-        <img class="klikbar" src="/Billeder/SHECANPLAY/Shecanplayguide.png" alt="SHE CAN PLAY visual identity guide" style="width: 100%; cursor: zoom-in;" />
+      <div class="overflow-hidden mb-16 fade-in">
+        <img class="klikbar" src="/Billeder/METRO/METROvisueltskema.png" alt="SHE CAN PLAY visual identity guide" style="width: 100%; cursor: zoom-in;" />
       </div>
 
-      <!-- Credits -->
-      <div class="fade-in mb-16" style="border-left: 2px solid #ffffff; padding-left: 1.5rem;">
-        <p class="text-sm text-gray-400 leading-relaxed">
-          A collaboration between CD2 and ID2.<br />
-          Group: <span style="color:#ffffff;">@maxe_mand</span> · <span style="color:#ffffff;">@en_ferdi_and</span> · <span style="color:#ffffff;">@mie_venoe</span> · <span style="color:#ffffff;">@jacob.knudsen.33</span>
-        </p>
-      </div>
+   <!-- Credits -->
+<div class="fade-in mb-16" style="border-left: 2px solid #ffffff; padding-left: 1.5rem;">
+  <p class="text-sm text-gray-400 leading-relaxed">
+    A collaboration between CD2 and ID2.<br />
+    Group:
+    <a href="https://www.instagram.com/elsebethbot/" target="_blank" rel="noopener noreferrer" style="color:#ffffff;">@elsebethbot</a>
+    ·
+    <a href="https://www.instagram.com/jacob.knudsen.33" target="_blank" rel="noopener noreferrer" style="color:#ffffff;">@jacob.knudsen.33</a>
+    ·
+    <a href="https://www.instagram.com/annawitt__/" target="_blank" rel="noopener noreferrer" style="color:#ffffff;">@annawitt__</a>
+  </p>
+</div>
 
     </div>
 
