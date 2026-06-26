@@ -166,6 +166,16 @@ import '../styles/global.css';
 </Layout>
 
 <script is:inline>
+  /* =====================================================================
+     KARUSEL + LIGHTBOX-MOTOR
+     ---------------------------------------------------------------------
+     Genbruges på alle projektsider. Vigtige detaljer:
+       - opsætKarusel() KLONER pile-knapperne, så gamle event-listeners
+         fjernes ved hver page-load (ingen dobbelt-binding / spring).
+       - De globale lyttere (klik udenfor + tastatur) sættes kun ÉN gang
+         via flaget `lyttereSat`, da document/lightbox overlever navigation.
+       - klikbare enkeltbilleder markeres med .klikbar, videoer med .klikbar-video.
+     ===================================================================== */
   let lightbox, lightboxImg, lightboxVideo, lightboxPrev, lightboxNext;
   let aktivtSæt = [];
   let lightboxIndex = 0;

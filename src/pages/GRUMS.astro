@@ -38,7 +38,7 @@ import '../styles/global.css';
 
     <!-- VIDEO -->
     <div class="proj-gallery-full overflow-hidden mb-8 fade-in">
-      <video autoplay muted loop playsinline style="width: 100%; height: 100%; object-fit: cover;">
+      <video class="klikbar-video" autoplay muted loop playsinline style="width: 100%; height: 100%; object-fit: cover; cursor: zoom-in;">
         <source src="/Billeder/GRUMS/GRUMS.mp4" type="video/mp4" />
       </video>
     </div>
@@ -79,7 +79,7 @@ import '../styles/global.css';
 
         <!-- Stilbillede -->
         <div class="lg:w-1/2">
-          <img id="still-billede" src="/Billeder/GRUMS/GRUMSSTART.png" class="cursor-pointer hover:opacity-80 transition-opacity duration-300" style="width: 100%; height: 340px; object-fit: cover;" />
+          <img id="still-billede" src="/Billeder/GRUMS/GRUMSSTART.png" class="klikbar cursor-pointer hover:opacity-80 transition-opacity duration-300" style="width: 100%; height: 340px; object-fit: cover; cursor: zoom-in;" />
         </div>
 
       </div>
@@ -117,7 +117,7 @@ import '../styles/global.css';
 
         <!-- Billede -->
         <div class="lg:w-1/2 overflow-hidden ">
-          <img id="brainstorm-billede" src="/Billeder/GRUMS/Brainstorm.png" alt="Grums brainstorm and idea development" class="cursor-pointer hover:opacity-80 transition-opacity duration-300" style="width: 100%; height: 100%; object-fit: cover;" />
+          <img id="brainstorm-billede" src="/Billeder/GRUMS/Brainstorm.png" alt="Grums brainstorm and idea development" class="klikbar cursor-pointer hover:opacity-80 transition-opacity duration-300" style="width: 100%; height: 100%; object-fit: cover; cursor: zoom-in;" />
         </div>
 
         <!-- Tekst -->
@@ -148,12 +148,12 @@ import '../styles/global.css';
   text-shadow: 2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 0 0 #000, -2px 0 0 #000, 0 2px 0 #000, 0 -2px 0 #000;
 ">Visual identity</h2>
         <p class="text-base sm:text-lg text-gray-200 leading-relaxed mb-6">
-          The visual identity guide below documents the complete design system developed for Grumsincluding typography, colour, and the generative patterns used across the brand.
+          The visual identity guide below documents the complete design system developed for Grums, including typography, colour, and the generative patterns used across the brand.
         </p>
       </div>
 
       <div class="overflow-hidden mb-16 fade-in">
-        <img src="/Billeder/GRUMS/Grumsvisueltskema.png" alt="GRUMS visual identity guide" style="width: 100%;" />
+        <img class="klikbar" src="/Billeder/GRUMS/Grumsvisueltskema.png" alt="GRUMS visual identity guide" style="width: 100%; cursor: zoom-in;" />
       </div>
 
       <!-- Credits -->
@@ -183,131 +183,160 @@ import '../styles/global.css';
 </Layout>
 
 <script is:inline>
-  function initGrums() {
-    const visPerSlide = 1;
-    let aktuel = 0;
-    const billeder = document.querySelectorAll('.karusel-billede');
-    const antalSlides = billeder.length;
-    const prikContainer = document.getElementById('prikker');
-    const karusel = document.getElementById('karusel');
+  /* =====================================================================
+     KARUSEL + LIGHTBOX-MOTOR (samme mønster som de øvrige projektsider)
+     ---------------------------------------------------------------------
+     Tidligere brugte GRUMS en ældre version uden beskyttelse mod dobbelte
+     event-listeners. Det betød at karusellen sprang to billeder pr. klik
+     ved første load, og at tastatur-lytteren hobede sig op ved navigation.
+     Denne version er rettet ind efter de andre sider:
+       - knapperne klones, så gamle listeners fjernes (ingen dobbelt-binding)
+       - de globale lyttere (klik udenfor + tastatur) sættes kun ÉN gang
+         via flaget `lyttereSat`.
+     ===================================================================== */
 
+  // Delte referencer til lightbox-elementerne (sættes i initSide).
+  let lightbox, lightboxImg, lightboxVideo, lightboxPrev, lightboxNext;
+  let aktivtSæt = [];        // det sæt billeder lightboxen aktuelt bladrer i
+  let lightboxIndex = 0;     // hvilket billede i sættet der vises
+  let lightboxNavAktiv = false; // om pile/tastatur-navigation er aktiv
+  let lyttereSat = false;    // sikrer at globale lyttere kun bindes én gang
+
+  // Finder den rigtige billedkilde uanset om elementet er et <img> eller
+  // en wrapper med et billede indeni.
+  function hentKilde(el) {
+    if (el.dataset && el.dataset.src) return el.dataset.src;
+    if (el.tagName === 'IMG') return el.currentSrc || el.src;
+    const img = el.querySelector('.karusel-billede, img:not([aria-hidden])');
+    return img ? (img.currentSrc || img.src) : '';
+  }
+
+  // Lukker lightboxen og nulstiller dens tilstand.
+  function lukLightbox() {
+    lightbox.style.display = 'none';
+    lightboxVideo.pause();
+    lightboxVideo.style.display = 'none';
+    lightboxImg.style.display = 'none';
+    lightboxPrev.style.display = 'none';
+    lightboxNext.style.display = 'none';
+    lightboxNavAktiv = false;
+  }
+
+  // Viser et billede fra det aktive sæt. Pile vises kun hvis sættet har >1 billede.
+  function visBilledeILightbox(index) {
+    lightboxIndex = (index + aktivtSæt.length) % aktivtSæt.length;
+    lightboxNavAktiv = aktivtSæt.length > 1;
+    lightboxVideo.pause();
+    lightboxVideo.style.display = 'none';
+    lightboxImg.src = hentKilde(aktivtSæt[lightboxIndex]);
+    lightboxImg.style.display = 'block';
+    lightboxPrev.style.display = lightboxNavAktiv ? 'block' : 'none';
+    lightboxNext.style.display = lightboxNavAktiv ? 'block' : 'none';
+    lightbox.style.display = 'flex';
+  }
+
+  // Viser en video i lightboxen (uden bladring).
+  function visVideoILightbox(video) {
+    const kilde = video.currentSrc || video.querySelector('source')?.src;
+    if (!kilde) return;
+    lightboxNavAktiv = false;
+    lightboxImg.style.display = 'none';
+    lightboxPrev.style.display = 'none';
+    lightboxNext.style.display = 'none';
+    lightboxVideo.src = kilde;
+    lightboxVideo.style.display = 'block';
+    lightbox.style.display = 'flex';
+    lightboxVideo.play();
+  }
+
+  // Bygger karusellen: sætter bredde på slides, laver prikker og binder knapper.
+  function opsætKarusel(karuselId, prevId, nextId, prikId, perVisning = 1) {
+    const karusel = document.getElementById(karuselId);
     if (!karusel) return;
+    const slides = Array.from(karusel.children);
+    const antal = slides.length;
+    const prikContainer = document.getElementById(prikId);
+    let aktuel = 0;
 
-    billeder.forEach(img => {
-      img.style.width = '100%';
-    });
-
+    slides.forEach(s => { s.style.width = `${100 / perVisning}%`; s.style.flexShrink = '0'; });
     prikContainer.innerHTML = '';
 
+    const antalTrin = Math.max(1, antal - perVisning + 1);
+
+    // Flytter karusellen til et bestemt trin og opdaterer prikkerne.
     function gåTil(index) {
-      aktuel = (index + antalSlides) % antalSlides;
-      karusel.style.transform = `translateX(-${aktuel * 100}%)`;
-      document.querySelectorAll('#prikker div').forEach((p, i) => {
+      aktuel = (index + antalTrin) % antalTrin;
+      karusel.style.transform = `translateX(-${aktuel * (100 / perVisning)}%)`;
+      prikContainer.querySelectorAll('div').forEach((p, i) => {
         p.style.background = i === aktuel ? '#ffffff' : 'rgba(255,255,255,0.4)';
       });
     }
 
-    for (let i = 0; i < antalSlides; i++) {
+    // Laver en navigations-prik pr. trin.
+    for (let i = 0; i < antalTrin; i++) {
       const prik = document.createElement('div');
       prik.style.cssText = `width:8px; height:8px; border-radius:50%; cursor:pointer; transition:background 0.3s; background:${i === 0 ? '#ffffff' : 'rgba(255,255,255,0.4)'}`;
       prik.addEventListener('click', () => gåTil(i));
       prikContainer.appendChild(prik);
     }
 
-    document.getElementById('aboutPrev').addEventListener('click', () => gåTil(aktuel - 1));
-    document.getElementById('aboutNext').addEventListener('click', () => gåTil(aktuel + 1));
+    // Klon knapperne for at fjerne gamle listeners (undgår dobbelt-binding).
+    const prevBtn = document.getElementById(prevId);
+    const nextBtn = document.getElementById(nextId);
+    const prevNy = prevBtn.cloneNode(true);
+    const nextNy = nextBtn.cloneNode(true);
+    prevBtn.replaceWith(prevNy);
+    nextBtn.replaceWith(nextNy);
+    prevNy.addEventListener('click', () => gåTil(aktuel - 1));
+    nextNy.addEventListener('click', () => gåTil(aktuel + 1));
 
-    const lightbox = document.getElementById('lightbox');
-    const lightboxImg = document.getElementById('lightbox-img');
-    const lightboxVideo = document.getElementById('lightbox-video');
-    const lightboxPrev = document.getElementById('lightboxPrev');
-    const lightboxNext = document.getElementById('lightboxNext');
-
-    let lightboxIndex = 0;
-    let lightboxNavAktiv = false;
-
-    function lukLightbox() {
-      lightbox.style.display = 'none';
-      lightboxVideo.pause();
-      lightboxVideo.style.display = 'none';
-      lightboxImg.style.display = 'none';
-      lightboxPrev.style.display = 'none';
-      lightboxNext.style.display = 'none';
-      lightboxNavAktiv = false;
-    }
-
-    function visBilledeILightbox(index) {
-      lightboxIndex = (index + billeder.length) % billeder.length;
-      lightboxNavAktiv = true;
-      lightboxVideo.pause();
-      lightboxVideo.style.display = 'none';
-      lightboxImg.src = billeder[lightboxIndex].src;
-      lightboxImg.style.display = 'block';
-      lightboxPrev.style.display = 'block';
-      lightboxNext.style.display = 'block';
-      lightbox.style.display = 'flex';
-    }
-
-    // Karusel-billeder → lightbox (med navigation)
-    billeder.forEach((img, i) => {
-      img.addEventListener('click', () => visBilledeILightbox(i));
-    });
-
-    // Enkeltstående billeder → lightbox (uden navigation)
-    function visEnkeltBillede(src) {
-      lightboxNavAktiv = false;
-      lightboxVideo.pause();
-      lightboxVideo.style.display = 'none';
-      lightboxPrev.style.display = 'none';
-      lightboxNext.style.display = 'none';
-      lightboxImg.src = src;
-      lightboxImg.style.display = 'block';
-      lightbox.style.display = 'flex';
-    }
-
-    ['still-billede', 'brainstorm-billede'].forEach(id => {
-      const el = document.getElementById(id);
-      if (el) el.addEventListener('click', () => visEnkeltBillede(el.src));
-    });
-
-    lightboxPrev.addEventListener('click', (e) => {
-      e.stopPropagation();
-      visBilledeILightbox(lightboxIndex - 1);
-    });
-
-    lightboxNext.addEventListener('click', (e) => {
-      e.stopPropagation();
-      visBilledeILightbox(lightboxIndex + 1);
-    });
-
-    // Videoer → lightbox
-    document.querySelectorAll('.klikbar-video').forEach(video => {
-      video.addEventListener('click', () => {
-        const kilde = video.currentSrc || video.querySelector('source')?.src;
-        if (!kilde) return;
-        lightboxNavAktiv = false;
-        lightboxImg.style.display = 'none';
-        lightboxPrev.style.display = 'none';
-        lightboxNext.style.display = 'none';
-        lightboxVideo.src = kilde;
-        lightboxVideo.style.display = 'block';
-        lightbox.style.display = 'flex';
-        lightboxVideo.play();
+    // Klik på et karusel-billede åbner det i lightboxen med bladring.
+    slides.forEach((slide, i) => {
+      slide.addEventListener('click', () => {
+        aktivtSæt = slides;
+        visBilledeILightbox(i);
       });
-    });
-
-    lightbox.addEventListener('click', lukLightbox);
-
-    document.addEventListener('keydown', (e) => {
-      if (lightbox.style.display !== 'flex') return;
-      if (e.key === 'Escape') lukLightbox();
-      if (lightboxNavAktiv) {
-        if (e.key === 'ArrowLeft') visBilledeILightbox(lightboxIndex - 1);
-        if (e.key === 'ArrowRight') visBilledeILightbox(lightboxIndex + 1);
-      }
     });
   }
 
-  document.addEventListener('astro:page-load', initGrums);
-  document.addEventListener('DOMContentLoaded', initGrums);
+  // Initialiserer hele siden. Kaldes ved hver page-load.
+  function initSide() {
+    lightbox = document.getElementById('lightbox');
+    lightboxImg = document.getElementById('lightbox-img');
+    lightboxVideo = document.getElementById('lightbox-video');
+    lightboxPrev = document.getElementById('lightboxPrev');
+    lightboxNext = document.getElementById('lightboxNext');
+    if (!lightbox) return;
+
+    opsætKarusel('karusel', 'aboutPrev', 'aboutNext', 'prikker');
+
+    // Enkeltbilleder (stilbillede, brainstorm, visuel guide) → lightbox uden bladring.
+    document.querySelectorAll('.klikbar').forEach(el => {
+      el.addEventListener('click', () => { aktivtSæt = [el]; visBilledeILightbox(0); });
+    });
+
+    // Videoer → lightbox.
+    document.querySelectorAll('.klikbar-video').forEach(video => {
+      video.addEventListener('click', () => visVideoILightbox(video));
+    });
+
+    // Globale lyttere bindes kun én gang (document/lightbox overlever navigation).
+    if (!lyttereSat) {
+      lyttereSat = true;
+      lightboxPrev.addEventListener('click', (e) => { e.stopPropagation(); visBilledeILightbox(lightboxIndex - 1); });
+      lightboxNext.addEventListener('click', (e) => { e.stopPropagation(); visBilledeILightbox(lightboxIndex + 1); });
+      lightbox.addEventListener('click', lukLightbox);
+      document.addEventListener('keydown', (e) => {
+        if (lightbox.style.display !== 'flex') return;
+        if (e.key === 'Escape') lukLightbox();
+        if (lightboxNavAktiv) {
+          if (e.key === 'ArrowLeft') visBilledeILightbox(lightboxIndex - 1);
+          if (e.key === 'ArrowRight') visBilledeILightbox(lightboxIndex + 1);
+        }
+      });
+    }
+  }
+
+  document.addEventListener('astro:page-load', initSide);
+  document.addEventListener('DOMContentLoaded', initSide);
 </script>
