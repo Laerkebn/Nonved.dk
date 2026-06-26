@@ -49,15 +49,16 @@ import '../styles/global.css';
       <!-- SEKTION 1: Intro -->
       <div class="fade-in mb-16">
         <p class="text-base sm:text-xl text-gray-200 leading-relaxed">
-   FEZ is a city branding project for Fez, Morocco. It is a modular frame inspired by the city's historic leather tanneries. The frame adapts to different formats, including souvenirs, public signage and large-scale advertising.
-     </div>
+          FEZ is a city branding project for Fez, Morocco. It is a modular frame inspired by the city's historic leather tanneries. The frame adapts to different formats, including souvenirs, public signage and large-scale advertising.
+        </p>
+      </div>
 
       <!-- SEKTION 2: Generatoren — tekst + karusel side om side -->
       <div class="fade-in mb-16 flex flex-col lg:flex-row gap-8 items-start">
 
         <!-- Tekst -->
         <div class="lg:w-1/2 flex flex-col gap-4">
-         <h2 style="
+          <h2 style="
   color: #ffffff;
   font-size: 1.1rem;
   font-weight: 600;
@@ -66,13 +67,14 @@ import '../styles/global.css';
   text-shadow: 2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 0 0 #000, -2px 0 0 #000, 0 2px 0 #000, 0 -2px 0 #000;
 ">Frame generator & Blender</h2>
           <p class="text-base sm:text-lg text-gray-200 leading-relaxed">
-     The frame was modelled in Blender and integrated into a web-based asset generator. Users can adjust its colour and shape to create assets for different formats and campaigns. 
-     <p 
-
-     class="text-base sm:text-lg text-gray-200 leading-relaxed">
-      The frame can be used across social media, creating a consistent visual identity by framing images and graphic content. </p>
+            The frame was modelled in Blender and integrated into a web-based asset generator. Users can adjust its colour and shape to create assets for different formats and campaigns.
+          </p>
           <p class="text-base sm:text-lg text-gray-200 leading-relaxed">
-        The identity system is generative rather than fixed. Each application is different while maintaining a consistent visual language. </p>
+            The frame can be used across social media, creating a consistent visual identity by framing images and graphic content.
+          </p>
+          <p class="text-base sm:text-lg text-gray-200 leading-relaxed">
+            The identity system is generative rather than fixed. Each application is different while maintaining a consistent visual language.
+          </p>
         </div>
 
         <!-- Stilbillede -->
@@ -82,7 +84,7 @@ import '../styles/global.css';
 
       </div>
 
-<!-- SEKTION: Karusel -->
+      <!-- SEKTION: Karusel -->
       <div class="fade-in mb-16">
         <div class="relative overflow-hidden">
           <div id="karusel" class="flex transition-transform duration-500 ease-in-out">
@@ -94,7 +96,13 @@ import '../styles/global.css';
             </div>
 
             <!-- Slide 2 -->
-            <img src="/Billeder/FEZ/3.png" class="karusel-billede flex-shrink-0 object-contain cursor-pointer hover:opacity-80 transition-opacity duration-300" style="height: clamp(240px, 55vw, 440px); max-width: 100%; background: #fffff;" />
+            <img src="/Billeder/FEZ/3.png" class="karusel-billede flex-shrink-0 object-contain cursor-pointer hover:opacity-80 transition-opacity duration-300" style="height: clamp(240px, 55vw, 440px); max-width: 100%; background: #ffffff;" />
+
+              <!-- Slide 3 — sløret baggrund af samme billede -->
+            <div class="karusel-billede flex-shrink-0 relative overflow-hidden cursor-pointer" style="height: clamp(240px, 55vw, 440px); width: 100%;" data-src="/Billeder/FEZ/stor.png">
+              <img src="/Billeder/FEZ/FEZSTART.jpg" aria-hidden="true" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; filter:blur(20px) brightness(0.7); transform:scale(1.1);" />
+              <img src="/Billeder/FEZ/FEZSTART.jpg" class="karusel-forgrund hover:opacity-80 transition-opacity duration-300" style="position:relative; z-index:10; width:100%; height:100%; object-fit:contain;" />
+            </div>
 
           </div>
           <button id="aboutPrev" class="absolute left-4 top-1/2 -translate-y-1/2 text-black px-4 py-3 transition-all duration-300 hover:scale-140 text-xl font-bold z-10">◀</button>
@@ -103,12 +111,12 @@ import '../styles/global.css';
         </div>
       </div>
 
-         <!-- SEKTION 3: Idéudvikling — billede + tekst side om side -->
+      <!-- SEKTION 3: Idéudvikling — billede + tekst side om side -->
       <div class="fade-in mb-16 flex flex-col lg:flex-row gap-8 items-start">
 
         <!-- Billede -->
         <div class="lg:w-1/2 overflow-hidden ">
-          <img id="brainstorm-billede" src="/Billeder/FEZ/1.png" alt="Grums brainstorm and idea development" class="cursor-pointer hover:opacity-80 transition-opacity duration-300" style="width: 100%; height: 100%; object-fit: cover; cursor: zoom-in;" />
+          <img id="brainstorm-billede" src="/Billeder/FEZ/1.png" alt="Fez brainstorm and idea development" class="cursor-pointer hover:opacity-80 transition-opacity duration-300" style="width: 100%; height: 100%; object-fit: cover; cursor: zoom-in;" />
         </div>
 
         <!-- Tekst -->
@@ -122,15 +130,18 @@ import '../styles/global.css';
   text-shadow: 2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 0 0 #000, -2px 0 0 #000, 0 2px 0 #000, 0 -2px 0 #000;
 ">Leather Tannery</h2>
           <p class="text-base sm:text-lg text-gray-200 leading-relaxed">
-The frame pattern is based on the layout of the leather tanneries in Fez. The circular dye pits were simplified into a modular graphic system that forms the basis of the visual identity.div>
+            The frame pattern is based on the layout of the leather tanneries in Fez. The circular dye pits were simplified into a modular graphic system that forms the basis of the visual identity.
+          </p>
         </div>
 
-        <!-- casa de musica -->
+      </div>
+
+      <!-- SEKTION: Casa da Música -->
       <div class="fade-in mb-16 flex flex-col lg:flex-row gap-8 items-start">
 
         <!-- Billede -->
         <div class="lg:w-1/2 overflow-hidden ">
-          <img id="brainstorm-billede" src="/Billeder/FEZ/CASA.png" alt="Grums brainstorm and idea development" class="cursor-pointer hover:opacity-80 transition-opacity duration-300" style="width: 100%; height: 100%; object-fit: cover; cursor: zoom-in;" />
+          <img id="brainstorm-billede" src="/Billeder/FEZ/CASA.png" alt="Casa da Música inspiration" class="cursor-pointer hover:opacity-80 transition-opacity duration-300" style="width: 100%; height: 100%; object-fit: cover; cursor: zoom-in;" />
         </div>
 
         <!-- Tekst -->
@@ -144,11 +155,14 @@ The frame pattern is based on the layout of the leather tanneries in Fez. The ci
   text-shadow: 2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 0 0 #000, -2px 0 0 #000, 0 2px 0 #000, 0 -2px 0 #000;
 ">Casa da Música Sagmeister</h2>
           <p class="text-base sm:text-lg text-gray-200 leading-relaxed">
-     The project references Stefan Sagmeister's identity for Casa da Música, where a single graphic form changes in colour and proportion depending on the application while remaining recognisable.
+            The project references Stefan Sagmeister's identity for Casa da Música, where a single graphic form changes in colour and proportion depending on the application while remaining recognisable.
+          </p>
+        </div>
+
       </div>
 
       <!-- SEKTION 4: Visual identity guide -->
-      <div class="fade-in mb-4">$
+      <div class="fade-in mb-4">
         <h2 style="
   color: #ffffff;
   font-size: 1.1rem;
@@ -157,11 +171,10 @@ The frame pattern is based on the layout of the leather tanneries in Fez. The ci
   text-transform: uppercase;
   text-shadow: 2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 0 0 #000, -2px 0 0 #000, 0 2px 0 #000, 0 -2px 0 #000;
 ">Visual identity & inspiration board</h2>
-     
       </div>
 
       <div class="overflow-hidden border border-[#272425] mb-16 fade-in">
-        <img src="/Billeder/FEZ/FEZvisueltskema.png" alt="SHE CAN PLAY visual identity guide" style="width: 100%;" />
+        <img src="/Billeder/FEZ/FEZvisueltskema.png" alt="FEZ visual identity guide" style="width: 100%;" />
       </div>
 
     <!-- Credits -->
