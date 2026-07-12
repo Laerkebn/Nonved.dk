@@ -204,225 +204,15 @@ import '../styles/global.css';
   </div>
 
 </Layout>
----
-import Layout from '../layouts/Layout.astro';
-import '../styles/global.css';
----
-
-<Layout title="ÅBEN | My Portfolio" page="aaben">
-
-  <div class="page-wrapper">
-
-    <!-- Tilbage knap -->
-    <div class="fade-in" style="padding-top: 2rem;">
-      <a href="/projects" class="proj-back-btn">← Projects</a>
-    </div>
-
-    <!-- TITEL -->
-     <div style="
-      font-size: clamp(1rem, 5vw, 5rem); 
-      font-weight: 900;
-      line-height: 0.85;
-      letter-spacing: -0.05em;
-      color: transparent !important;
-      -webkit-text-stroke: 2px #ffffff;
-
-      pointer-events: none;
-      word-break: break-word;
-      text-align: center;
-      margin-top: 2rem;
-    ">ÅBEN</div>
-
-    <!-- Tags -->
-    <div class="fade-in" style="display: flex; gap: 0.5rem; flex-wrap: wrap; justify-content: center; padding: 1rem 0 2rem;">
-      <span class="proj-tag whitespace-nowrap">Chaikin Curves</span>
-      <span class="proj-tag whitespace-nowrap">Asset generator</span>
-      <span class="proj-tag whitespace-nowrap">Branding & identity</span>
-      <span class="proj-tag whitespace-nowrap">JavaScript</span>
-
-    </div>
-
-    <!-- VIDEO -->
-  <div class="proj-gallery-full overflow-hidden mb-8 fade-in" style="background: #464649;">
-  <video class="klikbar-video" autoplay muted loop playsinline style="width: 100%; height: 100%; object-fit: cover; transform: scale(1.0); cursor: zoom-in;">
-    <source src="/Billeder/AABEN/AABEN.mp4" type="video/mp4" />
-  </video>
-</div>
- 
-    <!-- ===== PROJEKT INDHOLD ===== -->
-    <div id="projekt">
-
-      <!-- SEKTION 1: Intro -->
-      <div class="fade-in mb-16">
-       <p class="text-base sm:text-lg text-gray-200 leading-relaxed">
-  I made a label generator developed as part of a branding and identity project for the Danish craft beer brand ÅBEN. The generator creates unique beer labels based on a set of input values, allowing the visual expression to reflect the characteristics of each beer.
-</p>
-      </div>
-
-      <!-- SEKTION 2: Generatoren — tekst + karusel side om side -->
-      <div class="fade-in mb-16 flex flex-col lg:flex-row gap-8 items-start">
-
-        <!-- Tekst -->
-        <div class="lg:w-1/2 flex flex-col gap-4">
-         <h2 style="
-  color: #ffffff;
-  font-size: 1.1rem;
-  font-weight: 600;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  text-shadow: 2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 0 0 #000, -2px 0 0 #000, 0 2px 0 #000, 0 -2px 0 #000;
-">Label generator</h2>
-        <p class="text-base sm:text-lg text-gray-200 leading-relaxed">
-  The generator translates beer characteristics into visual outcomes through a system of generative patterns and colour combinations.
-</p>
-
-<p class="text-base sm:text-lg text-gray-200 leading-relaxed">
-  By adjusting values such as alcohol percentage, bitterness, colour, and beer style, each label develops its own visual identity while remaining part of the overall ÅBEN brand.
-</p>
-
-<p class="text-base sm:text-lg text-gray-200 leading-relaxed">
-  The result is a flexible design system where every label is unique, yet clearly connected to the same visual language.
-</p>
-        </div>
-
-       <!-- Stilbillede -->
-     <div class="lg:w-1/2 w-full">
-  <div class="relative overflow-hidden">
-    <div id="karusel-still" class="flex transition-transform duration-500 ease-in-out">
-       <div class="karusel-billede shrink-0  relative overflow-hidden cursor-pointer" style="height: 340px; width: 100%;" data-src="/Billeder/AABEN/all.jpeg">
-        <img src="/Billeder/AABEN/all.jpeg" aria-hidden="true" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; filter:blur(20px) brightness(0.7); transform:scale(1.1);" />
-        <img src="/Billeder/AABEN/all.jpeg" class="karusel-forgrund hover:opacity-80 transition-opacity duration-300" style="position:relative; width:100%; height:100%; object-fit:contain;" />
-      </div>
-      <div class="karusel-billede shrink-0 relative overflow-hidden cursor-pointer" style="height: 340px; width: 100%;" data-src="/Billeder/AABEN/nødt.jpeg">
-        <img src="/Billeder/AABEN/nødt.jpeg" aria-hidden="true" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; filter:blur(20px) brightness(0.7); transform:scale(1.1);" />
-        <img src="/Billeder/AABEN/nødt.jpeg" class="karusel-forgrund hover:opacity-80 transition-opacity duration-300" style="position:relative; width:100%; height:100%; object-fit:contain;" />
-      </div>
-      <div class="karusel-billede shrink-0 relative overflow-hidden cursor-pointer" style="height: 340px; width: 100%;" data-src="/Billeder/AABEN/AABENSTART.jpeg">
-        <img src="/Billeder/AABEN/AABENSTART.jpeg" aria-hidden="true" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; filter:blur(20px) brightness(0.7); transform:scale(1.1);" />
-        <img src="/Billeder/AABEN/AABENSTART.jpeg" class="karusel-forgrund hover:opacity-80 transition-opacity duration-300" style="position:relative; width:100%; height:100%; object-fit:contain;" />
-      </div>
-      <div class="karusel-billede shrink-0 relative overflow-hidden cursor-pointer" style="height: 340px; width: 100%;" data-src="/Billeder/AABEN/lime.jpeg">
-        <img src="/Billeder/AABEN/lime.jpeg" aria-hidden="true" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; filter:blur(20px) brightness(0.7); transform:scale(1.1);" />
-        <img src="/Billeder/AABEN/lime.jpeg" class="karusel-forgrund hover:opacity-80 transition-opacity duration-300" style="position:relative; width:100%; height:100%; object-fit:contain;" />
-      </div>
-      <div class="karusel-billede shrink-0 relative overflow-hidden cursor-pointer" style="height: 340px; width: 100%;" data-src="/Billeder/AABEN/blomme.jpeg">
-        <img src="/Billeder/AABEN/blomme.jpeg" aria-hidden="true" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; filter:blur(20px) brightness(0.7); transform:scale(1.1);" />
-        <img src="/Billeder/AABEN/blomme.jpeg" class="karusel-forgrund hover:opacity-80 transition-opacity duration-300" style="position:relative; width:100%; height:100%; object-fit:contain;" />
-      </div>
-    </div>
-    <button id="stillPrev" class="absolute left-4 top-1/2 -translate-y-1/2 text-white px-4 py-3 transition-all duration-300 hover:scale-140 text-xl font-bold z-10">◀</button>
-    <button id="stillNext" class="absolute right-4 top-1/2 -translate-y-1/2 text-white px-4 py-3 transition-all duration-300 hover:scale-140 text-xl font-bold z-10">▶</button>
-    <div id="prikker-still" class="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2"></div>
-  </div>
-</div>
-
-      </div>
-
-  <!-- SEKTION: Karusel -->
-      <div class="fade-in mb-16">
-        <div class="relative overflow-hidden">
-          <div id="karusel" class="flex transition-transform duration-500 ease-in-out">
-   <img src="/Billeder/AABEN/label1.png" class="karusel-billede shrink-0 object-contain cursor-pointer hover:opacity-80 transition-opacity duration-300" style="height: 440px; background: #EEE7DB;;" />
-    <img src="/Billeder/AABEN/label2.png" class="karusel-billede shrink-0 object-contain cursor-pointer hover:opacity-80 transition-opacity duration-300" style="height: 440px; background: #EEE7DB;" />
-           <img src="/Billeder/AABEN/label3.png" class="karusel-billede shrink-0 object-contain cursor-pointer hover:opacity-80 transition-opacity duration-300" style="height: 440px; background: #EEE7DB;" />
-           <img src="/Billeder/AABEN/label4.png" class="karusel-billede shrink-0 object-contain cursor-pointer hover:opacity-80 transition-opacity duration-300" style="height: 440px; background: #EEE7DB;" />
-              <img src="/Billeder/AABEN/label5.png" class="karusel-billede shrink-0 object-contain cursor-pointer hover:opacity-80 transition-opacity duration-300" style="height: 440px; background: #EEE7DB;" />
-                 <img src="/Billeder/AABEN/label6.png" class="karusel-billede shrink-0 object-contain cursor-pointer hover:opacity-80 transition-opacity duration-300" style="height: 440px; background: #EEE7DB;" />      
-  </div>
-          <button id="aboutPrev" class="absolute left-4 top-1/2 -translate-y-1/2 text-black px-4 py-3 transition-all duration-300 hover:scale-140 text-xl font-bold z-10">◀</button>
-          <button id="aboutNext" class="absolute right-4 top-1/2 -translate-y-1/2 text-black px-4 py-3 transition-all duration-300 hover:scale-140 text-xl font-bold z-10">▶</button>
-          <div id="prikker" class="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2"></div>
-        </div>
-      </div>
-
-  <!-- SEKTION 3: Her vises en video af chaikin curves og hvordan de virker — video + tekst side om side -->
-      <div class="fade-in mb-16 flex flex-col lg:flex-row gap-8 items-start">
-
-        <!-- Video -->
-        <div class="lg:w-200 overflow-hidden">
-        <video class="klikbar-video" autoplay muted loop playsinline style="width: 100%; height: 100%; object-fit: cover; cursor: zoom-in;">
-  <source src="/Billeder/AABEN/ChaikinCurves.mp4" type="video/mp4" />
-</video>
-        </div>
-
-        <!-- Tekst -->
-        <div class="lg:w-1/2 flex flex-col gap-4">
-          <h2 style="
-  color: #ffffff;
-  font-size: 1.1rem;
-  font-weight: 600;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  text-shadow: 2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 0 0 #000, -2px 0 0 #000, 0 2px 0 #000, 0 -2px 0 #000;
-">Chaikin Curves</h2>
-        <p class="text-base sm:text-lg text-gray-200 leading-relaxed">
-  The generative patterns are built using Chaikin Curves, an algorithm that transforms angular lines into smooth organic shapes through repeated subdivision.
-</p>
-<p class="text-base sm:text-lg text-gray-200 leading-relaxed">
-  By experimenting with different curve parameters, I developed a visual system capable of producing a wide range of unique patterns while maintaining a consistent aesthetic across the label collection.
-</p>
-        </div>
-
-      </div>
-
-      <!-- SEKTION 4: Visual identity guide -->
-      <div class="fade-in mb-4">
-        <h2 style="
-  color: #ffffff;
-  font-size: 1.1rem;
-  font-weight: 600;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  text-shadow: 2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 0 0 #000, -2px 0 0 #000, 0 2px 0 #000, 0 -2px 0 #000;
-">Visual identity</h2>
-       <p class="text-base sm:text-lg text-gray-200 leading-relaxed mb-6">
-  The visual identity guide documents the design system developed for ÅBEN, including typography, colour principles, label structure, and the generative patterns that define the brand's visual expression.
-</p>
-      </div>
-
-      <div class="overflow-hidden mb-16 fade-in">
-        <img class="klikbar" src="/Billeder/AABEN/Aabenvisueltskema.png" alt="Aaben visual identity guide" style="width: 100%; cursor: zoom-in;" />
-      </div>
-
-    
-      <!-- Credits -->
-      <div class="fade-in mb-16" style="border-left: 2px solid #ffffff; padding-left: 1.5rem;">
-        <p class="text-sm text-gray-400 leading-relaxed">
-          Solo project.<br />
-          Role: <span style="color:#ffffff;">Concept development · Asset generator design</span>
-        </p>
-      </div>
-
-    </div>
-
-    <!-- LIGHTBOX -->
-    <div id="lightbox" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.9); z-index:1000; align-items:center; justify-content:center; cursor:zoom-out;">
-      <button id="lightboxPrev" style="display:none; position:absolute; left:1.5rem; top:50%; transform:translateY(-50%); color:#000; font-size:2rem; font-weight:bold; background:none; border:none; cursor:pointer; z-index:1010; padding:1rem;">◀</button>
-      <img id="lightbox-img" src="" style="max-width:90vw; max-height:90vh; object-fit:contain;" />
-      <video id="lightbox-video" muted loop playsinline style="display:none; max-width:90vw; max-height:90vh; object-fit:contain;"></video>
-      <button id="lightboxNext" style="display:none; position:absolute; right:1.5rem; top:50%; transform:translateY(-50%); color:#000; font-size:2rem; font-weight:bold; background:none; border:none; cursor:pointer; z-index:1010; padding:1rem;">▶</button>
-    </div>
-
-    <footer style="margin-top: 4rem; text-align: center;">
-      <p style="color: #ffffff;">© Lærke Buch Nonved portfolio</p>
-    </footer>
-
-  </div>
-
-</Layout>
 <script is:inline>
-  /* =====================================================================
-     KARUSEL + LIGHTBOX-MOTOR — delt af alle projektsider
-     ---------------------------------------------------------------------
-     - Idempotent: initSide() kan trygt kaldes flere gange (fx ved
-       Astro view-transitions / gentagne indlæsninger), uden at der
-       opstår dobbelt-bundne event-listeners eller "spring" i lightboxen.
-     - Alle knapper (karrusel-pile OG lightbox-pile) KLONES ved hver
-       init, så gamle listeners altid fjernes automatisk.
-     - Luk-lytteren på selve lightboxen og tastatur-lytteren bruger
-       navngivne funktioner + removeEventListener før addEventListener,
-       af samme grund (kan trygt gen-bindes uden dobbelt-binding).
-     ===================================================================== */
+(function () {
+  // Undgår "Identifier already declared" når scriptet genkøres
+  // ved Astro view-transitions på tværs af projektsider.
+  if (window.__karuselMotorInit) {
+    window.__karuselMotorInit();
+    return;
+  }
+
   let lightbox, lightboxImg, lightboxVideo, lightboxPrev, lightboxNext;
   let aktivtSæt = [];
   let lightboxIndex = 0;
@@ -509,7 +299,6 @@ import '../styles/global.css';
       prikContainer.appendChild(prik);
     }
 
-    // Klon knapperne for at fjerne gamle listeners (undgår dobbelt-binding)
     const prevBtn = document.getElementById(prevId);
     const nextBtn = document.getElementById(nextId);
     const prevNy = prevBtn.cloneNode(true);
@@ -534,7 +323,6 @@ import '../styles/global.css';
     lightboxImg = document.getElementById('lightbox-img');
     lightboxVideo = document.getElementById('lightbox-video');
 
-    // Klon lightbox-pilene ved hver init (idempotent — undgår dobbelt-binding)
     const prevOrig = document.getElementById('lightboxPrev');
     const nextOrig = document.getElementById('lightboxNext');
     lightboxPrev = prevOrig.cloneNode(true);
@@ -549,24 +337,22 @@ import '../styles/global.css';
     opsætKarusel('karusel', 'aboutPrev', 'aboutNext', 'prikker', 2);
     opsætKarusel('karusel-still', 'stillPrev', 'stillNext', 'prikker-still');
 
-    // Enkeltbilleder (stilbilleder, brainstorm, visuel guide osv.)
     document.querySelectorAll('.klikbar').forEach(el => {
       el.addEventListener('click', () => { aktivtSæt = [el]; visBilledeILightbox(0); });
     });
 
-    // Videoer
     document.querySelectorAll('.klikbar-video').forEach(video => {
       video.addEventListener('click', () => visVideoILightbox(video));
     });
 
-    // Named handler-referencer betyder vi trygt kan fjerne + gentilføje
-    // uden at risikere dobbelt-binding, uanset hvor mange gange initSide() kører
     lightbox.removeEventListener('click', lukLightbox);
     lightbox.addEventListener('click', lukLightbox);
 
     document.removeEventListener('keydown', keydownHandler);
     document.addEventListener('keydown', keydownHandler);
   }
+
+  window.__karuselMotorInit = initSide;
 
   document.addEventListener('astro:page-load', initSide);
 
@@ -575,4 +361,5 @@ import '../styles/global.css';
   } else {
     initSide();
   }
+})();
 </script>
