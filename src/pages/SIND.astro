@@ -175,24 +175,20 @@ import '../styles/global.css';
 </Layout>
 
 <script is:inline>
-  /* =====================================================================
-     KARUSEL + LIGHTBOX-MOTOR
-     ---------------------------------------------------------------------
-     Genbruges på alle projektsider. Vigtige detaljer:
-       - opsætKarusel() KLONER pile-knapperne, så gamle event-listeners
-         fjernes ved hver page-load (ingen dobbelt-binding / spring).
-       - De globale lyttere (klik udenfor + tastatur) sættes kun ÉN gang
-         via flaget `lyttereSat`, da document/lightbox overlever navigation.
-       - klikbare enkeltbilleder markeres med .klikbar, videoer med .klikbar-video.
-     ===================================================================== */
+(function () {
+  // Undgår "Identifier already declared" når scriptet genkøres
+  // ved Astro view-transitions på tværs af projektsider.
+  if (window.__karuselMotorInit) {
+    window.__karuselMotorInit();
+    return;
+  }
+
   let lightbox, lightboxImg, lightboxVideo, lightboxPrev, lightboxNext;
   let aktivtSæt = [];
   let lightboxIndex = 0;
   let lightboxNavAktiv = false;
   let lyttereSat = false;
 
-  // Henter den rigtige billedkilde uanset om elementet er et <img>,
-  // en slide-div med data-src, eller en wrapper med et billede indeni.
   function hentKilde(el) {
     if (el.dataset && el.dataset.src) return el.dataset.src;
     if (el.tagName === 'IMG') return el.currentSrc || el.src;
@@ -272,7 +268,6 @@ import '../styles/global.css';
       prikContainer.appendChild(prik);
     }
 
-    // Klon knapperne for at fjerne gamle listeners (undgår dobbelt-binding)
     const prevBtn = document.getElementById(prevId);
     const nextBtn = document.getElementById(nextId);
     const prevNy = prevBtn.cloneNode(true);
@@ -291,31 +286,38 @@ import '../styles/global.css';
   }
 
   function initSide() {
-    lightbox = document.getElementById('lightbox');
+    const lightboxEl = document.getElementById('lightbox');
+    if (!lightboxEl) return;
+    lightbox = lightboxEl;
     lightboxImg = document.getElementById('lightbox-img');
     lightboxVideo = document.getElementById('lightbox-video');
-    lightboxPrev = document.getElementById('lightboxPrev');
-    lightboxNext = document.getElementById('lightboxNext');
-    if (!lightbox) return;
+
+    const prevOrig = document.getElementById('lightboxPrev');
+    const nextOrig = document.getElementById('lightboxNext');
+    lightboxPrev = prevOrig.cloneNode(true);
+    lightboxNext = nextOrig.cloneNode(true);
+    prevOrig.replaceWith(lightboxPrev);
+    nextOrig.replaceWith(lightboxNext);
 
     initIntroVideo();
     opsætKarusel('karusel', 'aboutPrev', 'aboutNext', 'prikker');
 
-    // Enkeltbilleder (stilbilleder, brainstorm, visuel guide osv.)
     document.querySelectorAll('.klikbar').forEach(el => {
       el.addEventListener('click', () => { aktivtSæt = [el]; visBilledeILightbox(0); });
     });
 
-    // Videoer
     document.querySelectorAll('.klikbar-video').forEach(video => {
       video.addEventListener('click', () => visVideoILightbox(video));
     });
 
+    lightboxPrev.addEventListener('click', (e) => { e.stopPropagation(); visBilledeILightbox(lightboxIndex - 1); });
+    lightboxNext.addEventListener('click', (e) => { e.stopPropagation(); visBilledeILightbox(lightboxIndex + 1); });
+
+    lightbox.removeEventListener('click', lukLightbox);
+    lightbox.addEventListener('click', lukLightbox);
+
     if (!lyttereSat) {
       lyttereSat = true;
-      lightboxPrev.addEventListener('click', (e) => { e.stopPropagation(); visBilledeILightbox(lightboxIndex - 1); });
-      lightboxNext.addEventListener('click', (e) => { e.stopPropagation(); visBilledeILightbox(lightboxIndex + 1); });
-      lightbox.addEventListener('click', lukLightbox);
       document.addEventListener('keydown', (e) => {
         if (lightbox.style.display !== 'flex') return;
         if (e.key === 'Escape') lukLightbox();
@@ -327,6 +329,14 @@ import '../styles/global.css';
     }
   }
 
+  window.__karuselMotorInit = initSide;
+
   document.addEventListener('astro:page-load', initSide);
-  document.addEventListener('DOMContentLoaded', initSide);
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initSide);
+  } else {
+    initSide();
+  }
+})();
 </script>
