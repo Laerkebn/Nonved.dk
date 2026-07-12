@@ -181,37 +181,217 @@ import '../styles/global.css';
   </div>
 
 </Layout>
+---
+import Layout from '../layouts/Layout.astro';
+import '../styles/global.css';
+---
+
+<Layout title="GRUMS | My Portfolio" page="grums">
+
+  <div class="page-wrapper">
+
+    <!-- Tilbage knap -->
+    <div class="fade-in" style="padding-top: 2rem;">
+      <a href="/projects" class="proj-back-btn">← Projects</a>
+    </div>
+
+    <!-- TITEL -->
+    <div style="
+      font-size: clamp(1rem, 5vw, 5rem); 
+      font-weight: 900;
+      line-height: 0.85;
+      letter-spacing: -0.05em;
+      color: transparent !important;
+      -webkit-text-stroke: 2px #ffffff;
+      pointer-events: none;
+      word-break: break-word;
+      text-align: center;
+      margin-top: 2rem;
+    ">GRUMS</div>
+
+    <!-- Tags -->
+    <div class="fade-in" style="display: flex; gap: 0.5rem; flex-wrap: wrap; justify-content: center; padding: 1rem 0 2rem;">
+      <span class="proj-tag whitespace-nowrap">Branding & identity</span>
+      <span class="proj-tag whitespace-nowrap">Asset Generator</span>
+      <span class="proj-tag whitespace-nowrap">JavaScript</span>
+       <span class="proj-tag whitespace-nowrap">Shoelace</span>
+      <span class="proj-tag whitespace-nowrap">CSS</span>
+      <span class="proj-tag whitespace-nowrap">HTML</span>
+    </div>
+
+    <!-- VIDEO -->
+    <div class="proj-gallery-full overflow-hidden mb-8 fade-in">
+      <video class="klikbar-video" autoplay muted loop playsinline style="width: 100%; height: 100%; object-fit: cover; cursor: zoom-in;">
+        <source src="/Billeder/GRUMS/GRUMS.mp4" type="video/mp4" />
+      </video>
+    </div>
+
+    <!-- ===== PROJEKT INDHOLD ===== -->
+    <div id="projekt">
+
+      <!-- SEKTION 1: Intro -->
+      <div class="fade-in mb-16">
+    <p class="text-base sm:text-lg text-gray-200 leading-relaxed">
+          Grums is a fictional coffee and tea brand created as part of a branding and identity project. As part of the project, I developed a generator that creates packaging designs based on the characteristics of each product.
+        </p>
+      </div>
+
+      <!-- SEKTION 2: Generatoren — tekst + stilbillede side om side -->
+      <div class="fade-in mb-16 flex flex-col lg:flex-row gap-8 items-start">
+
+        <!-- Tekst -->
+        <div class="lg:w-1/2 flex flex-col gap-4">
+          <h2 style="
+  color: #ffffff;
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  text-shadow: 2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 0 0 #000, -2px 0 0 #000, 0 2px 0 #000, 0 -2px 0 #000;
+">Flavour-driven generator</h2>
+          <p class="text-base sm:text-lg text-gray-200 leading-relaxed">
+            The generator uses sweetness, fruitiness, and steeping time to generate patterns for the packaging.
+          </p>
+          <p class="text-base sm:text-lg text-gray-200 leading-relaxed">
+            Different combinations of values produce different visual outcomes, creating packaging designs that reflect the characteristics of each tea.
+          </p>
+          <p class="text-base sm:text-lg text-gray-200 leading-relaxed">
+            So rather than applying the identity afterwards, the visual system is built directly into the design process through the generator.
+          </p>
+        </div>
+
+        <!-- Stilbillede -->
+        <div class="lg:w-1/2">
+          <img id="still-billede" src="/Billeder/GRUMS/GRUMSSTART.png" class="klikbar cursor-pointer hover:opacity-80 transition-opacity duration-300" style="width: 100%; height: 340px; object-fit: cover; cursor: zoom-in;" />
+        </div>
+
+      </div>
+
+      <!-- SEKTION: Karusel -->
+      <div class="fade-in mb-16">
+        <div class="relative overflow-hidden">
+          <div id="karusel" class="flex transition-transform duration-500 ease-in-out">
+            <img src="/Billeder/GRUMS/1.png" class="karusel-billede shrink-0 object-contain cursor-pointer hover:opacity-80 transition-opacity duration-300" style="height: 440px; background: #ffffff;" />
+            <img src="/Billeder/GRUMS/2.jpeg" class="karusel-billede shrink-0 object-contain cursor-pointer hover:opacity-80 transition-opacity duration-300" style="height: 440px; background: #F5EABD;" />
+            <img src="/Billeder/GRUMS/3.png" class="karusel-billede shrink-0 object-contain cursor-pointer hover:opacity-80 transition-opacity duration-300" style="height: 440px; background: #F5E9BC;" />
+            <img src="/Billeder/GRUMS/4.png" class="karusel-billede shrink-0 object-contain cursor-pointer hover:opacity-80 transition-opacity duration-300" style="height: 440px; background: #F8E8BC;" />
+          </div>
+<button
+  id="aboutPrev"
+  class="absolute left-4 top-1/2 -translate-y-1/2 px-4 py-3 transition-all duration-300 hover:scale-140 text-xl font-bold z-10"
+  style="color:#000 !important;"
+>
+  ◀
+</button>
+
+<button
+  id="aboutNext"
+  class="absolute right-4 top-1/2 -translate-y-1/2 px-4 py-3 transition-all duration-300 hover:scale-140 text-xl font-bold z-10"
+  style="color:#000 !important;"
+>
+  ▶
+</button>
+          <div id="prikker" class="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2"></div>
+        </div>
+      </div>
+
+      <!-- SEKTION 3: Idéudvikling — billede + tekst side om side -->
+      <div class="fade-in mb-16 flex flex-col lg:flex-row gap-8 items-start">
+
+        <!-- Billede -->
+        <div class="lg:w-1/2 overflow-hidden ">
+          <img id="brainstorm-billede" src="/Billeder/GRUMS/Brainstorm.png" alt="Grums brainstorm and idea development" class="klikbar cursor-pointer hover:opacity-80 transition-opacity duration-300" style="width: 100%; height: 100%; object-fit: cover; cursor: zoom-in;" />
+        </div>
+
+        <!-- Tekst -->
+        <div class="lg:w-1/2 flex flex-col gap-4">
+          <h2 style="
+  color: #ffffff;
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  text-shadow: 2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 0 0 #000, -2px 0 0 #000, 0 2px 0 #000, 0 -2px 0 #000;
+">From idea to identity</h2>
+          <p class="text-base sm:text-lg text-gray-200 leading-relaxed">
+            The project started with research, sketching, and concept development, which informed both the visual identity and the generator.
+          </p>
+        </div>
+
+      </div>
+
+      <!-- SEKTION 4: Visual identity guide -->
+      <div class="fade-in mb-4">
+        <h2 style="
+  color: #ffffff;
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  text-shadow: 2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 0 0 #000, -2px 0 0 #000, 0 2px 0 #000, 0 -2px 0 #000;
+">Visual identity</h2>
+        <p class="text-base sm:text-lg text-gray-200 leading-relaxed mb-6">
+          The visual identity guide below documents the complete design system developed for Grums, including typography, colour, and the generative patterns used across the brand.
+        </p>
+      </div>
+
+      <div class="overflow-hidden mb-16 fade-in">
+        <img class="klikbar" src="/Billeder/GRUMS/Grumsvisueltskema.png" alt="GRUMS visual identity guide" style="width: 100%; cursor: zoom-in;" />
+      </div>
+
+      <!-- Credits -->
+      <div class="fade-in mb-16" style="border-left: 2px solid #ffffff; padding-left: 1.5rem;">
+        <p class="text-sm text-gray-400 leading-relaxed">
+          Solo project.<br />
+          Role: <span style="color:#ffffff;">Concept development · Visual identity · Asset generator design</span>
+        </p>
+      </div>
+
+    </div>
+
+    <!-- LIGHTBOX -->
+    <div id="lightbox" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.9); z-index:1000; align-items:center; justify-content:center; cursor:zoom-out;">
+      <button id="lightboxPrev" style="display:none; position:absolute; left:1.5rem; top:50%; transform:translateY(-50%); color:#000; font-size:2rem; font-weight:bold; background:none; border:none; cursor:pointer; z-index:1010; padding:1rem;">◀</button>
+      <img id="lightbox-img" src="" style="max-width:90vw; max-height:90vh; object-fit:contain;" />
+      <video id="lightbox-video" muted loop playsinline style="display:none; max-width:90vw; max-height:90vh; object-fit:contain;"></video>
+      <button id="lightboxNext" style="display:none; position:absolute; right:1.5rem; top:50%; transform:translateY(-50%); color:#000; font-size:2rem; font-weight:bold; background:none; border:none; cursor:pointer; z-index:1010; padding:1rem;">▶</button>
+    </div>
+
+    <footer style="margin-top: 4rem; text-align: center;">
+      <p style="color: #ffffff;">© Lærke Buch Nonved portfolio</p>
+    </footer>
+
+  </div>
+
+</Layout>
 
 <script is:inline>
   /* =====================================================================
-     KARUSEL + LIGHTBOX-MOTOR (samme mønster som de øvrige projektsider)
+     KARUSEL + LIGHTBOX-MOTOR — delt af alle projektsider
      ---------------------------------------------------------------------
-     Tidligere brugte GRUMS en ældre version uden beskyttelse mod dobbelte
-     event-listeners. Det betød at karusellen sprang to billeder pr. klik
-     ved første load, og at tastatur-lytteren hobede sig op ved navigation.
-     Denne version er rettet ind efter de andre sider:
-       - knapperne klones, så gamle listeners fjernes (ingen dobbelt-binding)
-       - de globale lyttere (klik udenfor + tastatur) sættes kun ÉN gang
-         via flaget `lyttereSat`.
+     - Idempotent: initSide() kan trygt kaldes flere gange (fx ved
+       Astro view-transitions / gentagne indlæsninger), uden at der
+       opstår dobbelt-bundne event-listeners eller "spring" i lightboxen.
+     - Alle knapper (karrusel-pile OG lightbox-pile) KLONES ved hver
+       init, så gamle listeners altid fjernes automatisk.
+     - Luk-lytteren på selve lightboxen og tastatur-lytteren bruger
+       navngivne funktioner + removeEventListener før addEventListener,
+       af samme grund (kan trygt gen-bindes uden dobbelt-binding).
      ===================================================================== */
-
-  // Delte referencer til lightbox-elementerne (sættes i initSide).
   let lightbox, lightboxImg, lightboxVideo, lightboxPrev, lightboxNext;
-  let aktivtSæt = [];        // det sæt billeder lightboxen aktuelt bladrer i
-  let lightboxIndex = 0;     // hvilket billede i sættet der vises
-  let lightboxNavAktiv = false; // om pile/tastatur-navigation er aktiv
-  let lyttereSat = false;    // sikrer at globale lyttere kun bindes én gang
+  let aktivtSæt = [];
+  let lightboxIndex = 0;
+  let lightboxNavAktiv = false;
 
-  // Finder den rigtige billedkilde uanset om elementet er et <img> eller
-  // en wrapper med et billede indeni.
-  function hentKilde(el) {
-    if (el.dataset && el.dataset.src) return el.dataset.src;
-    if (el.tagName === 'IMG') return el.currentSrc || el.src;
-    const img = el.querySelector('.karusel-billede, img:not([aria-hidden])');
-    return img ? (img.currentSrc || img.src) : '';
+  function initIntroVideo() {
+    const video = document.getElementById('intro-video');
+    if (!video) return;
+    const START = 0;
+    const END = 115;
+    video.addEventListener('loadedmetadata', () => { video.currentTime = START; video.play(); });
+    video.addEventListener('timeupdate', () => { if (video.currentTime >= END) video.currentTime = START; });
   }
 
-  // Lukker lightboxen og nulstiller dens tilstand.
   function lukLightbox() {
     lightbox.style.display = 'none';
     lightboxVideo.pause();
@@ -222,20 +402,18 @@ import '../styles/global.css';
     lightboxNavAktiv = false;
   }
 
-  // Viser et billede fra det aktive sæt. Pile vises kun hvis sættet har >1 billede.
   function visBilledeILightbox(index) {
     lightboxIndex = (index + aktivtSæt.length) % aktivtSæt.length;
     lightboxNavAktiv = aktivtSæt.length > 1;
     lightboxVideo.pause();
     lightboxVideo.style.display = 'none';
-    lightboxImg.src = hentKilde(aktivtSæt[lightboxIndex]);
+    lightboxImg.src = aktivtSæt[lightboxIndex].dataset.src || aktivtSæt[lightboxIndex].src;
     lightboxImg.style.display = 'block';
     lightboxPrev.style.display = lightboxNavAktiv ? 'block' : 'none';
     lightboxNext.style.display = lightboxNavAktiv ? 'block' : 'none';
     lightbox.style.display = 'flex';
   }
 
-  // Viser en video i lightboxen (uden bladring).
   function visVideoILightbox(video) {
     const kilde = video.currentSrc || video.querySelector('source')?.src;
     if (!kilde) return;
@@ -249,21 +427,28 @@ import '../styles/global.css';
     lightboxVideo.play();
   }
 
-  // Bygger karusellen: sætter bredde på slides, laver prikker og binder knapper.
+  function keydownHandler(e) {
+    if (!lightbox || lightbox.style.display !== 'flex') return;
+    if (e.key === 'Escape') lukLightbox();
+    if (lightboxNavAktiv) {
+      if (e.key === 'ArrowLeft') visBilledeILightbox(lightboxIndex - 1);
+      if (e.key === 'ArrowRight') visBilledeILightbox(lightboxIndex + 1);
+    }
+  }
+
   function opsætKarusel(karuselId, prevId, nextId, prikId, perVisning = 1) {
     const karusel = document.getElementById(karuselId);
     if (!karusel) return;
-    const slides = Array.from(karusel.children);
-    const antal = slides.length;
+    const billeder = karusel.querySelectorAll('.karusel-billede');
+    const antal = billeder.length;
     const prikContainer = document.getElementById(prikId);
     let aktuel = 0;
 
-    slides.forEach(s => { s.style.width = `${100 / perVisning}%`; s.style.flexShrink = '0'; });
+    billeder.forEach(img => { img.style.width = `${100 / perVisning}%`; });
     prikContainer.innerHTML = '';
 
     const antalTrin = Math.max(1, antal - perVisning + 1);
 
-    // Flytter karusellen til et bestemt trin og opdaterer prikkerne.
     function gåTil(index) {
       aktuel = (index + antalTrin) % antalTrin;
       karusel.style.transform = `translateX(-${aktuel * (100 / perVisning)}%)`;
@@ -272,7 +457,6 @@ import '../styles/global.css';
       });
     }
 
-    // Laver en navigations-prik pr. trin.
     for (let i = 0; i < antalTrin; i++) {
       const prik = document.createElement('div');
       prik.style.cssText = `width:8px; height:8px; border-radius:50%; cursor:pointer; transition:background 0.3s; background:${i === 0 ? '#ffffff' : 'rgba(255,255,255,0.4)'}`;
@@ -280,7 +464,7 @@ import '../styles/global.css';
       prikContainer.appendChild(prik);
     }
 
-    // Klon knapperne for at fjerne gamle listeners (undgår dobbelt-binding).
+    // Klon knapperne for at fjerne gamle listeners (undgår dobbelt-binding)
     const prevBtn = document.getElementById(prevId);
     const nextBtn = document.getElementById(nextId);
     const prevNy = prevBtn.cloneNode(true);
@@ -290,53 +474,59 @@ import '../styles/global.css';
     prevNy.addEventListener('click', () => gåTil(aktuel - 1));
     nextNy.addEventListener('click', () => gåTil(aktuel + 1));
 
-    // Klik på et karusel-billede åbner det i lightboxen med bladring.
-    slides.forEach((slide, i) => {
+    billeder.forEach((slide, i) => {
       slide.addEventListener('click', () => {
-        aktivtSæt = slides;
+        aktivtSæt = Array.from(billeder);
         visBilledeILightbox(i);
       });
     });
   }
 
-  // Initialiserer hele siden. Kaldes ved hver page-load.
   function initSide() {
-    lightbox = document.getElementById('lightbox');
+    const lightboxEl = document.getElementById('lightbox');
+    if (!lightboxEl) return;
+    lightbox = lightboxEl;
     lightboxImg = document.getElementById('lightbox-img');
     lightboxVideo = document.getElementById('lightbox-video');
-    lightboxPrev = document.getElementById('lightboxPrev');
-    lightboxNext = document.getElementById('lightboxNext');
-    if (!lightbox) return;
 
+    // Klon lightbox-pilene ved hver init (idempotent — undgår dobbelt-binding)
+    const prevOrig = document.getElementById('lightboxPrev');
+    const nextOrig = document.getElementById('lightboxNext');
+    lightboxPrev = prevOrig.cloneNode(true);
+    lightboxNext = nextOrig.cloneNode(true);
+    prevOrig.replaceWith(lightboxPrev);
+    nextOrig.replaceWith(lightboxNext);
+
+    lightboxPrev.addEventListener('click', (e) => { e.stopPropagation(); visBilledeILightbox(lightboxIndex - 1); });
+    lightboxNext.addEventListener('click', (e) => { e.stopPropagation(); visBilledeILightbox(lightboxIndex + 1); });
+
+    initIntroVideo();
     opsætKarusel('karusel', 'aboutPrev', 'aboutNext', 'prikker');
 
-    // Enkeltbilleder (stilbillede, brainstorm, visuel guide) → lightbox uden bladring.
+    // Enkeltbilleder (stilbilleder, brainstorm, visuel guide osv.)
     document.querySelectorAll('.klikbar').forEach(el => {
       el.addEventListener('click', () => { aktivtSæt = [el]; visBilledeILightbox(0); });
     });
 
-    // Videoer → lightbox.
+    // Videoer
     document.querySelectorAll('.klikbar-video').forEach(video => {
       video.addEventListener('click', () => visVideoILightbox(video));
     });
 
-    // Globale lyttere bindes kun én gang (document/lightbox overlever navigation).
-    if (!lyttereSat) {
-      lyttereSat = true;
-      lightboxPrev.addEventListener('click', (e) => { e.stopPropagation(); visBilledeILightbox(lightboxIndex - 1); });
-      lightboxNext.addEventListener('click', (e) => { e.stopPropagation(); visBilledeILightbox(lightboxIndex + 1); });
-      lightbox.addEventListener('click', lukLightbox);
-      document.addEventListener('keydown', (e) => {
-        if (lightbox.style.display !== 'flex') return;
-        if (e.key === 'Escape') lukLightbox();
-        if (lightboxNavAktiv) {
-          if (e.key === 'ArrowLeft') visBilledeILightbox(lightboxIndex - 1);
-          if (e.key === 'ArrowRight') visBilledeILightbox(lightboxIndex + 1);
-        }
-      });
-    }
+    // Named handler-referencer betyder vi trygt kan fjerne + gentilføje
+    // uden at risikere dobbelt-binding, uanset hvor mange gange initSide() kører
+    lightbox.removeEventListener('click', lukLightbox);
+    lightbox.addEventListener('click', lukLightbox);
+
+    document.removeEventListener('keydown', keydownHandler);
+    document.addEventListener('keydown', keydownHandler);
   }
 
   document.addEventListener('astro:page-load', initSide);
-  document.addEventListener('DOMContentLoaded', initSide);
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initSide);
+  } else {
+    initSide();
+  }
 </script>

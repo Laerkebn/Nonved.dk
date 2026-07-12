@@ -188,33 +188,31 @@ import '../styles/global.css';
 
 <script is:inline>
   /* =====================================================================
-     KARUSEL + LIGHTBOX-MOTOR
+     KARUSEL + LIGHTBOX-MOTOR — delt af alle projektsider
      ---------------------------------------------------------------------
-     - .karusel-billede  : billeder i karusellen (kan bladres + åbnes i lightbox)
-     - .klikbar          : enkeltbilleder der åbnes i lightbox (uden bladring)
-     - .klikbar-video    : videoer der åbnes i lightbox
-     opsætKarusel() KLONER pile-knapperne ved hver init, så gamle listeners
-     ryger med (ingen dobbelt-binding). De globale lyttere (klik udenfor +
-     tastatur) sættes kun ÉN gang via flaget `lyttereSat`.
+     - Idempotent: initSide() kan trygt kaldes flere gange (fx ved
+       Astro view-transitions / gentagne indlæsninger), uden at der
+       opstår dobbelt-bundne event-listeners eller "spring" i lightboxen.
+     - Alle knapper (karrusel-pile OG lightbox-pile) KLONES ved hver
+       init, så gamle listeners altid fjernes automatisk.
+     - Luk-lytteren på selve lightboxen og tastatur-lytteren bruger
+       navngivne funktioner + removeEventListener før addEventListener,
+       af samme grund (kan trygt gen-bindes uden dobbelt-binding).
      ===================================================================== */
-
-  // Delte referencer til lightbox-elementerne (sættes i initSide).
   let lightbox, lightboxImg, lightboxVideo, lightboxPrev, lightboxNext;
-  let aktivtSæt = [];           // billedsættet lightboxen aktuelt bladrer i
-  let lightboxIndex = 0;        // hvilket billede i sættet der vises
-  let lightboxNavAktiv = false; // om pile/tastatur-navigation er aktiv
-  let lyttereSat = false;       // sikrer at globale lyttere kun bindes én gang
+  let aktivtSæt = [];
+  let lightboxIndex = 0;
+  let lightboxNavAktiv = false;
 
-  // Finder den rigtige billedkilde uanset om elementet er et <img>,
-  // en slide med data-src, eller en wrapper med et billede indeni.
-  function hentKilde(el) {
-    if (el.dataset && el.dataset.src) return el.dataset.src;
-    if (el.tagName === 'IMG') return el.currentSrc || el.src;
-    const img = el.querySelector('.karusel-billede, .karusel-forgrund, img:not([aria-hidden])');
-    return img ? (img.currentSrc || img.src) : '';
+  function initIntroVideo() {
+    const video = document.getElementById('intro-video');
+    if (!video) return;
+    const START = 0;
+    const END = 115;
+    video.addEventListener('loadedmetadata', () => { video.currentTime = START; video.play(); });
+    video.addEventListener('timeupdate', () => { if (video.currentTime >= END) video.currentTime = START; });
   }
 
-  // Lukker lightboxen og nulstiller dens tilstand.
   function lukLightbox() {
     lightbox.style.display = 'none';
     lightboxVideo.pause();
@@ -225,20 +223,18 @@ import '../styles/global.css';
     lightboxNavAktiv = false;
   }
 
-  // Viser et billede fra det aktive sæt. Pile vises kun hvis sættet har >1 billede.
   function visBilledeILightbox(index) {
     lightboxIndex = (index + aktivtSæt.length) % aktivtSæt.length;
     lightboxNavAktiv = aktivtSæt.length > 1;
     lightboxVideo.pause();
     lightboxVideo.style.display = 'none';
-    lightboxImg.src = hentKilde(aktivtSæt[lightboxIndex]);
+    lightboxImg.src = aktivtSæt[lightboxIndex].dataset.src || aktivtSæt[lightboxIndex].src;
     lightboxImg.style.display = 'block';
     lightboxPrev.style.display = lightboxNavAktiv ? 'block' : 'none';
     lightboxNext.style.display = lightboxNavAktiv ? 'block' : 'none';
     lightbox.style.display = 'flex';
   }
 
-  // Viser en video i lightboxen (uden bladring).
   function visVideoILightbox(video) {
     const kilde = video.currentSrc || video.querySelector('source')?.src;
     if (!kilde) return;
@@ -252,21 +248,28 @@ import '../styles/global.css';
     lightboxVideo.play();
   }
 
-  // Bygger karusellen: sætter bredde på slides, laver prikker og binder knapper.
+  function keydownHandler(e) {
+    if (!lightbox || lightbox.style.display !== 'flex') return;
+    if (e.key === 'Escape') lukLightbox();
+    if (lightboxNavAktiv) {
+      if (e.key === 'ArrowLeft') visBilledeILightbox(lightboxIndex - 1);
+      if (e.key === 'ArrowRight') visBilledeILightbox(lightboxIndex + 1);
+    }
+  }
+
   function opsætKarusel(karuselId, prevId, nextId, prikId, perVisning = 1) {
     const karusel = document.getElementById(karuselId);
     if (!karusel) return;
-    const slides = Array.from(karusel.children);
-    const antal = slides.length;
+    const billeder = karusel.querySelectorAll('.karusel-billede');
+    const antal = billeder.length;
     const prikContainer = document.getElementById(prikId);
     let aktuel = 0;
 
-    slides.forEach(s => { s.style.width = `${100 / perVisning}%`; s.style.flexShrink = '0'; });
+    billeder.forEach(img => { img.style.width = `${100 / perVisning}%`; });
     prikContainer.innerHTML = '';
 
     const antalTrin = Math.max(1, antal - perVisning + 1);
 
-    // Flytter karusellen til et bestemt trin og opdaterer prikkerne.
     function gåTil(index) {
       aktuel = (index + antalTrin) % antalTrin;
       karusel.style.transform = `translateX(-${aktuel * (100 / perVisning)}%)`;
@@ -275,7 +278,6 @@ import '../styles/global.css';
       });
     }
 
-    // Én navigations-prik pr. trin.
     for (let i = 0; i < antalTrin; i++) {
       const prik = document.createElement('div');
       prik.style.cssText = `width:8px; height:8px; border-radius:50%; cursor:pointer; transition:background 0.3s; background:${i === 0 ? '#ffffff' : 'rgba(255,255,255,0.4)'}`;
@@ -283,7 +285,7 @@ import '../styles/global.css';
       prikContainer.appendChild(prik);
     }
 
-    // Klon knapperne for at fjerne gamle listeners (undgår dobbelt-binding).
+    // Klon knapperne for at fjerne gamle listeners (undgår dobbelt-binding)
     const prevBtn = document.getElementById(prevId);
     const nextBtn = document.getElementById(nextId);
     const prevNy = prevBtn.cloneNode(true);
@@ -293,55 +295,59 @@ import '../styles/global.css';
     prevNy.addEventListener('click', () => gåTil(aktuel - 1));
     nextNy.addEventListener('click', () => gåTil(aktuel + 1));
 
-    // Klik på et karusel-billede åbner det i lightboxen med bladring.
-    slides.forEach((slide, i) => {
+    billeder.forEach((slide, i) => {
       slide.addEventListener('click', () => {
-        aktivtSæt = slides;
+        aktivtSæt = Array.from(billeder);
         visBilledeILightbox(i);
       });
     });
   }
 
-  // Initialiserer siden. Kaldes ved hver page-load.
   function initSide() {
-    lightbox = document.getElementById('lightbox');
+    const lightboxEl = document.getElementById('lightbox');
+    if (!lightboxEl) return;
+    lightbox = lightboxEl;
     lightboxImg = document.getElementById('lightbox-img');
     lightboxVideo = document.getElementById('lightbox-video');
-    lightboxPrev = document.getElementById('lightboxPrev');
-    lightboxNext = document.getElementById('lightboxNext');
-    if (!lightbox) return;
 
+    // Klon lightbox-pilene ved hver init (idempotent — undgår dobbelt-binding)
+    const prevOrig = document.getElementById('lightboxPrev');
+    const nextOrig = document.getElementById('lightboxNext');
+    lightboxPrev = prevOrig.cloneNode(true);
+    lightboxNext = nextOrig.cloneNode(true);
+    prevOrig.replaceWith(lightboxPrev);
+    nextOrig.replaceWith(lightboxNext);
+
+    lightboxPrev.addEventListener('click', (e) => { e.stopPropagation(); visBilledeILightbox(lightboxIndex - 1); });
+    lightboxNext.addEventListener('click', (e) => { e.stopPropagation(); visBilledeILightbox(lightboxIndex + 1); });
+
+    initIntroVideo();
     opsætKarusel('karusel', 'aboutPrev', 'aboutNext', 'prikker');
 
-    // Enkeltbilleder (stilbillede, visuel guide) → lightbox uden bladring.
+    // Enkeltbilleder (stilbilleder, brainstorm, visuel guide osv.)
     document.querySelectorAll('.klikbar').forEach(el => {
       el.addEventListener('click', () => { aktivtSæt = [el]; visBilledeILightbox(0); });
     });
 
-    // Videoer → lightbox.
+    // Videoer
     document.querySelectorAll('.klikbar-video').forEach(video => {
       video.addEventListener('click', () => visVideoILightbox(video));
     });
 
-    // Globale lyttere bindes kun én gang (document/lightbox overlever navigation).
-    if (!lyttereSat) {
-      lyttereSat = true;
-      lightboxPrev.addEventListener('click', (e) => { e.stopPropagation(); visBilledeILightbox(lightboxIndex - 1); });
-      lightboxNext.addEventListener('click', (e) => { e.stopPropagation(); visBilledeILightbox(lightboxIndex + 1); });
-      lightbox.addEventListener('click', lukLightbox);
-      document.addEventListener('keydown', (e) => {
-        if (lightbox.style.display !== 'flex') return;
-        if (e.key === 'Escape') lukLightbox();
-        if (lightboxNavAktiv) {
-          if (e.key === 'ArrowLeft') visBilledeILightbox(lightboxIndex - 1);
-          if (e.key === 'ArrowRight') visBilledeILightbox(lightboxIndex + 1);
-        }
-      });
-    }
+    // Named handler-referencer betyder vi trygt kan fjerne + gentilføje
+    // uden at risikere dobbelt-binding, uanset hvor mange gange initSide() kører
+    lightbox.removeEventListener('click', lukLightbox);
+    lightbox.addEventListener('click', lukLightbox);
+
+    document.removeEventListener('keydown', keydownHandler);
+    document.addEventListener('keydown', keydownHandler);
   }
 
-  // page-load fyrer ved første load og efter hver klient-navigation;
-  // DOMContentLoaded er fallback ved allerførste indlæsning.
   document.addEventListener('astro:page-load', initSide);
-  document.addEventListener('DOMContentLoaded', initSide);
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initSide);
+  } else {
+    initSide();
+  }
 </script>
