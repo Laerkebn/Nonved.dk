@@ -329,5 +329,10 @@ import '../styles/global.css';
   }
 
   document.addEventListener('astro:page-load', initSheCanPlay);
-  document.addEventListener('DOMContentLoaded', initSheCanPlay);
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initSheCanPlay);
+  } else {
+    initSheCanPlay();
+  }
 </script>
