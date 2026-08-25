@@ -3,7 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import '../styles/global.css';
 ---
 
-<Layout title="METRO | My Portfolio" page="metro">
+<Layout title="FEZ | My Portfolio" page="fez">
 
   <div class="page-wrapper">
 
@@ -14,7 +14,7 @@ import '../styles/global.css';
 
     <!-- TITEL -->
     <div style="
-      font-size: clamp(1rem, 5vw, 5rem); 
+      font-size: clamp(1rem, 5vw, 5rem);
       font-weight: 900;
       line-height: 0.85;
       letter-spacing: -0.05em;
@@ -24,79 +24,85 @@ import '../styles/global.css';
       word-break: break-word;
       text-align: center;
       margin-top: 2rem;
-    ">METROWARS</div>
+    ">FEZ - City Branding</div>
 
     <!-- Tags -->
     <div class="fade-in" style="display: flex; gap: 0.5rem; flex-wrap: wrap; justify-content: center; padding: 1rem 0 2rem;">
-      <span class="proj-tag whitespace-nowrap">Game Design</span>
-      <span class="proj-tag whitespace-nowrap">Unity</span>
-      <span class="proj-tag whitespace-nowrap">C#</span>
-      <span class="proj-tag whitespace-nowrap">Figma</span>
-   
+      <span class="proj-tag whitespace-nowrap">Branding & identity</span>
+      <span class="proj-tag whitespace-nowrap">Blender</span>
+      <span class="proj-tag whitespace-nowrap">JavaScript</span>
+      <span class="proj-tag whitespace-nowrap">CSS</span>
+      <span class="proj-tag whitespace-nowrap">HTML</span>
     </div>
 
-   <!-- VIDEO -->
-    <div class="proj-gallery-full overflow-hidden mb-8 fade-in">
-     <video id="intro-video" class="klikbar-video" autoplay muted loop playsinline style="width: 100%; height: 100%; object-fit: cover; transform: scale(1.2); cursor: zoom-in;">
-        <source src="/Billeder/METRO/METRO.mp4" type="video/mp4" />
+    <!-- VIDEO -->
+    <div class="proj-gallery-full overflow-hidden border border-[#272425] mb-8 fade-in">
+      <video class="klikbar-video" autoplay muted loop playsinline style="width: 100%; height: 100%; object-fit: cover; cursor: zoom-in;">
+        <source src="/Billeder/FEZ/fez.mp4" type="video/mp4" />
       </video>
     </div>
 
     <!-- ===== PROJEKT INDHOLD ===== -->
     <div id="projekt">
 
-   <!-- SEKTION 1: Intro -->
-<div class="fade-in mb-16">
-  <p class="text-base sm:text-lg text-gray-200 leading-relaxed">
-    METROWARS is a multiplayer mini-game developed in Unity using C#. The game was designed as a concept for the DSB app to encourage safer travel on weekend nights through friendly competition and gamification.
-  </p>
+      <!-- SEKTION 1: Intro -->
+      <div class="fade-in mb-16">
+        <p class="text-base sm:text-xl text-gray-200 leading-relaxed">
+          FEZ is a city branding project for Fez, Morocco. It is a modular frame inspired by the city's historic leather tanneries. The frame adapts to different formats, including souvenirs, public signage and large-scale advertising.
+        </p>
+      </div>
 
-  <p class="text-base sm:text-lg text-gray-200 leading-relaxed">
-    Players can only access the game while checked into the Metro through the DSB app. Between Thursday and Sunday from 5 PM to 6 AM, users are invited to join one of two teams and compete by playing short mini-games during their journey.
-  </p>
-</div>
-
-      <!-- SEKTION 2: Generatoren — tekst + karusel side om side -->
+      <!-- SEKTION 2: Frame generator — tekst + stilbillede side om side -->
       <div class="fade-in mb-16 flex flex-col lg:flex-row gap-8 items-start">
 
         <!-- Tekst -->
         <div class="lg:w-1/2 flex flex-col gap-4">
-         <h2 style="
+          <h2 style="
   color: #ffffff;
   font-size: 1.1rem;
   font-weight: 600;
   letter-spacing: 0.2em;
   text-transform: uppercase;
   text-shadow: 2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 0 0 #000, -2px 0 0 #000, 0 2px 0 #000, 0 -2px 0 #000;
-">Gameplay & progression</h2>
-         <p class="text-base sm:text-lg text-gray-200 leading-relaxed">
-  Players choose between two teams based on opposing hot takes. Every completed mini-game adds points to the team's shared score, creating a competition that lasts throughout the weekend.
-</p>
-
-<p class="text-base sm:text-lg text-gray-200 leading-relaxed">
-  The mini-games increase in difficulty through different items and obstacles. Players unlock badges and level up as they play, making it possible to compare progress with friends.
-</p>
-
-<p class="text-base sm:text-lg text-gray-200 leading-relaxed">
-  Every Sunday, both teams enter a final battle where the team with the highest combined score wins. After each game, players receive their score together with feedback reinforcing the campaign's message about safer travel.
-</p>
+">Frame generator & Blender</h2>
+          <p class="text-base sm:text-lg text-gray-200 leading-relaxed">
+            The frame was modelled in Blender and integrated into a web-based asset generator. Users can adjust its colour and shape to create assets for different formats and campaigns.
+          </p>
+          <p class="text-base sm:text-lg text-gray-200 leading-relaxed">
+            The frame can be used across social media, creating a consistent visual identity by framing images and graphic content.
+          </p>
+          <p class="text-base sm:text-lg text-gray-200 leading-relaxed">
+            The identity system is generative rather than fixed. Each application is different while maintaining a consistent visual language.
+          </p>
         </div>
 
         <!-- Stilbillede -->
         <div class="lg:w-1/2">
-          <img id="still-billede" src="/Billeder/METRO/hold.png" class="cursor-pointer hover:opacity-80 transition-opacity duration-300 klikbar" style="width: 100%; height: 100%; object-fit: cover; cursor: zoom-in;" />
+          <img src="/Billeder/FEZ/2.png" class="klikbar cursor-pointer hover:opacity-80 transition-opacity duration-300" style="width: 100%; height: 340px; object-fit: cover; cursor: zoom-in;" />
         </div>
 
       </div>
 
-  <!-- SEKTION: Karusel -->
+      <!-- SEKTION: Karusel -->
       <div class="fade-in mb-16">
         <div class="relative overflow-hidden">
           <div id="karusel" class="flex transition-transform duration-500 ease-in-out">
-            <img src="/Billeder/METRO/Startskærm.png" class="karusel-billede shrink-0 object-contain cursor-pointer hover:opacity-80 transition-opacity duration-300" style="height: 550px; background: #26254A;" />
-            <img src="/Billeder/METRO/Gardrobe_Hovedbeklædning.png" class="karusel-billede shrink-0 object-contain cursor-pointer hover:opacity-80 transition-opacity duration-300" style="height: 550px; background: #26254A;" />
-            <img src="/Billeder/METRO/Vaaben.png" class="karusel-billede shrink-0 object-contain cursor-pointer hover:opacity-80 transition-opacity duration-300" style="height: 550px; background: #26254A;" />
-            <img src="/Billeder/METRO/vinder.png" class="karusel-billede shrink-0 object-contain cursor-pointer hover:opacity-80 transition-opacity duration-300" style="height: 550px; background: #26254A;" />
+
+            <!-- Slide 1 — sløret baggrund af samme billede -->
+            <div class="karusel-billede shrink-0 relative overflow-hidden cursor-pointer" style="height: clamp(240px, 55vw, 440px); width: 100%;" data-src="/Billeder/FEZ/stor.png">
+              <img src="/Billeder/FEZ/stor.png" aria-hidden="true" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; filter:blur(20px) brightness(0.7); transform:scale(1.1);" />
+              <img src="/Billeder/FEZ/stor.png" class="karusel-forgrund hover:opacity-80 transition-opacity duration-300" style="position:relative; z-index:10; width:100%; height:100%; object-fit:contain;" />
+            </div>
+
+            <!-- Slide 2 -->
+            <img src="/Billeder/FEZ/3.png" class="karusel-billede shrink-0 object-contain cursor-pointer hover:opacity-80 transition-opacity duration-300" style="height: clamp(240px, 55vw, 440px); max-width: 100%; background: #ffffff;" />
+
+            <!-- Slide 3 — sløret baggrund af samme billede -->
+            <div class="karusel-billede shrink-0 relative overflow-hidden cursor-pointer" style="height: clamp(240px, 55vw, 440px); width: 100%;" data-src="/Billeder/FEZ/FEZSTART.jpg">
+              <img src="/Billeder/FEZ/FEZSTART.jpg" aria-hidden="true" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; filter:blur(20px) brightness(0.7); transform:scale(1.1);" />
+              <img src="/Billeder/FEZ/FEZSTART.jpg" class="karusel-forgrund hover:opacity-80 transition-opacity duration-300" style="position:relative; z-index:10; width:100%; height:100%; object-fit:contain;" />
+            </div>
+
           </div>
           <button id="aboutPrev" class="absolute left-4 top-1/2 -translate-y-1/2 text-black px-4 py-3 transition-all duration-300 hover:scale-140 text-xl font-bold z-10">◀</button>
           <button id="aboutNext" class="absolute right-4 top-1/2 -translate-y-1/2 text-black px-4 py-3 transition-all duration-300 hover:scale-140 text-xl font-bold z-10">▶</button>
@@ -104,12 +110,12 @@ import '../styles/global.css';
         </div>
       </div>
 
- <!-- SEKTION 3: Idéudvikling — billede + tekst side om side -->
+      <!-- SEKTION 3: Leather Tannery — billede + tekst side om side -->
       <div class="fade-in mb-16 flex flex-col lg:flex-row gap-8 items-start">
 
         <!-- Billede -->
-        <div class="lg:w-1/2 overflow-hidden ">
-          <img id="brainstorm-billede" src="/Billeder/METRO/METROSTAR2.jpeg" alt="Grums brainstorm and idea development" class="cursor-pointer hover:opacity-80 transition-opacity duration-300" style="width: 100%; height: 100%; object-fit: cover;" />
+        <div class="lg:w-1/2 overflow-hidden">
+          <img src="/Billeder/FEZ/1.png" alt="Fez brainstorm and idea development" class="klikbar cursor-pointer hover:opacity-80 transition-opacity duration-300" style="width: 100%; height: 100%; object-fit: cover; cursor: zoom-in;" />
         </div>
 
         <!-- Tekst -->
@@ -121,10 +127,35 @@ import '../styles/global.css';
   letter-spacing: 0.2em;
   text-transform: uppercase;
   text-shadow: 2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 0 0 #000, -2px 0 0 #000, 0 2px 0 #000, 0 -2px 0 #000;
-">DSB app integration</h2>
-      <p class="text-base sm:text-lg text-gray-200 leading-relaxed">
-  The game is integrated directly into the DSB app. During check-in between 11 PM and 5 AM on Thursday, Friday and Saturday, users are shown a popup inviting them to participate. Accepting the invitation leads to team selection before the game begins.
-</p>
+">Leather Tannery</h2>
+          <p class="text-base sm:text-lg text-gray-200 leading-relaxed">
+            The frame pattern is based on the layout of the leather tanneries in Fez. The circular dye pits were simplified into a modular graphic system that forms the basis of the visual identity.
+          </p>
+        </div>
+
+      </div>
+
+      <!-- SEKTION: Casa da Música — billede + tekst side om side -->
+      <div class="fade-in mb-16 flex flex-col lg:flex-row gap-8 items-start">
+
+        <!-- Billede -->
+        <div class="lg:w-1/2 overflow-hidden">
+          <img src="/Billeder/FEZ/CASA.png" alt="Casa da Música inspiration" class="klikbar cursor-pointer hover:opacity-80 transition-opacity duration-300" style="width: 100%; height: 100%; object-fit: cover; cursor: zoom-in;" />
+        </div>
+
+        <!-- Tekst -->
+        <div class="lg:w-1/2 flex flex-col gap-4">
+          <h2 style="
+  color: #ffffff;
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  text-shadow: 2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 0 0 #000, -2px 0 0 #000, 0 2px 0 #000, 0 -2px 0 #000;
+">Casa da Música Sagmeister</h2>
+          <p class="text-base sm:text-lg text-gray-200 leading-relaxed">
+            The project references Stefan Sagmeister's identity for Casa da Música, where a single graphic form changes in colour and proportion depending on the application while remaining recognisable.
+          </p>
         </div>
 
       </div>
@@ -138,26 +169,20 @@ import '../styles/global.css';
   letter-spacing: 0.2em;
   text-transform: uppercase;
   text-shadow: 2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 0 0 #000, -2px 0 0 #000, 0 2px 0 #000, 0 -2px 0 #000;
-">Visual identity guide</h2>
-     
+">Visual identity & inspiration board</h2>
       </div>
 
-      <div class="overflow-hidden mb-16 fade-in">
-        <img class="klikbar" src="/Billeder/METRO/METROvisueltskema.png" alt="SHE CAN PLAY visual identity guide" style="width: 100%; cursor: zoom-in;" />
+      <div class="overflow-hidden border border-[#272425] mb-16 fade-in">
+        <img src="/Billeder/FEZ/FEZvisueltskema.png" alt="FEZ visual identity guide" class="klikbar" style="width: 100%; cursor: zoom-in;" />
       </div>
 
-   <!-- Credits -->
-<div class="fade-in mb-16" style="border-left: 2px solid #ffffff; padding-left: 1.5rem;">
-  <p class="text-sm text-gray-400 leading-relaxed">
-    A collaboration between CD2 and ID2.<br />
-    Group:
-    <a href="https://www.instagram.com/elsebethbot/" target="_blank" rel="noopener noreferrer" style="color:#ffffff;">@elsebethbot</a>
-    ·
-    <a href="https://www.instagram.com/jacob.knudsen.33" target="_blank" rel="noopener noreferrer" style="color:#ffffff;">@jacob.knudsen.33</a>
-    ·
-    <a href="https://www.instagram.com/annawitt__/" target="_blank" rel="noopener noreferrer" style="color:#ffffff;">@annawitt__</a>
-  </p>
-</div>
+      <!-- Credits -->
+      <div class="fade-in mb-16" style="border-left: 2px solid #ffffff; padding-left: 1.5rem;">
+        <p class="text-sm text-gray-400 leading-relaxed">
+          Solo project.<br />
+          Role: <span style="color:#ffffff;">Concept development · Asset generator design</span>
+        </p>
+      </div>
 
     </div>
 
