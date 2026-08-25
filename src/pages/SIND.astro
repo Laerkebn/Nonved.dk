@@ -90,30 +90,32 @@ import '../styles/global.css';
       <div class="fade-in mb-16">
         <div class="relative overflow-hidden">
           <div id="karusel" class="flex transition-transform duration-500 ease-in-out">
-            <div class="karusel-slide  shrink-0 relative overflow-hidden" style="height: 440px;">
+            <div class="karusel-slide shrink-0 relative overflow-hidden" style="height: 440px; width: 100%;">
               <img src="/Billeder/SIND/hjul1.JPG" aria-hidden="true" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; filter:blur(20px) brightness(0.7); transform:scale(1.1);" />
               <img src="/Billeder/SIND/hjul1.JPG" class="karusel-billede relative z-10 w-full h-full object-contain cursor-pointer hover:opacity-80 transition-opacity duration-300" />
             </div>
 
             <!-- Slide 2 -->
-            <div class="karusel-slide  shrink-0 relative overflow-hidden" style="height: 440px;">
+            <div class="karusel-slide shrink-0 relative overflow-hidden" style="height: 440px; width: 100%;">
               <img src="/Billeder/SIND/hjul2.JPG" aria-hidden="true" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; filter:blur(20px) brightness(0.7); transform:scale(1.1);" />
               <img src="/Billeder/SIND/hjul2.JPG" class="karusel-billede relative z-10 w-full h-full object-contain cursor-pointer hover:opacity-80 transition-opacity duration-300" />
             </div>
 
             <!-- Slide 3 -->
-            <div class="karusel-slide  shrink-0 relative overflow-hidden" style="height: 440px;">
+            <div class="karusel-slide shrink-0 relative overflow-hidden" style="height: 440px; width: 100%;">
               <img src="/Billeder/SIND/SINDSTART.png" aria-hidden="true" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; filter:blur(20px) brightness(0.7); transform:scale(1.1);" />
               <img src="/Billeder/SIND/SINDSTART.png" class="karusel-billede relative z-10 w-full h-full object-contain cursor-pointer hover:opacity-80 transition-opacity duration-300" />
             </div>
 
             <!-- Slide 4 -->
-            <div class="karusel-slide  shrink-0 relative overflow-hidden" style="height: 440px;">
+            <div class="karusel-slide shrink-0 relative overflow-hidden" style="height: 440px; width: 100%;">
               <img src="/Billeder/SIND/hjul3.JPG" aria-hidden="true" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; filter:blur(20px) brightness(0.7); transform:scale(1.1);" />
               <img src="/Billeder/SIND/hjul3.JPG" class="karusel-billede relative z-10 w-full h-full object-contain cursor-pointer hover:opacity-80 transition-opacity duration-300" />
             </div>
 
-            <button id="aboutPrev" class="absolute left-4 top-1/2 -translate-y-1/2 text-black px-4 py-3 transition-all duration-300 hover:scale-140 text-xl font-bold z-10">◀</button>
+          </div>
+
+          <button id="aboutPrev" class="absolute left-4 top-1/2 -translate-y-1/2 text-black px-4 py-3 transition-all duration-300 hover:scale-140 text-xl font-bold z-10">◀</button>
           <button id="aboutNext" class="absolute right-4 top-1/2 -translate-y-1/2 text-black px-4 py-3 transition-all duration-300 hover:scale-140 text-xl font-bold z-10">▶</button>
           <div id="prikker" class="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2"></div>
         </div>
@@ -151,7 +153,6 @@ import '../styles/global.css';
           <a href="https://www.instagram.com/leonardkjaerulff/" target="_blank" rel="noopener noreferrer" style="color:#ffffff;">@leonardkjaerulff</a>
         </p>
       </div>
-      </div>
 
     </div>
 
@@ -173,10 +174,10 @@ import '../styles/global.css';
 
 <script is:inline>
 (function () {
-  // Undgår "Identifier already declared" når scriptet genkøres
-  // ved Astro view-transitions på tværs af projektsider.
-  if (window.__karuselMotorInit) {
-    window.__karuselMotorInit();
+  // Scriptet genkøres ved Astro view-transitions. Flaget sikrer, at vi kun
+  // registrerer lyttere én gang — ved genkørsel kalder vi bare init igen.
+  if (window.__sindMotorInit) {
+    window.__sindMotorInit();
     return;
   }
 
@@ -184,25 +185,30 @@ import '../styles/global.css';
   let aktivtSæt = [];
   let lightboxIndex = 0;
   let lightboxNavAktiv = false;
-  let lyttereSat = false;
+  let keydownSat = false;
 
+  // Slidet kan være et <img> eller en <div> med billedet indeni.
+  // Det slørede baggrundsbillede er aria-hidden og skal ikke bruges.
   function hentKilde(el) {
     if (el.dataset && el.dataset.src) return el.dataset.src;
     if (el.tagName === 'IMG') return el.currentSrc || el.src;
-    const img = el.querySelector('.karusel-billede, .karusel-forgrund, img:not([aria-hidden])');
+    const img = el.querySelector('.karusel-billede, img:not([aria-hidden])');
     return img ? (img.currentSrc || img.src) : '';
   }
 
   function initIntroVideo() {
     const video = document.getElementById('intro-video');
-    if (!video) return;
+    if (!video || video.dataset.introSat) return;
+    video.dataset.introSat = '1';
     const START = 0;
     const END = 115;
-    video.addEventListener('loadedmetadata', () => { video.currentTime = START; video.play(); });
+    video.addEventListener('loadedmetadata', () => { video.currentTime = START; video.play().catch(() => {}); });
     video.addEventListener('timeupdate', () => { if (video.currentTime >= END) video.currentTime = START; });
+    if (video.readyState >= 1) video.play().catch(() => {});
   }
 
   function lukLightbox() {
+    if (!lightbox) return;
     lightbox.style.display = 'none';
     lightboxVideo.pause();
     lightboxVideo.style.display = 'none';
@@ -213,6 +219,7 @@ import '../styles/global.css';
   }
 
   function visBilledeILightbox(index) {
+    if (!lightbox || !aktivtSæt.length) return;
     lightboxIndex = (index + aktivtSæt.length) % aktivtSæt.length;
     lightboxNavAktiv = aktivtSæt.length > 1;
     lightboxVideo.pause();
@@ -225,29 +232,40 @@ import '../styles/global.css';
   }
 
   function visVideoILightbox(video) {
-    const kilde = video.currentSrc || video.querySelector('source')?.src;
+    if (!lightbox) return;
+    const kilde = video.currentSrc || (video.querySelector('source') && video.querySelector('source').src);
     if (!kilde) return;
     lightboxNavAktiv = false;
+    aktivtSæt = [];
     lightboxImg.style.display = 'none';
     lightboxPrev.style.display = 'none';
     lightboxNext.style.display = 'none';
     lightboxVideo.src = kilde;
     lightboxVideo.style.display = 'block';
     lightbox.style.display = 'flex';
-    lightboxVideo.play();
+    lightboxVideo.play().catch(() => {});
   }
 
- function opsætKarusel(karuselId, prevId, nextId, prikId, perVisning = 1) {
+  function opsætKarusel(karuselId, prevId, nextId, prikId, perVisning = 1) {
     const karusel = document.getElementById(karuselId);
-    if (!karusel) return;
-    const billeder = karusel.querySelectorAll('.karusel-billede');
-    const antal = billeder.length;
     const prikContainer = document.getElementById(prikId);
+    if (!karusel || !prikContainer) return;
+
+    // VIGTIGT: slides er karusellens egne børn (.karusel-slide) — ikke de
+    // indre billeder. Det er wrapperen, der skal have bredden.
+    const slides = Array.from(karusel.children)
+      .filter(el => el.tagName !== 'BUTTON' && el.id !== prikId);
+    if (!slides.length) return;
+
+    const antal = slides.length;
     let aktuel = 0;
 
-    billeder.forEach(img => { img.style.width = `${100 / perVisning}%`; });
-    prikContainer.innerHTML = '';
+    slides.forEach(s => {
+      s.style.width = `${100 / perVisning}%`;
+      s.style.flexShrink = '0';
+    });
 
+    prikContainer.innerHTML = '';
     const antalTrin = Math.max(1, antal - perVisning + 1);
 
     function gåTil(index) {
@@ -265,69 +283,67 @@ import '../styles/global.css';
       prikContainer.appendChild(prik);
     }
 
-    // Klon knapperne for at fjerne gamle listeners (undgår dobbelt-binding)
+    // onclick (ikke addEventListener) — så handlers aldrig kan stable sig op
     const prevBtn = document.getElementById(prevId);
     const nextBtn = document.getElementById(nextId);
-    const prevNy = prevBtn.cloneNode(true);
-    const nextNy = nextBtn.cloneNode(true);
-    prevBtn.replaceWith(prevNy);
-    nextBtn.replaceWith(nextNy);
-    prevNy.addEventListener('click', () => gåTil(aktuel - 1));
-    nextNy.addEventListener('click', () => gåTil(aktuel + 1));
+    if (prevBtn) prevBtn.onclick = () => gåTil(aktuel - 1);
+    if (nextBtn) nextBtn.onclick = () => gåTil(aktuel + 1);
 
-    billeder.forEach((slide, i) => {
-      slide.addEventListener('click', () => {
-        aktivtSæt = Array.from(billeder);
-        visBilledeILightbox(i);
-      });
+    slides.forEach((slide, i) => {
+      slide.onclick = () => { aktivtSæt = slides; visBilledeILightbox(i); };
     });
+
+    gåTil(0);
   }
 
   function initSide() {
-    const lightboxEl = document.getElementById('lightbox');
-    if (!lightboxEl) return;
-    lightbox = lightboxEl;
+    lightbox = document.getElementById('lightbox');
+    if (!lightbox) return;
     lightboxImg = document.getElementById('lightbox-img');
     lightboxVideo = document.getElementById('lightbox-video');
+    lightboxPrev = document.getElementById('lightboxPrev');
+    lightboxNext = document.getElementById('lightboxNext');
 
-    // Klon lightbox-pilene ved hver init (idempotent — undgår dobbelt-binding)
-    const prevOrig = document.getElementById('lightboxPrev');
-    const nextOrig = document.getElementById('lightboxNext');
-    lightboxPrev = prevOrig.cloneNode(true);
-    lightboxNext = nextOrig.cloneNode(true);
-    prevOrig.replaceWith(lightboxPrev);
-    nextOrig.replaceWith(lightboxNext);
-
-    lightboxPrev.addEventListener('click', (e) => { e.stopPropagation(); visBilledeILightbox(lightboxIndex - 1); });
-    lightboxNext.addEventListener('click', (e) => { e.stopPropagation(); visBilledeILightbox(lightboxIndex + 1); });
+    aktivtSæt = [];
+    lightboxIndex = 0;
+    lightboxNavAktiv = false;
 
     initIntroVideo();
     opsætKarusel('karusel', 'aboutPrev', 'aboutNext', 'prikker');
 
-    // Enkeltbilleder (stilbilleder, brainstorm, visuel guide osv.)
     document.querySelectorAll('.klikbar').forEach(el => {
-      el.addEventListener('click', () => { aktivtSæt = [el]; visBilledeILightbox(0); });
+      el.onclick = () => { aktivtSæt = [el]; visBilledeILightbox(0); };
     });
 
-    // Videoer
     document.querySelectorAll('.klikbar-video').forEach(video => {
-      video.addEventListener('click', () => visVideoILightbox(video));
+      video.onclick = () => visVideoILightbox(video);
     });
 
-    // Named handler-referencer betyder vi trygt kan fjerne + gentilføje
-    // uden at risikere dobbelt-binding, uanset hvor mange gange initSide() kører
-    lightbox.removeEventListener('click', lukLightbox);
-    lightbox.addEventListener('click', lukLightbox);
+    lightbox.onclick = lukLightbox;
+    if (lightboxPrev) lightboxPrev.onclick = (e) => { e.stopPropagation(); visBilledeILightbox(lightboxIndex - 1); };
+    if (lightboxNext) lightboxNext.onclick = (e) => { e.stopPropagation(); visBilledeILightbox(lightboxIndex + 1); };
 
-    document.removeEventListener('keydown', keydownHandler);
-    document.addEventListener('keydown', keydownHandler);
+    if (!keydownSat) {
+      keydownSat = true;
+      document.addEventListener('keydown', (e) => {
+        if (!lightbox || lightbox.style.display !== 'flex') return;
+        if (e.key === 'Escape') lukLightbox();
+        if (lightboxNavAktiv) {
+          if (e.key === 'ArrowLeft') visBilledeILightbox(lightboxIndex - 1);
+          if (e.key === 'ArrowRight') visBilledeILightbox(lightboxIndex + 1);
+        }
+      });
+    }
   }
+
+  window.__sindMotorInit = initSide;
 
   document.addEventListener('astro:page-load', initSide);
 
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initSide);
+    document.addEventListener('DOMContentLoaded', initSide, { once: true });
   } else {
     initSide();
   }
+})();
 </script>
