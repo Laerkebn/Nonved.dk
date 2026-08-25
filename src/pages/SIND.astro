@@ -34,10 +34,10 @@ import '../styles/global.css';
       <span class="proj-tag whitespace-nowrap">Madmapper</span>
     </div>
 
-    <!-- VIDEO -->
+   <!-- VIDEO -->
     <div class="proj-gallery-full overflow-hidden mb-8 fade-in">
      <video id="intro-video" class="klikbar-video" autoplay muted loop playsinline style="width: 100%; height: 100%; object-fit: cover; transform: scale(1.2); cursor: zoom-in;">
-        <source src="/Billeder/SIND/SIND.mp4" type="video/mp4" />
+       <source src="/Billeder/SIND/SIND.mp4" type="video/mp4" />
       </video>
     </div>
 
@@ -85,13 +85,11 @@ import '../styles/global.css';
         </div>
 
       </div>
-      
-<!-- SEKTION: Karusel -->
+
+      <!-- SEKTION: Karusel -->
       <div class="fade-in mb-16">
         <div class="relative overflow-hidden">
           <div id="karusel" class="flex transition-transform duration-500 ease-in-out">
-
-            <!-- Slide 1 -->
             <div class="karusel-slide  shrink-0 relative overflow-hidden" style="height: 440px;">
               <img src="/Billeder/SIND/hjul1.JPG" aria-hidden="true" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; filter:blur(20px) brightness(0.7); transform:scale(1.1);" />
               <img src="/Billeder/SIND/hjul1.JPG" class="karusel-billede relative z-10 w-full h-full object-contain cursor-pointer hover:opacity-80 transition-opacity duration-300" />
@@ -115,8 +113,7 @@ import '../styles/global.css';
               <img src="/Billeder/SIND/hjul3.JPG" class="karusel-billede relative z-10 w-full h-full object-contain cursor-pointer hover:opacity-80 transition-opacity duration-300" />
             </div>
 
-          </div>
-          <button id="aboutPrev" class="absolute left-4 top-1/2 -translate-y-1/2 text-black px-4 py-3 transition-all duration-300 hover:scale-140 text-xl font-bold z-10">◀</button>
+            <button id="aboutPrev" class="absolute left-4 top-1/2 -translate-y-1/2 text-black px-4 py-3 transition-all duration-300 hover:scale-140 text-xl font-bold z-10">◀</button>
           <button id="aboutNext" class="absolute right-4 top-1/2 -translate-y-1/2 text-black px-4 py-3 transition-all duration-300 hover:scale-140 text-xl font-bold z-10">▶</button>
           <div id="prikker" class="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2"></div>
         </div>
@@ -240,15 +237,15 @@ import '../styles/global.css';
     lightboxVideo.play();
   }
 
-  function opsætKarusel(karuselId, prevId, nextId, prikId, perVisning = 1) {
+ function opsætKarusel(karuselId, prevId, nextId, prikId, perVisning = 1) {
     const karusel = document.getElementById(karuselId);
     if (!karusel) return;
-    const slides = Array.from(karusel.children);
-    const antal = slides.length;
+    const billeder = karusel.querySelectorAll('.karusel-billede');
+    const antal = billeder.length;
     const prikContainer = document.getElementById(prikId);
     let aktuel = 0;
 
-    slides.forEach(s => { s.style.width = `${100 / perVisning}%`; s.style.flexShrink = '0'; });
+    billeder.forEach(img => { img.style.width = `${100 / perVisning}%`; });
     prikContainer.innerHTML = '';
 
     const antalTrin = Math.max(1, antal - perVisning + 1);
@@ -268,6 +265,7 @@ import '../styles/global.css';
       prikContainer.appendChild(prik);
     }
 
+    // Klon knapperne for at fjerne gamle listeners (undgår dobbelt-binding)
     const prevBtn = document.getElementById(prevId);
     const nextBtn = document.getElementById(nextId);
     const prevNy = prevBtn.cloneNode(true);
@@ -277,9 +275,9 @@ import '../styles/global.css';
     prevNy.addEventListener('click', () => gåTil(aktuel - 1));
     nextNy.addEventListener('click', () => gåTil(aktuel + 1));
 
-    slides.forEach((slide, i) => {
+    billeder.forEach((slide, i) => {
       slide.addEventListener('click', () => {
-        aktivtSæt = slides;
+        aktivtSæt = Array.from(billeder);
         visBilledeILightbox(i);
       });
     });
@@ -292,6 +290,7 @@ import '../styles/global.css';
     lightboxImg = document.getElementById('lightbox-img');
     lightboxVideo = document.getElementById('lightbox-video');
 
+    // Klon lightbox-pilene ved hver init (idempotent — undgår dobbelt-binding)
     const prevOrig = document.getElementById('lightboxPrev');
     const nextOrig = document.getElementById('lightboxNext');
     lightboxPrev = prevOrig.cloneNode(true);
@@ -299,37 +298,30 @@ import '../styles/global.css';
     prevOrig.replaceWith(lightboxPrev);
     nextOrig.replaceWith(lightboxNext);
 
+    lightboxPrev.addEventListener('click', (e) => { e.stopPropagation(); visBilledeILightbox(lightboxIndex - 1); });
+    lightboxNext.addEventListener('click', (e) => { e.stopPropagation(); visBilledeILightbox(lightboxIndex + 1); });
+
     initIntroVideo();
     opsætKarusel('karusel', 'aboutPrev', 'aboutNext', 'prikker');
 
+    // Enkeltbilleder (stilbilleder, brainstorm, visuel guide osv.)
     document.querySelectorAll('.klikbar').forEach(el => {
       el.addEventListener('click', () => { aktivtSæt = [el]; visBilledeILightbox(0); });
     });
 
+    // Videoer
     document.querySelectorAll('.klikbar-video').forEach(video => {
       video.addEventListener('click', () => visVideoILightbox(video));
     });
 
-    lightboxPrev.addEventListener('click', (e) => { e.stopPropagation(); visBilledeILightbox(lightboxIndex - 1); });
-    lightboxNext.addEventListener('click', (e) => { e.stopPropagation(); visBilledeILightbox(lightboxIndex + 1); });
-
+    // Named handler-referencer betyder vi trygt kan fjerne + gentilføje
+    // uden at risikere dobbelt-binding, uanset hvor mange gange initSide() kører
     lightbox.removeEventListener('click', lukLightbox);
     lightbox.addEventListener('click', lukLightbox);
 
-    if (!lyttereSat) {
-      lyttereSat = true;
-      document.addEventListener('keydown', (e) => {
-        if (lightbox.style.display !== 'flex') return;
-        if (e.key === 'Escape') lukLightbox();
-        if (lightboxNavAktiv) {
-          if (e.key === 'ArrowLeft') visBilledeILightbox(lightboxIndex - 1);
-          if (e.key === 'ArrowRight') visBilledeILightbox(lightboxIndex + 1);
-        }
-      });
-    }
+    document.removeEventListener('keydown', keydownHandler);
+    document.addEventListener('keydown', keydownHandler);
   }
-
-  window.__karuselMotorInit = initSide;
 
   document.addEventListener('astro:page-load', initSide);
 
@@ -338,5 +330,4 @@ import '../styles/global.css';
   } else {
     initSide();
   }
-})();
 </script>
