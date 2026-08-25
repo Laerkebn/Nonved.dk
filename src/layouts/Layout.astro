@@ -106,12 +106,35 @@ const isProjectPage = page === 'grums' || page === 'aaben' || page === 'fez' || 
           document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
         }
 
+        // Har videoen overhovedet en kilde? Lightbox-videoen står tom, indtil
+        // man klikker på noget — den skal hverken vækkes eller ventes på.
+        function harKilde(video) {
+          return !!(video.getAttribute('src') || video.querySelector('source[src]'));
+        }
+
+        /* -----------------------------------------------------------------
+         * Ved klient-navigation bliver DOM'en bygget af Astro og flyttet ind
+         * i siden. En <video autoplay>, der ankommer den vej, starter ikke af
+         * sig selv — browseren reagerer kun på autoplay for elementer, den
+         * selv har parset. Derfor sparker vi dem i gang manuelt.
+         * Det er grunden til, at videoerne først dukkede op efter et reload.
+         * --------------------------------------------------------------- */
+        function vaekVideoer() {
+          document.querySelectorAll('video').forEach(video => {
+            if (!harKilde(video)) return;
+            // readyState 0 = browseren er slet ikke begyndt at hente
+            if (video.readyState === 0) video.load();
+            if (video.hasAttribute('autoplay')) video.play().catch(() => {});
+          });
+        }
+
         // Alt det, vi venter på. Lazy-billeder springes over — de hentes først,
         // når man scroller ned til dem, så det ville aldrig blive færdigt.
         function medierPåSiden() {
           const billeder = Array.from(document.querySelectorAll('img'))
             .filter(img => img.loading !== 'lazy' && img.getAttribute('src'));
-          const videoer = Array.from(document.querySelectorAll('video'));
+          const videoer = Array.from(document.querySelectorAll('video'))
+            .filter(harKilde);
           return billeder.concat(videoer);
         }
 
@@ -134,6 +157,8 @@ const isProjectPage = page === 'grums' || page === 'aaben' || page === 'fez' || 
 
         function start() {
           const loader = document.getElementById('loader');
+
+          vaekVideoer();
 
           // Ikke en projektside → ingen loader, bare fade-in som før.
           if (!loader) { initFadeIn(); return; }
